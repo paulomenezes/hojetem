@@ -1,0 +1,19 @@
+<div class="content stores">
+	<h2>{{ type.name }} - {{ sub.name }}</h2>
+	<div class="stores">
+		<md-card class="store" ng-repeat="store in stores" ng-click="goStore(store)">
+			<md-card-title>
+				<md-card-title-text>
+					<span class="md-headline">{{ store.name }}</span>
+					<span class="md-subhead">{{ store.address }}</span>
+					<span class="md-subhead">{{ store.phone1 }}</span>
+				</md-card-title-text>
+				<md-card-title-media>
+					<div class="md-media-sm card-media">
+						<img src="/images/{{ store.icon ? 'store/' + store.icon : 'logo-sq.png' }}">
+					</div>
+				</md-card-title-media>
+			</md-card-title>
+		</md-card>
+	</div>
+</div>

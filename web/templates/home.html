@@ -1,0 +1,25 @@
+<div class="banners">
+	<flex-slider slide="banner in banners track by $index" directionNav="false" controlNav="false">
+		<li>
+			<img ng-src="http://achow.com.br/images/top/carrousel/{{ banner.file }}">
+		</li>
+	</flex-slider>
+</div>
+
+<div class="content">
+	<div class="itens">
+		<div class="item">
+			<flex-slider slide="show in shows track by $index" directionNav="false" controlNav="false">
+				<li>
+					<img ng-src="http://achow.com.br/images/store/{{ show.image }}">
+				</li>
+			</flex-slider>
+		</div>
+		<div class="item" ng-repeat="item in itens" ng-click="openItem(item, $event)">
+			<div class="image" style="background-image: url('./images/{{ item.image }}.jpg')">
+				<div class="icon ion-{{ item.icon }}"></div>
+				<div class="title">{{ item.title }}</div>
+			</div>
+		</div>
+	</div>			
+</div>
