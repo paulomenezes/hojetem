@@ -1,0 +1,62 @@
+<div class="content page">
+	<div class="user">
+		<div class="header" style="background-image: url('{{ user.cover }}')">
+			<div class="profile">
+				<img ng-src="{{ !user.image ? '/images/logo-sq.png' : user.image.indexOf('http') == 0 ? user.image : '/' + user.image }}">
+
+				<div class="name">{{ user.full_name }}</div>
+			</div>
+		</div>
+
+		<div class="optionsFriends" ng-show="friendship">
+			<md-button class="md-raised md-primary" ng-click="add()" ng-hide="friendship.friends || friendship.request">
+				<i class="material-icons">person_add</i> Adicionar aos contatos
+			</md-button>
+			<md-button class="md-raised md-primary" ng-click="remove()" ng-show="friendship.friends">
+				<i class="material-icons">remove_circle</i> Remover amigo
+			</md-button>
+			<md-button class="md-raised md-primary" ng-show="friendship.request">
+				<i class="material-icons">person</i> Aguardando confirmação
+			</md-button>
+			<md-button class="md-raised md-primary" ng-click="chat()" ng-show="friendship.friends">
+				<i class="material-icons">chatboxes</i> Mandar mensagem
+			</md-button>
+		</div>
+
+		<md-tabs md-dynamic-height md-border-bottom md-autoselect>
+			<md-tab label="Check-ins">
+				<div class="stores">
+					<md-card class="store" ng-repeat="store in checkins" ng-click="goStore(store)">
+						<md-card-title>
+							<md-card-title-text>
+								<span class="md-headline">{{ store.name }}</span>
+								<span class="md-subhead">{{ store.message }}</span>
+							</md-card-title-text>
+							<md-card-title-media>
+								<div class="md-media-sm card-media">
+									<img ng-src="/images/{{ store.icon ? 'store/' + store.icon : 'logo-sq.png' }}">
+								</div>
+							</md-card-title-media>
+						</md-card-title>
+					</md-card>
+				</div>
+			</md-tab>
+			<md-tab label="Amigos">
+				<div class="stores">
+					<md-card class="store" ng-repeat="friend in friends" ng-click="goUser(friend)">
+						<md-card-title>
+							<md-card-title-text>
+								<span class="md-headline">{{ friend.name + ' ' + friend.lastname }}</span>
+							</md-card-title-text>
+							<md-card-title-media>
+								<div class="md-media-sm card-media">
+									<img ng-src="{{ !friend.image ? '/images/logo-sq.png' : friend.image.indexOf('http') == 0 ? friend.image : '/' + friend.image }}">
+								</div>
+							</md-card-title-media>
+						</md-card-title>
+					</md-card>
+				</div>
+			</md-tab>
+		</md-tabs>
+	</div>
+</div>

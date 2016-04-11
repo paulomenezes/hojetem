@@ -1,0 +1,22 @@
+<div class="content stores">
+	<div class="stores">
+		<div ng-show="notifications.length == 0">
+			<h3 class="h3">Nenhuma notificação encontrada</h3>
+		</div>
+		<md-card class="store" ng-repeat="notification in notifications" ng-click="goStore(notification)">
+			<md-card-title>
+				<md-card-title-text>
+					<span class="md-subhead" style="height: auto">
+						O usuário {{ notification.name }} convidou você para ir ao {{ notification.storeName }}
+					</span>
+					<span class="md-headline">{{ notification.message }}</span>
+				</md-card-title-text>
+				<md-card-title-media>
+					<div class="md-media-sm card-media">
+						<img ng-src="/images/{{ notification.icon ? 'store/' + notification.icon : 'logo-sq.png' }}">
+					</div>
+				</md-card-title-media>
+			</md-card-title>
+		</md-card>
+	</div>
+</div>

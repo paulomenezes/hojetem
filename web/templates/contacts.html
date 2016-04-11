@@ -1,0 +1,46 @@
+<div class="content stores">
+	<div class="stores">
+		<md-tabs md-dynamic-height md-border-bottom md-autoselect>
+			<md-tab label="Amigos">
+				<div ng-show="friends.length == 0">
+					<h3 class="h3">Você ainda não adicionou ninguém</h3>
+				</div>
+				<md-card class="store" ng-repeat="friend in friends" ng-click="goUser(friend)">
+					<md-card-title>
+						<md-card-title-text>
+							<span class="md-headline">{{ friend.name + ' ' + friend.lastname }}</span>
+						</md-card-title-text>
+						<md-card-title-media>
+							<div class="md-media-sm card-media">
+								<img ng-if="friend.image.indexOf('http') >= 0" ng-src="{{ friend.image }}">
+								<img ng-if="friend.image.indexOf('http') < 0" ng-src="/{{ friend.image }}">
+							</div>
+						</md-card-title-media>
+					</md-card-title>
+				</md-card>
+			</md-tab>
+			<md-tab label="Solicitações">
+				<div ng-show="requests.length == 0">
+					<h3 class="h3">Nenhuma solicitação de amizade encontrada</h3>
+				</div>
+				<md-card class="store" ng-repeat="request in requests" ng-click="goUser(request)">
+					<md-card-title>
+						<md-card-title-text>
+							<span class="md-headline">{{ request.name + ' ' + request.lastname }}</span>
+							<div layout="row">
+								<md-button ng-click="accept(request, $index)">Aceitar</md-button>
+								<md-button ng-click="reject(request, $index)" class="md-warn">Recusar</md-button>
+							</div>
+						</md-card-title-text>
+						<md-card-title-media>
+							<div class="md-media-sm card-media">
+								<img ng-if="request.image.indexOf('http') >= 0" ng-src="{{ request.image }}">
+								<img ng-if="request.image.indexOf('http') < 0" ng-src="/{{ request.image }}">
+							</div>
+						</md-card-title-media>
+					</md-card-title>
+				</md-card>
+			</md-tab>
+		</md-tabs>
+	</div>
+</div>

@@ -1,4 +1,4 @@
-var app = angular.module('Achow', ['ngMaterial', 'angular-flexslider', 'ngRoute']);
+var app = angular.module('Achow', ['ngMaterial', 'angular-flexslider', 'ngRoute', 'angucomplete-alt', 'luegg.directives', 'angular-loading-bar', 'multipleSelect']);
 
 app.config(['$mdThemingProvider', '$routeProvider', function ($mdThemingProvider, $routeProvider) {
 	$mdThemingProvider.theme('default').primaryPalette('blue').accentPalette('blue-grey');
@@ -8,6 +8,18 @@ app.config(['$mdThemingProvider', '$routeProvider', function ($mdThemingProvider
 			templateUrl: 'templates/home.html',
 			controller: 'IndexController'
 		})
+		.when('/usuario/:id', {
+			templateUrl: 'templates/user.html',
+			controller: 'UserController'
+		})
+		.when('/shows/:id', {
+			templateUrl: 'templates/show.html',
+			controller: 'ShowController'
+		})
+		.when('/buscar/:search', {
+			templateUrl: 'templates/search.html',
+			controller: 'SearchController'
+		})
 		.when('/store/:id', {
 			templateUrl: 'templates/store.html',
 			controller: 'StoreController'
@@ -15,10 +27,65 @@ app.config(['$mdThemingProvider', '$routeProvider', function ($mdThemingProvider
 		.when('/:type/:sub', {
 			templateUrl: 'templates/stores.html',
 			controller: 'StoresController'
+		})
+		.when('/notificacoes', {
+			templateUrl: 'templates/notifications.html',
+			controller: 'NotificationsController'
+		})
+		.when('/contatos', {
+			templateUrl: 'templates/contacts.html',
+			controller: 'ContactsController'
+		})
+		.when('/favoritos', {
+			templateUrl: 'templates/favorites.html',
+			controller: 'FavoritesController'
+		})
+		.when('/sobre', {
+			templateUrl: 'templates/about.html',
+			controller: 'AboutController'
+		})
+		.when('/pedidos', {
+			templateUrl: 'templates/orders.html',
+			controller: 'OrdersController'
+		})
+		.when('/chat', {
+			templateUrl: 'templates/chat.html',
+			controller: 'ChatController',
+			resolve: {
+				action: function () {
+					return 'index'
+				}
+			}
+		})
+		.when('/chat/s/:id', {
+			templateUrl: 'templates/chatGroup.html',
+			controller: 'ChatController',
+			resolve: {
+				action: function () {
+					return 'room'
+				}
+			}
+		})
+		.when('/chat/f/:id', {
+			templateUrl: 'templates/chatGroup.html',
+			controller: 'ChatController',
+			resolve: {
+				action: function () {
+					return 'friends'
+				}
+			}
 		});
-}])
+}]);
 
-app.controller('IndexController', function ($scope, $http, $mdDialog, $location, $mdSidenav) {
+app.run(function ($rootScope, $http) {
+	$http.get('/api.ios/public/index.php/users/' + USER_ID).then(function (data) {
+		$rootScope.user = data.data;
+	}, function (error) {
+		console.log(error);
+	});
+});
+
+app.controller('IndexController', function ($scope, $rootScope, $http, $mdDialog, $location, $mdSidenav) {
 	$scope.openMenu = false;
 	$scope.banners = [];
 	$scope.shows = [];
@@ -101,6 +168,11 @@ app.controller('IndexController', function ($scope, $http, $mdDialog, $location,
 		$mdSidenav('left').toggle();
 	}
 
+	$scope.search = '';
+	$scope.sendSearch = function () {
+		$location.path('/buscar/' + $scope.search);
+	}
+
 	$http.get('/api.ios/public/index.php/ads/banners').then(function (data) {
 		$scope.banners = data.data;
 	}, function (error) {
@@ -113,8 +185,16 @@ app.controller('IndexController', function ($scope, $http, $mdDialog, $location,
 		console.log(error);
 	});
 
+	$scope.openShow = function (item) {
+		$location.path('/shows/' + item.id);
+	};
+
 	$scope.openItem = function (item, ev) {
 		$http.get('/api.ios/public/index.php/sub_types/get/' + item.id).then(function (data) {
+			for (var i = 0; i < data.data.length; i++) {
+				data.data[i].name = utf8.decode(data.data[i].name);
+			};
+
 			$mdDialog.show({
 					controller: function ($scope, $mdDialog) {
 						$scope.title = item.title;

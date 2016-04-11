@@ -23,10 +23,53 @@ html, body {
 
 .md-dialog-container {
 	z-index: 999;
+
+	.autocomplete-input {
+		width: 100%;
+
+		.autocomplete-list {
+			
+		}
+
+		.form-item-container {
+			width: 100%;
+
+			background: none;
+			border: none;
+
+			padding: 0;
+
+			box-shadow: 0;
+
+			ul {
+				li {
+					float: left;
+					display: block;
+
+					margin-bottom: 20px;
+
+					&:first-child {
+						float: none;
+						overflow: hidden;
+						height: 35px;
+
+						margin-bottom: 10px;
+					}
+				}
+			}
+		}
+	}
 }
 
 md-dialog {
 	min-width: 500px;
+}
+
+button.md-raised i {
+	font-size: 18px;
+	position: absolute;
+	top: 9px;
+	left: 8px;
 }
 
 @media (max-width: 600px) {
@@ -53,20 +96,21 @@ md-dialog {
 
 .side-menu {
 	.header {
-		height: 200px;
-		background-size: contain;
+		height: 140px;
+		background-size: cover;
+		background-position: center;
 
 		.profile {
 			img {
-				width: 100px;
-				height: 100px;
+				width: 64px;
+				height: 64px;
 
 				border-radius: 50%;
 
 				margin: 20px;
 				margin-bottom: 7px;
 
-				border: 4px solid #FFF;
+				border: 2px solid #FFF;
 			}
 
 			.name {
@@ -76,7 +120,7 @@ md-dialog {
 					font-size: 18px;
 
 					display: block;
-					padding: 20px;
+					padding: 10px 20px;
 
 					background-color: rgba(0, 0, 0, 0.4);
 				}
@@ -85,13 +129,14 @@ md-dialog {
 	}
 
 	ul {
+		padding-top: 10px;
+
 		li {
-			margin-top: 10px;
-			margin-bottom: 10px;
+			margin-bottom: 5px;
 
 			a {
 				display: block;
-				padding: 15px;
+				padding: 10px;
 
 				color: #000;
 
@@ -99,14 +144,18 @@ md-dialog {
 
 				i {
 					float: left;
+					color: #757575;
+					font-size: 20px;
 				}
 
 				div {
 					float: left;
 					margin-left: 20px;
-					margin-top: 4px;
+					margin-top: 2px;
 
 					font-size: 14px;
+
+					color: #212121;
 				}
 
 				&:hover {
@@ -119,9 +168,12 @@ md-dialog {
 
 .toolbar {
 	width: 100%;
+	height: 140px;
 
 	.top {
 		background-color: @color;
+
+		height: 100%;
 
 		-webkit-box-shadow: 0px 10px 25px -12px rgba(0,0,0,0.75);
 		-moz-box-shadow: 0px 10px 25px -12px rgba(0,0,0,0.75);
@@ -130,6 +182,7 @@ md-dialog {
 		.logo {
 			height: 100px;
 
+			margin-top: 20px;
 			float: left;
 
 			img {
@@ -138,6 +191,20 @@ md-dialog {
 		}
 
 		.search {
+			float: right;
+
+			input {
+				color: #FFF;
+
+				margin-top: 30px;
+				width: 200px;
+
+				&::-webkit-input-placeholder { color: #FFF; }
+				&::-moz-placeholder { color: #FFF; }
+			}
+		}
+
+		.menu {
 			float: right;
 			line-height: 100px;
 
@@ -220,6 +287,18 @@ md-dialog {
 
 .banners {
 	margin: 20px 0;
+
+	.flexslider-container {
+		margin: 0 10px;
+
+		-webkit-box-shadow: 0px 10px 25px -12px rgba(0,0,0,0.75);
+		-moz-box-shadow: 0px 10px 25px -12px rgba(0,0,0,0.75);
+		box-shadow: 0px 10px 25px -12px rgba(0,0,0,0.75);
+
+		img {
+			border-radius: 5px;
+		}
+	}
 }
 
 .itens {
@@ -237,6 +316,8 @@ md-dialog {
 
 			height: 190px;
 			border-radius: 5px;
+
+			background-size: cover;
 
 			-webkit-box-shadow: 0px 10px 25px -12px rgba(0,0,0,0.75);
 			-moz-box-shadow: 0px 10px 25px -12px rgba(0,0,0,0.75);
@@ -275,7 +356,7 @@ md-dialog {
 
 				.flex-control-nav {
 					bottom: 0px;
-					z-index: 99;
+					z-index: 50;
 				}
 			}
 		}
@@ -290,14 +371,22 @@ md-dialog {
 
 .stores {
 	overflow: hidden;
+
+	&#chat {
+		overflow: auto;
+	}
 	
 	h2 {
 		margin-top: 10px;
 		padding: 10px;
 	}
 
+	.h3 {
+		padding: 20px;
+	}
+
 	.store {
-		width: 48%;
+		width: 47%;
 		float: left;
 
 		cursor: pointer;
@@ -339,6 +428,79 @@ md-dialog {
 			width: 100%;
 		}
 	}
+
+	.stores {
+		.image {
+			img {
+				width: 40px;
+				height: 40px;
+
+				border-radius: 50%;
+
+				margin: 9px;
+			}
+		}
+
+		.chatbox {
+			margin-bottom: 20px;
+
+			&.right {
+				width: 100%;
+
+				.forRight {
+					float: right;
+
+					.md-list-item-text {
+						float: right;
+						background-color: @color;
+						color: #FFF;
+					}
+				}
+			}
+
+			.message {
+				overflow: hidden;
+
+				div {
+					float: left;
+				}
+
+				img {
+					margin: 0;
+					margin-right: 10px;
+				}
+
+				.md-list-item-text {
+					padding: 10px;
+					background-color: #DDD;
+					border-radius: 5px;
+				}
+			}
+
+			.date {
+				font-size: 11px;
+			}
+		}
+	}
+
+	.sendMessage {
+		form {
+			overflow: hidden;
+		
+			md-input-container {
+			    width: calc(~'100% - 130px');
+			    margin-bottom: 0;
+
+			    textarea {
+			    	height: 60px;
+			    }
+			}
+
+			.md-raised {
+				float: right;
+			}
+		}
+	}
 }
 
 .page {
@@ -353,6 +515,14 @@ md-dialog {
 
 			.images {
 				width: 100%;
+
+				img {
+					border-radius: 5px;
+
+					-webkit-box-shadow: 0px 10px 25px -12px rgba(0,0,0,0.75);
+					-moz-box-shadow: 0px 10px 25px -12px rgba(0,0,0,0.75);
+					box-shadow: 0px 10px 25px -12px rgba(0,0,0,0.75);
+				}
 			}
 
 			.profile {
@@ -393,8 +563,9 @@ md-dialog {
 
 				button {
 					margin: 0;
-					margin-right: 20px;
-					width: 25%;
+					margin-right: 10px;
+					margin-bottom: 10px;
+					width: 23%;
 
 					&:last-child {
 						margin-right: 0;
@@ -402,8 +573,47 @@ md-dialog {
 				}
 			}
 
-			.menu {
+			.options2 {
 				margin-top: 20px;
+
+				button {
+					margin: 0;
+					margin-right: 10px;
+					margin-bottom: 10px;
+					
+					&.bt1 {
+						width: 36%;
+					}
+					
+					&.bt2 {
+						width: 20%;
+					}
+					
+					&.bt3 {
+						width: 39%;
+					}
+
+					&:last-child {
+						margin-right: 0;
+					}
+				}
+			}
+
+			@media (max-width: 600px) {
+				.options,
+				.options2 {
+					button {
+						min-width: 48%;
+
+						&:nth-child(2n+0) {
+							margin-right: 0;
+						}
+					}
+				}
+			}
+
+			.menu {
+				margin-top: 10px;
 
 				.menuItem {
 					background-color: #FFF;
@@ -494,7 +704,39 @@ md-dialog {
 						}
 					}
 				}
-			}		
+			}
+
+			.users {
+				overflow: hidden;
+
+				.user {
+					float: left;
+
+					.img {
+						width: 46px;
+						height: 46px;
+
+						border-radius: 50%;
+
+						margin-right: 10px;
+						margin-bottom: 10px;
+					}
+
+					.number {
+						position: relative;
+						left: 0;
+						z-index: 9999;
+						background-color: #03A9F4;
+						top: -15px;
+						width: 42px;
+						font-size: 12px;
+						text-align: center;
+						color: #FFF;
+						padding: 2px;
+						border-radius: 4px;
+					}
+				}
+			}	
 		}
 
 		@media (max-width: 850px) {
@@ -503,5 +745,88 @@ md-dialog {
 				width: 100%;
 			}
 		}
+	}
+
+	.user {
+		.header {
+			height: 200px;
+			background-size: contain;
+
+			border-radius: 5px;
+			margin-bottom: 20px;
+
+			-webkit-box-shadow: 0px 10px 25px -12px rgba(0,0,0,0.75);
+			-moz-box-shadow: 0px 10px 25px -12px rgba(0,0,0,0.75);
+			box-shadow: 0px 10px 25px -12px rgba(0,0,0,0.75);
+
+			background-color: @color;
+
+			.profile {
+				img {
+					width: 100px;
+					height: 100px;
+
+					border-radius: 50%;
+
+					margin: 20px;
+					margin-bottom: 7px;
+
+					border: 4px solid #FFF;
+				}
+
+				.name {
+					color: #FFF;
+					font-weight: bold;
+					font-size: 18px;
+
+					display: block;
+					padding: 20px;
+
+					background-color: rgba(0, 0, 0, 0.4);
+
+					border-bottom-left-radius: 5px;
+					border-bottom-right-radius: 5px;
+				}
+			}
+		}
+
+		.optionsFriends {
+			margin-bottom: 20px;
+
+			.md-raised {
+				width: 250px;
+
+				&:last-child {
+					width: 200px;
+				}
+			}
+		}
+	}
+}
+
+.footer {
+	width: 100%;
+	background-color: @color;
+
+	padding: 10px 0;
+
+	margin-top: 10px;
+
+	-webkit-box-shadow: 0px -10px 25px -12px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px -10px 25px -12px rgba(0,0,0,0.75);
+	box-shadow: 0px -10px 25px -12px rgba(0,0,0,0.75);
+}
+
+.copyright {
+	background-color: @dark;
+	color: #FFF;
+
+	padding: 10px;
+
+	width: 100%;
+
+	a {
+		color: #FFF;
+		font-weight: bold;
 	}
 }

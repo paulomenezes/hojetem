@@ -1,0 +1,31 @@
+<div class="content stores">
+	<div class="stores">
+		<md-list flex>
+			<md-list-item ng-href="/#/chat/s/1">
+				<div class="md-list-item-text" layout="column">
+					<h3>Achow 01</h3>
+				</div>
+			</md-list-item>
+			<md-list-item ng-href="/#/chat/s/2">
+				<div class="md-list-item-text" layout="column">
+					<h3>Achow 02</h3>
+				</div>
+			</md-list-item>
+			<md-subheader class="md-no-sticky">Sala dos Usuários</md-subheader>
+			<div ng-show="chats.length == 0">
+				<h3 class="h3">Nenhuma sala de usuário encontrada</h3>
+			</div>
+			<md-list-item ng-class="{ 'md-3-line': chat.members, 'md-2-line': !chat.members }" 
+						  ng-repeat="chat in chats" ng-href="/#/chat/s/{{ chat.id }}">
+				<div class="md-list-item-text" layout="column">
+					<h3>{{ chat.name }}</h3>
+					<h4>{{ chat.type }}</h4>
+					<p ng-show="chat.members">{{ chat.members }} participantes</p>
+				</div>
+				<div class="image">
+					<img ng-src="{{ !chat.image ? '/images/logo-sq.png' : chat.image.indexOf('http') == 0 ? chat.image : '/' + chat.image }}">
+				</div>
+			</md-list-item>
+		</md-list>
+	</div>
+</div>

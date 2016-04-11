@@ -1,0 +1,244 @@
+@primary-color: #03A9F4;
+
+html, body {
+	height: 100%;
+}
+
+.toolbar {
+	width: 100%;
+	height: 100px;
+
+	background-color: @primary-color;
+
+	-webkit-box-shadow: 0px 10px 25px -12px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 10px 25px -12px rgba(0,0,0,0.75);
+	box-shadow: 0px 10px 25px -12px rgba(0,0,0,0.75);
+
+	img {
+		height: 100px;
+	}
+}
+
+.login-view {
+	&mdl-grid {
+		margin: 0;
+		padding: 0;
+
+		height: 100%;
+
+		.mdl-cell {
+			margin: 0;
+			padding: 0;
+		}
+	}
+
+	@media (max-width: 839px) {
+		.center {
+			position: relative !important;
+			top: 0 !important;
+			transform: initial !important;
+		}
+
+		.mdl-cell--12-col-phone.mdl-cell--12-col-phone {
+			
+		}
+
+		.logo {
+			background-image: none;
+		}
+	}
+
+	
+	height: 100%;
+
+	margin: 0;
+	padding: 0;
+
+	.logo {
+		background-color: @primary-color;
+		background-image: url("../images/background3.jpg");
+		background-position: center;
+		background-size: cover;
+
+		margin: 0;
+		padding: 0;
+
+		.logo-img {
+			img {
+				width: 300px;
+				margin: 50px;
+			}
+		}
+	}
+
+	.login {
+
+		.logo-img {
+			width: 70%;
+			margin: 0 auto;
+			margin-bottom: 20px;
+
+			img {
+				width: 100%;
+			}
+		}
+
+		.title {
+			font-size: 50px;
+			font-weight: 300;
+			
+			text-transform: uppercase;
+
+			color: @primary-color;
+
+			text-align: right;
+			line-height: 100px;
+
+			margin-bottom: 30px;
+		}
+
+		form {
+			width: 100%;
+
+			md-input-container {
+				width: 100%;
+				margin-bottom: 0;
+			}
+
+			.buttons {
+				margin-top: 20px;
+
+				.sign-in {
+					float: right;
+				}
+
+				.register {
+					color: @primary-color;
+				}
+
+				.btn-facebook {
+					background-color: #3B5998;
+				}
+			}
+
+			.register {
+				color: @primary-color;
+				margin-top: 20px;
+				clear: both;
+			}
+		}
+	}	
+
+	.register {
+		.buttons {
+			margin-top: 20px;
+			width: 100%;
+
+			overflow: hidden;
+
+			.sign-in {
+				float: right;
+			}
+
+			.back {
+				color: @primary-color;
+			}
+		}
+	}
+}
+
+.register-view {
+	&mdl-grid:first-child {
+		margin: 0;
+		padding: 0;
+
+		height: 100%;
+	}
+
+	@media (max-width: 839px) {
+		.mdl-cell--12-col-phone.mdl-cell--12-col-phone {
+			width: 100%;
+
+			padding-top: 10px;
+			padding-right: 20px;
+
+			box-shadow: none;
+		}
+
+		.login {
+			background-image: none;
+		}
+	}
+
+	height: 100%;
+
+	margin: 0;
+	padding: 0;
+
+	.logo {
+		position: relative;
+		width: 75%;
+
+		margin: 0;
+		padding: 0;
+
+		padding-top: 20px;
+		padding-right: 50px;
+
+		.logo-img {
+			max-width: 300px;
+			margin: 0 0 0 auto;
+			margin-bottom: 20px;
+
+			img {
+				max-width: 100%;
+			}
+		}
+
+		.title {
+			font-size: 50px;
+			font-weight: 300;
+			
+			text-transform: uppercase;
+
+			color: @primary-color;
+
+			text-align: right;
+		}
+
+		form {
+			margin: 50px 0 0 50px;
+
+			.mdl-textfield {
+				width: 100%;
+			}
+
+			.buttons {
+				margin-top: 20px;
+				width: 100%;
+
+				overflow: hidden;
+
+				.sign-in {
+					float: right;
+				}
+
+				.back {
+					color: @primary-color;
+				}
+			}
+		}
+	}
+
+	.login {
+		background-color: @primary-color;
+		//background-image: url("../images/background3.jpg");
+		background-position: -300px;
+		background-size: cover;
+
+		width: 25%;
+
+		margin: 0;
+		padding: 0;
+	}
+}

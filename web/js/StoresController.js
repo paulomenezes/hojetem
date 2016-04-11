@@ -11,6 +11,11 @@ app.controller('StoresController', function ($scope, $http, $mdDialog, $routePar
 	});
 
 	$http.get('/api.ios/public/index.php/stores/' + $routeParams.type + '/Porto Feliz/' + $routeParams.sub).then(function (data) {
+		for (var i = 0; i < data.data.length; i++) {
+			data.data[i].name = utf8.decode(data.data[i].name);
+			data.data[i].address = utf8.decode(data.data[i].address);
+		};
+
 		$scope.stores = data.data;
 	}, function (error) {
 		

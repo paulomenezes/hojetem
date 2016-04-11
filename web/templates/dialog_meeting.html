@@ -1,0 +1,36 @@
+<md-dialog aria-label="Marcar encontro" ng-cloak style="width:500px;">
+	<form>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>Marcar encontro</h2>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-click="cancel()">
+					<i class="material-icons">close</i>
+				</md-button>
+			</div>
+		</md-toolbar>
+		<md-dialog-content>
+			<div class="md-dialog-content">
+				<md-input-container class="autocomplete-input">
+					<label>Selecione seus amigos</label>
+					<multiple-autocomplete 
+						ng-model="meeting.users"
+						object-property="name"
+						suggestions-arr="friends">
+					</multiple-autocomplete>
+				</md-input-container>
+
+				<md-input-container class="md-block">
+					<label>Mande uma mensagem para seus amigos</label>
+					<textarea ng-model="meeting.message" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+				</md-input-container>
+			</div>
+		</md-dialog-content>
+		<md-dialog-actions layout="row">
+			<span flex></span>
+			<md-button ng-click="share()" ng-disabled="meeting.users.length == 0 || meeting.message.length == 0">
+				Compartilhe com seus amigos
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

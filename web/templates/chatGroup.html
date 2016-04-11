@@ -1,0 +1,38 @@
+<div class="content stores">
+	<div class="stores" id="chat" scroll-glue>
+		<md-list flex>
+			<md-list-item ng-class="md-2-line" ng-repeat="chat in chats">
+				<div class="chatbox" ng-class="{ 'right': chat.iduser == USER_ID }">
+					<div class="forRight">
+						<div class="message">
+							<div class="image" ng-hide="chat.iduser == USER_ID || action == 'friends'">
+								<a href="/#/usuario/{{ chat.iduser }}">
+									<img ng-src="{{ !chat.image ? '/images/logo-sq.png' : chat.image.indexOf('http') == 0 ? chat.image : '/' + chat.image }}">
+								</a>
+							</div>
+							<div class="md-list-item-text" layout="column">
+								<p>{{ chat.text }}</p>
+							</div>
+						</div>
+						<div class="date">{{ chat.date }}</div>
+					</div>
+				</div>
+			</md-list-item>
+		</md-list>
+	</div>
+	<div class="sendMessage">
+		<form name="form">
+			<md-input-container>
+				<label>Digite sua mensagem</label>
+				<textarea ng-model="newMsg.text" rows="5" md-select-on-focus ng-keypress="sendKey($event)"></textarea>
+			</md-input-container>
+
+			<md-button ng-disabled="newMsg.text.length == 0" ng-click="send()" class="md-raised md-primary">Enviar</md-button>
+		</form>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var h = window.innerHeight - 300;
+	document.getElementById('chat').setAttribute('style', 'height:' + h + 'px');
+</script>

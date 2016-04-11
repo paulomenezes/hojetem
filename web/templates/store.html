@@ -11,7 +11,7 @@
 
 			<div class="profile">
 				<div class="icon">
-					<img src="/images/{{ store.icon ? 'store/' + store.icon : 'logo-sq.png' }}">
+					<img ng-src="/images/{{ store.icon ? 'store/' + store.icon : 'logo-sq.png' }}">
 				</div>
 				<div class="info">
 					<div class="name">{{ store.name }}</div>
@@ -21,11 +21,19 @@
 				</div>
 			</div>
 
-			<div class="options" layout="row">
-				<md-button class="md-raised md-primary">Favoritos</md-button>
-				<md-button class="md-raised md-primary">Marcar</md-button>
-				<md-button class="md-raised md-primary">Gostei</md-button>
-				<md-button class="md-raised md-primary">Estou Aqui</md-button>
+			<div class="options">
+				<md-button class="md-raised md-primary" ng-click="favorite()">
+					<i class="material-icons">star</i> Favoritos
+				</md-button>
+				<md-button class="md-raised md-primary" ng-click="meeting()">
+					<i class="material-icons">group</i> Marcar
+				</md-button>
+				<md-button class="md-raised md-primary" ng-click="like()">
+					<i class="material-icons">thumb_up</i> Gostei
+				</md-button>
+				<md-button class="md-raised md-primary" ng-click="here()">
+					<i class="material-icons">place</i>Estou Aqui
+				</md-button>
 			</div>
 
 			<div class="menu" ng-show="menu.length > 0">
@@ -68,7 +76,9 @@
 
 					<md-list class="items">
 						<md-list-item class="md-2-line contact-item _md-no-proxy item" ng-repeat="comment in comments">
-							<img class="img md-avatar" ng-src="{{ comment.image.indexOf('http') == 0 ? comment.image : '/' + comment.image }}">
+							<a href="/#/usuario/{{ comment.idAccount }}">
+								<img class="img md-avatar" ng-src="{{ comment.image.indexOf('http') == 0 ? comment.image : '/' + comment.image }}">
+							</a>
 							<div class="md-list-item-text compact">
 								<h3>{{ comment.name + ' ' + comment.lastname }}</h3>
 								<p>{{ comment.message }}</p>
@@ -103,7 +113,7 @@
 						</md-card-title-text>
 						<md-card-title-media>
 							<div class="md-media-sm card-media">
-								<img src="/images/{{ store.icon ? 'store/' + store.icon : 'logo-sq.png' }}">
+								<img ng-src="/images/{{ store.icon ? 'store/' + store.icon : 'logo-sq.png' }}">
 							</div>
 						</md-card-title-media>
 					</md-card-title>

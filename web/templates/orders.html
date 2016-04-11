@@ -1,0 +1,26 @@
+<div class="content stores">
+	<div class="stores">
+		<div ng-show="orders.length == 0">
+			<h3 class="h3">Você ainda não fez nenhum pedido</h3>
+		</div>
+		<md-card class="store" ng-repeat="order in orders" style="width: 100%">
+			<md-card-title layout="row" layout-xs="column" layout-sm="column">
+				<md-card-title-text>
+					<span class="md-headline">Pedido dia {{ order.date | date:'dd/MM/yyyy' }}</span>
+					<span class="md-subhead">R$ {{ order.price }}</span>
+					<span class="md-subhead">Status: {{ order.status }}</span>
+				</md-card-title-text>
+				<md-list flex>
+					<md-list-item class="md-3-line" ng-repeat="item in order.itens">
+						<img ng-src="/images/menu/{{ item.image }}" class="md-avatar" />
+						<div class="md-list-item-text" layout="column">
+							<h3>{{ item.name }}</h3>
+							<h4>R$ {{ item.price }}</h4>
+							<p>{{ item.description }}</p>
+						</div>
+					</md-list-item>
+				</md-list>
+			</md-card-title>
+		</md-card>
+	</div>
+</div>

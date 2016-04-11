@@ -1,0 +1,43 @@
+<div class="content stores">
+	<div class="stores">
+		<md-tabs md-dynamic-height md-border-bottom md-autoselect>
+			<md-tab label="Estabelecimentos">
+				<div ng-show="stores.length == 0">
+					<h3 class="h3">Nenhum estabelecimento encontrado</h3>
+				</div>
+				<md-card class="store" ng-repeat="store in stores" ng-click="goStores(store)">
+					<md-card-title>
+						<md-card-title-text>
+							<span class="md-headline">{{ store.name }}</span>
+							<span class="md-subhead">{{ store.address }}</span>
+							<span class="md-subhead">{{ store.phone1 }}</span>
+						</md-card-title-text>
+						<md-card-title-media>
+							<div class="md-media-sm card-media">
+								<img ng-src="/images/{{ store.icon ? 'store/' + store.icon : 'logo-sq.png' }}">
+							</div>
+						</md-card-title-media>
+					</md-card-title>
+				</md-card>
+			</md-tab>
+			<md-tab label="Usuários">
+				<div ng-show="users.length == 0">
+					<h3 class="h3">Nenhum usuário encontrado</h3>
+				</div>
+				<md-card class="store" ng-repeat="user in users" ng-click="goUser(user)">
+					<md-card-title>
+						<md-card-title-text>
+							<span class="md-headline">{{ user.name + ' ' + user.lastname }}</span>
+						</md-card-title-text>
+						<md-card-title-media>
+							<div class="md-media-sm card-media">
+								<img ng-if="user.image.indexOf('http') >= 0" ng-src="{{ user.image }}">
+								<img ng-if="user.image.indexOf('http') < 0" ng-src="/{{ user.image }}">
+							</div>
+						</md-card-title-media>
+					</md-card-title>
+				</md-card>
+			</md-tab>
+		</md-tabs>
+	</div>
+</div>
