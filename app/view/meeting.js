@@ -72,7 +72,7 @@ class Meeting extends React.Component {
 	loadUsers() {
 		user = require('../util/load.user').user[0];
 
-		fetch(Constants.URL + "stores/checkin/users/get/" + this.props.data.id)
+		fetch(Constants.URL + "stores/checkin/users/get/" + this.props.data.idCheckin)
 				.then((response) => response.json())
 				.then((users) => {
 					this.setState({
@@ -86,7 +86,7 @@ class Meeting extends React.Component {
 	}
 
 	loadComments() {
-		fetch(Constants.URL + "store_comment/checkin/" + this.props.data.id)
+		fetch(Constants.URL + "store_comment/checkin/" + this.props.data.idCheckin)
 				.then((response) => response.json())
 				.then((comments) => {
 					this.setState({
@@ -217,7 +217,7 @@ class Meeting extends React.Component {
 			method: "POST",
     		body: JSON.stringify({
     			idAccount: user.id,
-    			idCheckin: this.props.data.id,
+    			idCheckin: this.props.data.idCheckin,
     			idVisitedType: 6
     		}),
     		headers: Constants.HEADERS
@@ -236,7 +236,7 @@ class Meeting extends React.Component {
 			method: "POST",
     		body: JSON.stringify({
     			idAccount: user.id,
-    			idCheckin: this.props.data.id,
+    			idCheckin: this.props.data.idCheckin,
     			idVisitedType: 7
     		}),
     		headers: Constants.HEADERS
