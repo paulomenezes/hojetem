@@ -111,6 +111,8 @@ class Login extends React.Component {
 		        	})
 		        	.then((response) => response.json())
 		        	.then((achowUser) => {
+		        		console.log('achowUser');
+		        		console.log(achowUser);
 		        		if (achowUser.length > 0) {
 		        			LoadUser.login(achowUser[0]);
 			        		UserActiveModel.add(achowUser[0]).then(function (data) {
@@ -168,7 +170,9 @@ class Login extends React.Component {
 			        	}
 		        	})
 		        	.catch((error) => {
-		        		sAlert('Error', 'Houve um error ao se conectar ao servidor');
+		        		console.log('173');
+		        		console.log(error);
+		        		Alert('Error', 'Houve um error ao se conectar ao servidor');
 		        	});
 		        });
 			}

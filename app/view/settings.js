@@ -25,7 +25,7 @@ var LoadUser = require('../util/load.user');
 var UserActiveModel = null;
 
 var Search = require('../components/search');
-var Main = require('./main.ios');
+var Main = require('./main');
 
 var Alert = require('../components/alert');
 var userUtil = require('../util/load.user');

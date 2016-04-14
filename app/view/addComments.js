@@ -36,25 +36,42 @@ class AddComment extends React.Component {
 				user: props.data.user,
 				store: props.data.store
 			};
-		} else {
+		} else if (props.data.show) {
 			this.state = {
 				text: '',
 				user: props.data.user,
 				show: props.data.show
 			};
+		} else {
+			this.state = {
+				text: '',
+				user: props.data.user,
+				checkin: props.data.checkin
+			};
 		}
 	}
 
 	sendComment() {
-		var comment = this.state.store ? {
-			idAccount: this.state.user.id,
-			idStore: this.state.store.id,
-			message: this.state.text
-		} : {
-			idAccount: this.state.user.id,
-			idShows: this.state.show.id,
-			message: this.state.text
-		};
+		var comment = {};
+		if (this.state.store) {
+			comment = {
+				idAccount: this.state.user.id,
+				idStore: this.state.store.id,
+				message: this.state.text
+			};	
+		} else if (this.state.show) {
+			comment = {
+				idAccount: this.state.user.id,
+				idShows: this.state.show.id,
+				message: this.state.text
+			};
+		} else {
+			comment = {
+				idAccount: this.state.user.id,
+				idCheckin: this.state.show.id,
+				message: this.state.text
+			};
+		}
 
 		var props = this.props;
 

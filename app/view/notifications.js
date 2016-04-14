@@ -6,6 +6,7 @@ var Swiper = require('react-native-swiper')
 
 var Subcategory = require('./subcategory');
 var User = require('./user');
+var Meeting = require('./meeting');
 
 var Constants = require('../constants');
 
@@ -54,6 +55,7 @@ class Notifications extends React.Component {
 				});
 			})
 			.catch((error) => {
+				console.log(error);
 	    		Alert('Error', 'Houve um error ao se conectar ao servidor');
 	    	});
 	}
@@ -66,21 +68,33 @@ class Notifications extends React.Component {
 		})
 	}
 
+	goMeeting(notification) {
+		console.log(notification);
+
+		this.props.nav.toRoute({
+			name: notification.storeName,
+			component: Meeting,
+			data: notification
+		})
+	}
+
 	renderNotifications(notification) {
 		var image = notification.image ? Constants.IMAGE + notification.image : (notification.icon ? Constants.IMAGE + 'images/store/' + notification.icon : false);
 
 		if (notification.storeName) {
 			return (
-				<View style={ styles.item }>
-					{ image ? 
-					<Image style={ styles.image } source={{ uri: image }} />
-					: <View style={ styles.image } /> }
-					<View style={ styles.text }>
-						<Text style={ styles.nameFriend }>O usuário { notification.name } convidou você para ir ao { notification.storeName }</Text>
-						<Text style={{ color: '#03a9f4' }}>{ notification.message }</Text>
-					</View>
-				</View>
-			)
+				<TouchableHighlight style={ styles.item } onPress={() => this.goMeeting(notification) }>
+					<View style={ styles.item }>
+						{ image ? 
+						<Image style={ styles.image } source={{ uri: image }} />
+						: <View style={ styles.image } /> }
+						<View style={ styles.text }>
+							<Text style={ styles.nameFriend }>O usuário { notification.name } convidou você para ir ao { notification.storeName }</Text>
+							<Text style={{ color: '#03a9f4' }}>{ notification.message }</Text>
+						</View>
+					</View>	
+				</TouchableHighlight>
+			);
 		} else {
 			return (
 				<TouchableOpacity style={ styles.item } onPress={() => this.goUser(notification) }>
@@ -92,7 +106,7 @@ class Notifications extends React.Component {
 						<Text style={{ color: '#03a9f4' }}>{ notification.message }</Text>
 					</View>
 				</TouchableOpacity>
-			)
+			);
 		}
 	}
 
