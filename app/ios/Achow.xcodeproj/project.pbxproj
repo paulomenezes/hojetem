@@ -28,6 +28,8 @@
 		759804C31C3AD58D00F631D6 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 759804C21C3AD58D00F631D6 /* MaterialIcons.ttf */; };
 		759804D81C3AD72B00F631D6 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 759804D71C3AD71900F631D6 /* libRNVectorIcons.a */; };
 		759804DA1C3ADBAF00F631D6 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 759804D91C3ADBAF00F631D6 /* Ionicons.ttf */; };
+		75A4D4B11CC034D4001C57E6 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 75A4D4B01CC034D4001C57E6 /* logo.png */; };
+		75A4D4B31CC03743001C57E6 /* icon180.png in Resources */ = {isa = PBXBuildFile; fileRef = 75A4D4B21CC03743001C57E6 /* icon180.png */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 /* End PBXBuildFile section */
 
@@ -132,10 +134,10 @@
 		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "../node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
 		00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTNetwork.xcodeproj; path = "../node_modules/react-native/Libraries/Network/RCTNetwork.xcodeproj"; sourceTree = "<group>"; };
 		00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVibration.xcodeproj; path = "../node_modules/react-native/Libraries/Vibration/RCTVibration.xcodeproj"; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* socialAuthExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = socialAuthExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* Achow.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Achow.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* socialAuthExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = socialAuthExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* Achow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Achow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = socialAuthExample/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = socialAuthExample/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -152,6 +154,8 @@
 		759804C21C3AD58D00F631D6 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 		759804D21C3AD71900F631D6 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		759804D91C3ADBAF00F631D6 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
+		75A4D4B01CC034D4001C57E6 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		75A4D4B21CC03743001C57E6 /* icon180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon180.png; path = socialAuthExample/icon180.png; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -325,6 +329,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				75A4D4B21CC03743001C57E6 /* icon180.png */,
+				75A4D4B01CC034D4001C57E6 /* logo.png */,
 				75559C3B1CAE06FE00351B7E /* FBSDKCoreKit.framework */,
 				75559C3C1CAE06FE00351B7E /* FBSDKLoginKit.framework */,
 				539642F71C2802660058F7DD /* Accounts.framework */,
@@ -339,8 +345,8 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* socialAuthExample.app */,
-				00E356EE1AD99517003FC87E /* socialAuthExampleTests.xctest */,
+				13B07F961A680F5B00A75B9A /* Achow.app */,
+				00E356EE1AD99517003FC87E /* Achow.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -348,9 +354,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* socialAuthExampleTests */ = {
+		00E356ED1AD99517003FC87E /* AchowTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "socialAuthExampleTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "AchowTests" */;
 			buildPhases = (
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
@@ -361,14 +367,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = socialAuthExampleTests;
+			name = AchowTests;
 			productName = socialAuthExampleTests;
-			productReference = 00E356EE1AD99517003FC87E /* socialAuthExampleTests.xctest */;
+			productReference = 00E356EE1AD99517003FC87E /* Achow.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* socialAuthExample */ = {
+		13B07F861A680F5B00A75B9A /* Achow */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "socialAuthExample" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Achow" */;
 			buildPhases = (
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
@@ -379,9 +385,9 @@
 			);
 			dependencies = (
 			);
-			name = socialAuthExample;
+			name = Achow;
 			productName = "Hello World";
-			productReference = 13B07F961A680F5B00A75B9A /* socialAuthExample.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* Achow.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -402,7 +408,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "socialAuthExample" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Achow" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -465,8 +471,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* socialAuthExample */,
-				00E356ED1AD99517003FC87E /* socialAuthExampleTests */,
+				13B07F861A680F5B00A75B9A /* Achow */,
+				00E356ED1AD99517003FC87E /* AchowTests */,
 			);
 		};
 /* End PBXProject section */
@@ -571,6 +577,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				75A4D4B11CC034D4001C57E6 /* logo.png in Resources */,
+				75A4D4B31CC03743001C57E6 /* icon180.png in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				759804DA1C3ADBAF00F631D6 /* Ionicons.ttf in Resources */,
 				759804C31C3AD58D00F631D6 /* MaterialIcons.ttf in Resources */,
@@ -619,7 +627,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* socialAuthExample */;
+			target = 13B07F861A680F5B00A75B9A /* Achow */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -652,7 +660,7 @@
 				INFOPLIST_FILE = socialAuthExampleTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Achow;
 				TEST_HOST = "";
 			};
 			name = Debug;
@@ -669,7 +677,7 @@
 				INFOPLIST_FILE = socialAuthExampleTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Achow;
 				TEST_HOST = "";
 			};
 			name = Release;
@@ -697,7 +705,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.achow;
-				PRODUCT_NAME = socialAuthExample;
+				PRODUCT_NAME = Achow;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos9.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -725,7 +733,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.achow;
-				PRODUCT_NAME = socialAuthExample;
+				PRODUCT_NAME = Achow;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos9.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -821,7 +829,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "socialAuthExampleTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "AchowTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -830,7 +838,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "socialAuthExample" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Achow" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -839,7 +847,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "socialAuthExample" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Achow" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
