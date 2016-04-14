@@ -86,7 +86,7 @@ class Meeting extends React.Component {
 	}
 
 	loadComments() {
-		fetch(Constants.URL + "stores/checkin/comment/get/" + this.props.data.id)
+		fetch(Constants.URL + "store_comment/checkin/" + this.props.data.id)
 				.then((response) => response.json())
 				.then((comments) => {
 					this.setState({
@@ -181,6 +181,21 @@ class Meeting extends React.Component {
 		return (
 			<TouchableOpacity onPress={() => this.goUser(row) }>
 				<Image style={ styles.image2 } source={ image} />
+				{ row.visited == -1 ? 
+				<View style={ styles.marked }>
+					<Icon style={ styles.checkmark } name="help" size={20} color="#fff" />
+				</View>
+				: <View /> }
+				{ row.visited == 6 ? 
+				<View style={ styles.marked }>
+					<Icon style={ styles.checkmark } name="thumbsup" size={20} color="#fff" />
+				</View>
+				: <View /> }
+				{ row.visited == 7 ? 
+				<View style={ styles.marked }>
+					<Icon style={ styles.checkmark } name="thumbsdown" size={20} color="#fff" />
+				</View>
+				: <View /> }
 			</TouchableOpacity>
 		)
 	}
@@ -198,11 +213,41 @@ class Meeting extends React.Component {
 	}
 
 	accept() {
-		
+		fetch(Constants.URL + 'store_visited', {
+			method: "POST",
+    		body: JSON.stringify({
+    			idAccount: user.id,
+    			idCheckin: this.props.data.id,
+    			idVisitedType: 6
+    		}),
+    		headers: Constants.HEADERS
+		})
+		.then((response) => response.json())
+		.then((fav) => {
+			Alert('Participação', 'Você confirmou sua participação.');
+		})
+		.catch((error) => {
+			Alert('Error', 'Houve um error ao se conectar ao servidor');
+    	});
 	}
 
 	remove() {
-		
+		fetch(Constants.URL + 'store_visited', {
+			method: "POST",
+    		body: JSON.stringify({
+    			idAccount: user.id,
+    			idCheckin: this.props.data.id,
+    			idVisitedType: 7
+    		}),
+    		headers: Constants.HEADERS
+		})
+		.then((response) => response.json())
+		.then((fav) => {
+			Alert('Participação', 'Você cancelou a participação.');
+		})
+		.catch((error) => {
+			Alert('Error', 'Houve um error ao se conectar ao servidor');
+    	});
 	}
 
 	goUser(user) {
@@ -258,6 +303,19 @@ var styles = StyleSheet.create({
 		margin: 10,
 		marginRight: 0,
 		borderRadius: 25
+	},
+	marked: {
+		width: 50,
+		height: 50,
+		margin: 10,
+		borderRadius: 25,
+		backgroundColor: 'rgba(0, 0, 0, 0.5)',
+		position: 'absolute',
+		top: 0
+	},
+	checkmark: {
+		alignSelf: 'center',
+		marginTop: 15
 	},
 	text: {
 		flex: 1,

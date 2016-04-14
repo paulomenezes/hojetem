@@ -68,7 +68,7 @@ class AddComment extends React.Component {
 		} else {
 			comment = {
 				idAccount: this.state.user.id,
-				idCheckin: this.state.show.id,
+				idCheckin: this.state.checkin.id,
 				message: this.state.text
 			};
 		}
