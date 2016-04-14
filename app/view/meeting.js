@@ -225,6 +225,7 @@ class Meeting extends React.Component {
 		.then((response) => response.json())
 		.then((fav) => {
 			Alert('Participação', 'Você confirmou sua participação.');
+			this.loadUsers();
 		})
 		.catch((error) => {
 			Alert('Error', 'Houve um error ao se conectar ao servidor');
@@ -244,6 +245,7 @@ class Meeting extends React.Component {
 		.then((response) => response.json())
 		.then((fav) => {
 			Alert('Participação', 'Você cancelou a participação.');
+			this.loadUsers();
 		})
 		.catch((error) => {
 			Alert('Error', 'Houve um error ao se conectar ao servidor');

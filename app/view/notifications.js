@@ -83,7 +83,7 @@ class Notifications extends React.Component {
 
 		if (notification.storeName) {
 			return (
-				<TouchableHighlight style={ styles.item } onPress={() => this.goMeeting(notification) }>
+				<TouchableOpacity style={ styles.item } onPress={() => this.goMeeting(notification) }>
 					<View style={ styles.item }>
 						{ image ? 
 						<Image style={ styles.image } source={{ uri: image }} />
@@ -93,7 +93,7 @@ class Notifications extends React.Component {
 							<Text style={{ color: '#03a9f4' }}>{ notification.message }</Text>
 						</View>
 					</View>	
-				</TouchableHighlight>
+				</TouchableOpacity>
 			);
 		} else {
 			return (
