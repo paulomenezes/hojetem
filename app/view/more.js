@@ -115,7 +115,7 @@ class More extends React.Component {
 			<ScrollView style={ styles.container }>
 				{ cover ? 
 				<Image style={ styles.cover } source={{ uri: this.state.user.cover }} />
-				: <View /> }
+				: <View style={{ height: 150 }} /> }
 				{ image ? 
 				<View style={ styles.profileArea }>
 					<Image style={ styles.profile } source={{ uri: image }} />

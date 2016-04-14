@@ -42,14 +42,10 @@ class Like extends React.Component {
 				show: props.show
 			};
 		}
-
-		console.log(props);
 	}
 
 	openSearch() {
 		var state = this.state;
-
-		console.log(state);
 
 		var like = {};
 		if (this.state.store) {
@@ -73,8 +69,6 @@ class Like extends React.Component {
 			})
 			.then((response) => response.json())
 			.then((like) => {
-				console.log(like);
-
 				this.setState({
 					loading: false
 				});
@@ -86,8 +80,7 @@ class Like extends React.Component {
 				}
 			})
 			.catch((error) => {
-				console.log(error);
-	    		Alert('Error', 'Houve um error ao se conectar ao servidor');
+				Alert('Error', 'Houve um error ao se conectar ao servidor');
 	    	});
 
 			this.setState({

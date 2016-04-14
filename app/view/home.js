@@ -130,7 +130,7 @@ class Home extends React.Component {
 			user: props.nav.data,
 			dataSource: new ListView.DataSource({
 				rowHasChanged: (row1, row2) => row1 !== row2
-			}).cloneWithRows(categories),
+			}),
 			dataSourceImages: new ViewPager.DataSource({
 				rowHasChanged: (row1, row2) => row1 !== row2
 			}),
@@ -146,9 +146,10 @@ class Home extends React.Component {
 				};
 
 				this.setState({
+					loaded: true,
 					items: items,
-					dataSourceImages: this.state.dataSourceImages.cloneWithPages(items),
-					loaded: true
+					dataSource: this.state.dataSource.cloneWithRows(categories),
+					dataSourceImages: this.state.dataSourceImages.cloneWithPages(items)
 				});
 			})
 			.catch((error) => {
@@ -220,7 +221,6 @@ class Home extends React.Component {
 				</View>
 			);
 		} else {
-			var self = this;
 			if (!this.state.loaded) {
 				return this.renderLoadingView();
 			} else {
@@ -238,9 +238,11 @@ class Home extends React.Component {
 	}
 
 	_renderPage(data, pageID) {
+		var widthPager = viewWidth > 400 ? 400 : viewWidth;
+
 		return (
 			<TouchableOpacity onPress={() => this.openShows(data) }>
-				<Image key={ pageID } style={{ width: viewWidth, height: 160 }} source={{ uri: Constants.IMAGE + 'images/store/' + data.image }} />
+				<Image key={ pageID } style={{ width: widthPager, height: 160 }} source={{ uri: Constants.IMAGE + 'images/store/' + data.image }} />
 			</TouchableOpacity>
 		)
 	}
@@ -265,7 +267,7 @@ var styles = StyleSheet.create({
 		flex: 1,
 		flexDirection: 'column',
 		justifyContent: 'center',
-		alignItems: 'stretch'
+		alignItems: 'center'
 	},
 	opacity: {
 		position: 'absolute',
