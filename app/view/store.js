@@ -218,19 +218,19 @@ class Store extends React.Component {
 				</ScrollView>
 
 				<ActionButton buttonColor="rgba(231,76,60,1)" onPress={() => {}}>
-					<ActionButton.Item buttonColor='#03a9f4' title="Visualizar Cardápio" onPress={ this.goMenu.bind(this) }>
+					<ActionButton.Item buttonColor='#d6013b' title="Visualizar Cardápio" onPress={ this.goMenu.bind(this) }>
 		            	<Icon name="android-restaurant" style={styles.actionButtonIcon} />
 		          	</ActionButton.Item>
-		          	<ActionButton.Item buttonColor='#03a9f4' title="Estou Aqui" onPress={ this.goCheckin.bind(this) }>
+		          	<ActionButton.Item buttonColor='#d6013b' title="Estou Aqui" onPress={ this.goCheckin.bind(this) }>
 		            	<Icon name="ios-location" style={styles.actionButtonIcon} />
 		          	</ActionButton.Item>
-		          	<ActionButton.Item buttonColor='#03a9f4' title="Adicionar aos Favoritos" onPress={ this.addFav.bind(this) }>
+		          	<ActionButton.Item buttonColor='#d6013b' title="Adicionar aos Favoritos" onPress={ this.addFav.bind(this) }>
 		            	<Icon name="star" style={styles.actionButtonIcon} />
 		          	</ActionButton.Item>
-		          	<ActionButton.Item buttonColor='#03a9f4' title="Adicionar comentário" onPress={ this.goComments.bind(this) }>
+		          	<ActionButton.Item buttonColor='#d6013b' title="Adicionar comentário" onPress={ this.goComments.bind(this) }>
 		            	<Icon name="chatbox" style={styles.actionButtonIcon} />
 		          	</ActionButton.Item>
-		          	<ActionButton.Item buttonColor='#03a9f4' title="Marcar Encontro" onPress={ this.goMeeting.bind(this) }>
+		          	<ActionButton.Item buttonColor='#d6013b' title="Marcar Encontro" onPress={ this.goMeeting.bind(this) }>
 		            	<Icon name="ios-people" style={styles.actionButtonIcon} />
 		          	</ActionButton.Item>
 		        </ActionButton>
@@ -373,7 +373,7 @@ var styles = StyleSheet.create({
 	    color: 'white',
 	},
 	name: {
-		color: '#03a9f4',
+		color: '#d6013b',
 		fontSize: 16
 	}
 });

@@ -63,7 +63,7 @@ class Login extends React.Component {
 		loadUser(function (user) {
 			if (user) {
     			nav.replaceRoute({
-	          		name: 'Achow',
+	          		name: 'Hoje Tem',
 	          		component: Main,
 	          		data: user[0],
 	          		rightCorner: Search
@@ -110,14 +110,14 @@ class Login extends React.Component {
 		        		headers: Constants.HEADERS
 		        	})
 		        	.then((response) => response.json())
-		        	.then((achowUser) => {
-		        		if (achowUser.length > 0) {
-		        			LoadUser.login(achowUser[0]);
-			        		UserActiveModel.add(achowUser[0]).then(function (data) {
+		        	.then((hojeTemUser) => {
+		        		if (hojeTemUser.length > 0) {
+		        			LoadUser.login(hojeTemUser[0]);
+			        		UserActiveModel.add(hojeTemUser[0]).then(function (data) {
 			        			nav.replaceRoute({
-					          		name: 'Achow',
+					          		name: 'Hoje Tem',
 					          		component: Main,
-					          		data: achowUser[0],
+					          		data: hojeTemUser[0],
 					          		rightCorner: Search
 					          	});
 			        		});
@@ -152,7 +152,7 @@ class Login extends React.Component {
 					        			LoadUser.login(user);
 					        			UserActiveModel.add(user).then(function (data) {
 					        				nav.replaceRoute({
-								          		name: 'Achow',
+								          		name: 'Hoje Tem',
 								          		component: Main,
 								          		data: user,
 								          		rightCorner: Search
@@ -177,14 +177,14 @@ class Login extends React.Component {
 
 	login() {
 		this.props.toRoute({
-			name: 'Achow',
+			name: 'Hoje Tem',
 			component: LoginEmail
 		})	
 	}
 
 	register() {
 		this.props.toRoute({
-			name: 'Achow',
+			name: 'Hoje Tem',
 			component: Register
 		})	
 	}
@@ -199,12 +199,12 @@ class Login extends React.Component {
 					</Icon.Button>
 				</View>
 				<View style={ styles.view }>
-					<Icon.Button style={ styles.button } name="email" backgroundColor="#fff" color="#03a9f4" onPress={this.login.bind(this)}>
+					<Icon.Button style={ styles.button } name="email" backgroundColor="#fff" color="#d6013b" onPress={this.login.bind(this)}>
 						Entrar com e-mail
 					</Icon.Button>
 				</View>
 				<View style={ styles.view }>
-					<Icon.Button name="compose" backgroundColor="#03a9f4" onPress={this.register.bind(this)}>
+					<Icon.Button name="compose" backgroundColor="#d6013b" onPress={this.register.bind(this)}>
 						Criar conta
 					</Icon.Button>
 				</View>
@@ -217,13 +217,13 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		alignItems: 'center',
-		backgroundColor: '#03a9f4',
+		backgroundColor: '#d6013b',
 	},
 	image: {
 		marginTop: 50,
 		marginBottom: 80,
-		width: 300,
-		height: 137,
+		width: 150,
+		height: 150,
 		resizeMode: "stretch"
 	},
 	view: {

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.app.achow">
+    package="com.app.hojetem">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -12,9 +12,9 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     <permission
-        android:name="com.app.achow.permission.C2D_MESSAGE"
+        android:name="com.app.hojetem.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
-    <uses-permission android:name="com.app.achow.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.app.hojetem.permission.C2D_MESSAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -37,7 +37,7 @@
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                <category android:name="com.app.achow" />
+                <category android:name="com.app.hojetem" />
             </intent-filter>
         </receiver>
         <service android:name="com.oney.gcm.GcmRegistrationService"/>

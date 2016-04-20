@@ -80,7 +80,7 @@ class LoginEmail extends React.Component {
         			LoadUser.login(user[0]);
 	        		UserActiveModel.add(user[0]).then(function (data) {
 	        			nav.resetToRoute({
-			          		name: 'Achow',
+			          		name: 'HojeTem',
 			          		component: Main,
 			          		data: user[0],
 			          		rightCorner: Search
@@ -97,7 +97,7 @@ class LoginEmail extends React.Component {
 
 	render() {
 		return (
-			<View style={{ backgroundColor: '#03a9f4', flex: 1 }}>
+			<View style={{ backgroundColor: '#d6013b', flex: 1 }}>
 			<SmartScrollView>
 				<View style={styles.container}>
 					<Image style={ styles.image } source={ require('../images/logo.png') } />
@@ -125,12 +125,12 @@ class LoginEmail extends React.Component {
 						    value={this.state.password} />
 					</View>
 					<View style={ styles.view }>
-						<Icon.Button style={ styles.button } name="email" backgroundColor="#fff" color="#03a9f4" onPress={this.login.bind(this)}>
-							<Text style={{color:'#03a9f4'}}>Entrar</Text>
+						<Icon.Button style={ styles.button } name="email" backgroundColor="#fff" color="#d6013b" onPress={this.login.bind(this)}>
+							<Text style={{color:'#d6013b'}}>Entrar</Text>
 						</Icon.Button>
 					</View>
 					<View style={ styles.view }>
-						<Icon.Button name="compose" backgroundColor="#03a9f4" onPress={this.login.bind(this)}>
+						<Icon.Button name="compose" backgroundColor="#d6013b" onPress={this.login.bind(this)}>
 							<Text style={{color:'#fff'}}>Criar conta</Text>
 						</Icon.Button>
 					</View>
@@ -144,18 +144,18 @@ class LoginEmail extends React.Component {
 const styles = StyleSheet.create({
 	scroll: {
 		flex: 1,
-		backgroundColor: '#03a9f4',
+		backgroundColor: '#d6013b',
 	},
 	container: {
 		flex: 1,
 		alignItems: 'center',
-		backgroundColor: '#03a9f4',
+		backgroundColor: '#d6013b',
 	},
 	image: {
 		marginTop: 20,
 		marginBottom: 40,
-		width: 200,
-		height: 91,
+		width: 150,
+		height: 150,
 		resizeMode: "stretch"
 	},
 	view: {

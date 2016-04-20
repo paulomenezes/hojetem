@@ -115,11 +115,11 @@ class Contacts extends React.Component {
 						
 						<View style={ styles.buttons }>
 							<View style={{ marginRight: 10 }}>
-								<Icon.Button name="person-add" backgroundColor="#03a9f4" style={ styles.button } onPress={() => this.add(friend)}>
+								<Icon.Button name="person-add" backgroundColor="#d6013b" style={ styles.button } onPress={() => this.add(friend)}>
 									<Text style={ styles.sendButton }>Aceitar</Text>
 								</Icon.Button>
 							</View>
-							<Icon.Button name="trash-b" color="#03a9f4" backgroundColor="#fff" style={ styles.button } onPress={() => this.remove(friend)}>
+							<Icon.Button name="trash-b" color="#d6013b" backgroundColor="#fff" style={ styles.button } onPress={() => this.remove(friend)}>
 								<Text style={ styles.sendButton2 }>Recusar</Text>
 							</Icon.Button>
 						</View>
@@ -210,7 +210,7 @@ class Contacts extends React.Component {
 			<View style={ styles.view }>
 				<View style={ styles.segmented }>
 					<SegmentedControls
-						tint="#03a9f4"
+						tint="#d6013b"
 						options={[ 'Amigos', 'Solicitações' ]}
 						onSelection={ this.setSegment.bind(this) }
 						selectedOption={ this.state.option } />
@@ -275,14 +275,14 @@ var styles = StyleSheet.create({
 		justifyContent: 'space-between'
 	},
 	button: {
-		borderColor: '#03a9f4',
+		borderColor: '#d6013b',
 		borderWidth: 1,
 	},
 	sendButton: {
 		color: '#fff'
 	},
 	sendButton2: {
-		color: '#03a9f4'
+		color: '#d6013b'
 	},
 });
 

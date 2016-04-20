@@ -246,13 +246,13 @@ class Show extends React.Component {
 				</ScrollView>
 
 				<ActionButton buttonColor="rgba(231,76,60,1)" onPress={() => {}}>
-		          	<ActionButton.Item buttonColor='#03a9f4' title="Confirmar Participação" onPress={ this.confirm.bind(this) }>
+		          	<ActionButton.Item buttonColor='#d6013b' title="Confirmar Participação" onPress={ this.confirm.bind(this) }>
 		            	<Icon name="checkmark-circled" style={styles.actionButtonIcon} />
 		          	</ActionButton.Item>
-		          	<ActionButton.Item buttonColor='#03a9f4' title="Adicionar comentário" onPress={ this.goComments.bind(this) }>
+		          	<ActionButton.Item buttonColor='#d6013b' title="Adicionar comentário" onPress={ this.goComments.bind(this) }>
 		            	<Icon name="chatbox" style={styles.actionButtonIcon} />
 		          	</ActionButton.Item>
-		          	<ActionButton.Item buttonColor='#03a9f4' title="Marcar Encontro" onPress={ this.goMeeting.bind(this) }>
+		          	<ActionButton.Item buttonColor='#d6013b' title="Marcar Encontro" onPress={ this.goMeeting.bind(this) }>
 		            	<Icon name="ios-people" style={styles.actionButtonIcon} />
 		          	</ActionButton.Item>
 		        </ActionButton>
@@ -379,7 +379,7 @@ var styles = StyleSheet.create({
 	    color: 'white',
 	},
 	name: {
-		color: '#03a9f4',
+		color: '#d6013b',
 		fontSize: 16
 	},
 	label: {
@@ -389,7 +389,7 @@ var styles = StyleSheet.create({
 		padding: 2,
 		paddingLeft: 10,
 		paddingRight: 10,
-		backgroundColor: '#03a9f4',
+		backgroundColor: '#d6013b',
 		borderRadius: 5,
 	},
 	labelText: {

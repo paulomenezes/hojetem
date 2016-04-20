@@ -112,7 +112,7 @@ class OrderQuantity extends React.Component {
 		return (
 			<View style={{ flex: 1 }}>
 				<View style={ styles.buy }>
-					<Icon.Button name="bag" backgroundColor="#03a9f4" onPress={ this.buy.bind(this) }>
+					<Icon.Button name="bag" backgroundColor="#d6013b" onPress={ this.buy.bind(this) }>
 						<Text style={{ color: '#fff' }}>Finalizar pedido</Text>
 					</Icon.Button>
 				</View>
@@ -170,7 +170,7 @@ var styles = StyleSheet.create({
 		borderBottomWidth: 1
 	},
 	name: {
-		color: '#03a9f4',
+		color: '#d6013b',
 		fontSize: 16
 	},
 	price: {

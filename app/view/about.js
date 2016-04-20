@@ -42,7 +42,7 @@ var styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		alignItems: 'center',
-		backgroundColor: '#03a9f4',
+		backgroundColor: '#d6013b',
 	},
 	image: {
 		marginTop: 50,

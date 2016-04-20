@@ -170,7 +170,7 @@ class ChatRooms extends React.Component {
 
 				{ !this.state.exists ?
 				<View style={ styles.add }>
-					<Icon.Button name="plus" backgroundColor="#03a9f4" onPress={ this.addRoom.bind(this) }>
+					<Icon.Button name="plus" backgroundColor="#d6013b" onPress={ this.addRoom.bind(this) }>
 						<Text style={ styles.addButton }>Criar minha sala</Text>
 					</Icon.Button>
 				</View>
@@ -189,7 +189,7 @@ var styles = StyleSheet.create({
 	button: {
 		padding: 15,
 		borderLeftWidth: 5,
-		borderLeftColor: '#03a9f4',
+		borderLeftColor: '#d6013b',
 		borderTopWidth: 1,
 		borderTopColor: '#ddd',
 		borderBottomWidth: 1,

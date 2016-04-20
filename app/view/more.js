@@ -204,7 +204,7 @@ var styles = StyleSheet.create({
 		textAlign: 'center',
 		fontSize: 20,
 		margin: 10,
-		color: '#03a9f4'
+		color: '#d6013b'
 	},
 	about: {
 		borderTopColor: '#DDD',

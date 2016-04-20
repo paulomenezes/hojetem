@@ -237,7 +237,7 @@ class User extends Component {
 				<View>
 					<View style={ styles.segmented }>
 						<SegmentedControls
-							tint="#03a9f4"
+							tint="#d6013b"
 							options={[ 'Check-ins', 'Amigos', 'Fotos' ]}
 							onSelection={ this.setSegment.bind(this) }
 							selectedOption={ this.state.option } />
@@ -267,26 +267,26 @@ class User extends Component {
 
 				{ id != user.id ?
 				<ActionButton buttonColor="rgba(231,76,60,1)">
-					<ActionButton.Item buttonColor='#03a9f4' title="Enviar mensagem" onPress={() => { this.goChat(this.state.user) }}>
+					<ActionButton.Item buttonColor='#d6013b' title="Enviar mensagem" onPress={() => { this.goChat(this.state.user) }}>
 		            	<Icon name="chatboxes" style={styles.actionButtonIcon} />
 		          	</ActionButton.Item>
-		          	<ActionButton.Item buttonColor='#03a9f4' title="Chamar" onPress={ this.call.bind(this) }>
+		          	<ActionButton.Item buttonColor='#d6013b' title="Chamar" onPress={ this.call.bind(this) }>
 		            	<Icon name="ios-telephone" style={styles.actionButtonIcon} />
 		          	</ActionButton.Item>
 
 		          	{ this.state.status === 'loading' ? 
-		          	<ActionButton.Item buttonColor='#03a9f4' title="Carregando" onPress={() => console.log('load')}>
+		          	<ActionButton.Item buttonColor='#d6013b' title="Carregando" onPress={() => console.log('load')}>
 		            	<Icon name="refresh" style={styles.actionButtonIcon} />
 		          	</ActionButton.Item>
 		          	: this.state.status === 'friend' ?
-		          	<ActionButton.Item buttonColor='#03a9f4' title="Remover amigo" onPress={ this.remove.bind(this) }>
+		          	<ActionButton.Item buttonColor='#d6013b' title="Remover amigo" onPress={ this.remove.bind(this) }>
 		            	<Icon name="minus-circled" style={styles.actionButtonIcon} />
 		          	</ActionButton.Item>
 		          	: this.state.status === 'request' ?
-		          	<ActionButton.Item buttonColor='#03a9f4' title="Aguardando confirmação" onPress={ this.wait.bind(this) }>
+		          	<ActionButton.Item buttonColor='#d6013b' title="Aguardando confirmação" onPress={ this.wait.bind(this) }>
 		            	<Icon name="minus-circled" style={styles.actionButtonIcon} />
 		          	</ActionButton.Item>
-		          	: <ActionButton.Item buttonColor='#03a9f4' title="Adicionar amigo" onPress={ this.add.bind(this) }>
+		          	: <ActionButton.Item buttonColor='#d6013b' title="Adicionar amigo" onPress={ this.add.bind(this) }>
 		            	<Icon name="person-add" style={styles.actionButtonIcon} />
 		          	</ActionButton.Item> }
 		        </ActionButton>
@@ -384,7 +384,7 @@ var styles = StyleSheet.create({
 		textAlign: 'center',
 		fontSize: 20,
 		margin: 10,
-		color: '#03a9f4'
+		color: '#d6013b'
 	},
 	segmented: {
 		margin: 10,

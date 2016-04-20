@@ -15,7 +15,7 @@ var BackButton = require('./components/backButton');
 var Search = require('./components/search');
 var NoneButton = require('./components/noneButton');
 
-class Achow extends React.Component {
+class HojeTem extends React.Component {
     render() {
     	console.log('iOS');
 	
@@ -25,7 +25,7 @@ class Achow extends React.Component {
             	backButtonComponent={BackButton} 
             	rightCorner={NoneButton}
             	firstRoute={ {
-	            	name: 'Achow',
+	            	name: 'Hoje Tem',
 	            	component: Login
 	            } } />
         );
@@ -34,8 +34,8 @@ class Achow extends React.Component {
 
 var styles = StyleSheet.create({
 	header: {
-		backgroundColor: '#03a9f4'
+		backgroundColor: '#d6013b'
 	}
 });
 
-AppRegistry.registerComponent('socialAuthExample', () => Achow);
+AppRegistry.registerComponent('socialAuthExample', () => HojeTem);

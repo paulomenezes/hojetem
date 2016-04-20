@@ -1,7 +1,7 @@
 module.exports = {
-	URL: "http://achow.com.br/api.ios/public/index.php/",
-	IMAGE: "http://achow.com.br/",
-	CITY: "Porto Feliz",
+	URL: "http://apphojetem.com/api.ios/public/index.php/",
+	IMAGE: "http://apphojetem.com.br/",
+	CITY: "Recife",
 	HEADERS: {
 		'Accept': 'application/json',
 		'Content-Type': 'application/x-www-form-urlencoded',

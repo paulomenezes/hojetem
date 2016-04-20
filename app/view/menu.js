@@ -220,7 +220,7 @@ class Menu extends React.Component {
 		return (
 			<View style={{ flex: 1 }}>
 				<View style={ styles.buy }>
-					<Icon.Button name="ios-cart-outline" backgroundColor="#03a9f4" onPress={ this.buy.bind(this) }>
+					<Icon.Button name="ios-cart-outline" backgroundColor="#d6013b" onPress={ this.buy.bind(this) }>
 						<Text style={{ color: '#fff' }}>Comprar selecionados ({ this.state.quantity })</Text>
 					</Icon.Button>
 				</View>
@@ -278,7 +278,7 @@ var styles = StyleSheet.create({
 		borderBottomWidth: 1
 	},
 	name: {
-		color: '#03a9f4',
+		color: '#d6013b',
 		fontSize: 16
 	},
 	price: {

@@ -90,7 +90,7 @@ class Notifications extends React.Component {
 						: <View style={ styles.image } /> }
 						<View style={ styles.text }>
 							<Text style={ styles.nameFriend }>O usuário { notification.name } convidou você para ir ao { notification.storeName }</Text>
-							<Text style={{ color: '#03a9f4' }}>{ notification.message }</Text>
+							<Text style={{ color: '#d6013b' }}>{ notification.message }</Text>
 						</View>
 					</View>	
 				</TouchableOpacity>
@@ -103,7 +103,7 @@ class Notifications extends React.Component {
 					: <View style={ styles.image } /> }
 					<View style={ styles.text }>
 						<Text style={ styles.nameFriend }>O usuário { notification.name } lhe enviou uma mensagem</Text>
-						<Text style={{ color: '#03a9f4' }}>{ notification.message }</Text>
+						<Text style={{ color: '#d6013b' }}>{ notification.message }</Text>
 					</View>
 				</TouchableOpacity>
 			);
@@ -153,18 +153,18 @@ var styles = StyleSheet.create({
 		justifyContent: 'space-between'
 	},
 	button: {
-		borderColor: '#03a9f4',
+		borderColor: '#d6013b',
 		borderWidth: 1,
 	},
 	button2: {
-		borderColor: '#03a9f4',
+		borderColor: '#d6013b',
 		borderWidth: 1,
 	},
 	sendButton: {
 		color: '#fff'
 	},
 	sendButton2: {
-		color: '#03a9f4'
+		color: '#d6013b'
 	},
 });
 

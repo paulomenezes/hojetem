@@ -156,7 +156,7 @@ var styles = StyleSheet.create({
 	},
 	date: {
 		fontSize: 14,
-		color: '#03a9f4'
+		color: '#d6013b'
 	},
 	status: {
 		marginBottom: 10
@@ -186,7 +186,7 @@ var styles = StyleSheet.create({
 		borderBottomWidth: 1
 	},
 	name: {
-		color: '#03a9f4',
+		color: '#d6013b',
 		fontSize: 16
 	},
 	price: {

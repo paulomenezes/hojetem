@@ -196,7 +196,7 @@ class Settings extends React.Component {
 					: <View /> }
 
 					<View style={{ margin: 10, marginBottom: 0 }}>
-						<Icon.Button name="ios-camera" backgroundColor="#03a9f4" onPress={this.changeImage.bind(this)}>
+						<Icon.Button name="ios-camera" backgroundColor="#d6013b" onPress={this.changeImage.bind(this)}>
 							<Text style={{ color: '#fff' }}>Trocar imagem do perfil</Text>
 						</Icon.Button>
 					</View>
@@ -235,7 +235,7 @@ class Settings extends React.Component {
 
 					<View style={ styles.group }>
 						<SegmentedControls
-							tint="#03a9f4"
+							tint="#d6013b"
 							options={[ 'Masculino', 'Feminino' ]}
 							onSelection={ this.setSegment.bind(this) }
 							selectedOption={ this.state.gender } />
@@ -261,14 +261,14 @@ class Settings extends React.Component {
 							content={ content }
 							easing="easeOutCubic" />
 						:
-						<Icon.Button name="android-calendar" backgroundColor="#03a9f4" onPress={ this.updateBirth.bind(this) }>
+						<Icon.Button name="android-calendar" backgroundColor="#d6013b" onPress={ this.updateBirth.bind(this) }>
 							<Text style={{ color: '#fff' }}>Atualizar data de nascimento ({ this.state.birth })</Text>
 						</Icon.Button>
 						}
 					</View>
 
 					<View style={ styles.group }>
-						<Icon.Button name="checkmark" backgroundColor="#03a9f4" onPress={ this.register.bind(this) }>
+						<Icon.Button name="checkmark" backgroundColor="#d6013b" onPress={ this.register.bind(this) }>
 							<Text style={{ color: '#fff' }}>Concluído</Text>
 						</Icon.Button>
 					</View>
@@ -332,7 +332,7 @@ var styles = StyleSheet.create({
 		backgroundColor: '#eee'
 	},
 	title: {
-		color: '#03a9f4',
+		color: '#d6013b',
 		fontSize: 16,
 		marginBottom: 5
 	},
@@ -371,7 +371,7 @@ var styles = StyleSheet.create({
 		borderBottomWidth: 1
 	},
 	name: {
-		color: '#03a9f4',
+		color: '#d6013b',
 		fontSize: 16
 	},
 	price: {
@@ -391,7 +391,7 @@ var styles = StyleSheet.create({
 		height: 100,
 		borderRadius: 50,
 		borderWidth: 2,
-		borderColor: '#03a9f4',
+		borderColor: '#d6013b',
 		alignItems: 'center'
 	},
 });

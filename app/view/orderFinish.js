@@ -98,7 +98,7 @@ class OrderFinish extends React.Component {
 					<View style={ styles.group }>
 						<Text style={ styles.title }>Forma de pagamento:</Text>
 						<SegmentedControls
-							tint="#03a9f4"
+							tint="#d6013b"
 							options={[ 'Dinheiro', 'Cartão' ]}
 							onSelection={ this.setSegment.bind(this) }
 							selectedOption={ this.state.option } />
@@ -152,7 +152,7 @@ class OrderFinish extends React.Component {
 					</View>
 
 					<View style={ styles.group }>
-						<Icon.Button name="bag" backgroundColor="#03a9f4" onPress={ this.buy.bind(this) }>
+						<Icon.Button name="bag" backgroundColor="#d6013b" onPress={ this.buy.bind(this) }>
 							<Text style={{ color: '#fff' }}>Finalizar</Text>
 						</Icon.Button>
 					</View>
@@ -216,7 +216,7 @@ var styles = StyleSheet.create({
 		padding: 10
 	},
 	title: {
-		color: '#03a9f4',
+		color: '#d6013b',
 		fontSize: 16,
 		marginBottom: 5
 	},
@@ -254,7 +254,7 @@ var styles = StyleSheet.create({
 		borderBottomWidth: 1
 	},
 	name: {
-		color: '#03a9f4',
+		color: '#d6013b',
 		fontSize: 16
 	},
 	price: {

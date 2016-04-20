@@ -144,13 +144,13 @@ class Checkin extends React.Component {
 				    value={this.state.text} />
 
 				<View style={{ margin: 10, marginTop: 0 }}>
-					<Icon.Button name="ios-camera" backgroundColor="#03a9f4" onPress={this.changeImage.bind(this)}>
+					<Icon.Button name="ios-camera" backgroundColor="#d6013b" onPress={this.changeImage.bind(this)}>
 						<Text style={{ color: '#fff' }}>Selecionar imagem</Text>
 					</Icon.Button>
 				</View>
 
 				<View style={ styles.buttonArea }>
-					<Icon.Button name="android-share-alt" backgroundColor="#03a9f4" onPress={this.sendMeeting.bind(this)}>
+					<Icon.Button name="android-share-alt" backgroundColor="#d6013b" onPress={this.sendMeeting.bind(this)}>
 						<Text style={ styles.sendButton }>Compartilhar com seus amigos</Text>
 					</Icon.Button>
 				</View>
@@ -188,7 +188,7 @@ var styles = StyleSheet.create({
 	},
 	selected: {
 		borderWidth: 1,
-		borderColor: '#03a9f4',
+		borderColor: '#d6013b',
 	},
 	item: {
 		flex: 1,
@@ -214,7 +214,7 @@ var styles = StyleSheet.create({
 		fontSize: 16
 	},
 	nameSelected: {
-		color: '#03a9f4',
+		color: '#d6013b',
 		fontSize: 16
 	}
 });

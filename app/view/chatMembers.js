@@ -202,7 +202,7 @@ class ChatMembers extends React.Component {
 					{ this.state.room.idAccount == user.id && room.accept == 0 ?
 					<View style={ styles.buttons }>
 						<View style={ styles.buttonsAccept }>
-							<Icon.Button name="checkmark" backgroundColor="#03a9f4" onPress={() => this.accept(room) }>
+							<Icon.Button name="checkmark" backgroundColor="#d6013b" onPress={() => this.accept(room) }>
 								<Text style={ styles.addButton }>Aceitar</Text>
 							</Icon.Button>
 						</View>
@@ -223,7 +223,7 @@ class ChatMembers extends React.Component {
 			<View>
 				{ !this.state.exists && this.state.room.idAccount != user.id ?
 				<View style={ styles.add }>
-					<Icon.Button name="person-add" backgroundColor="#03a9f4" onPress={ this.addRoom.bind(this) }>
+					<Icon.Button name="person-add" backgroundColor="#d6013b" onPress={ this.addRoom.bind(this) }>
 						<Text style={ styles.addButton }>Mandar solicitação</Text>
 					</Icon.Button>
 				</View>

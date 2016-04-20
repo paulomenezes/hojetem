@@ -160,13 +160,13 @@ class Meeting extends React.Component {
 				</ScrollView>
 
 				<ActionButton buttonColor="rgba(231,76,60,1)" onPress={() => {}}>
-		          	<ActionButton.Item buttonColor='#03a9f4' title="Eu vou!" onPress={ this.accept.bind(this) }>
+		          	<ActionButton.Item buttonColor='#d6013b' title="Eu vou!" onPress={ this.accept.bind(this) }>
 		            	<Icon name="thumbsup" style={styles.actionButtonIcon} />
 		          	</ActionButton.Item>
-		          	<ActionButton.Item buttonColor='#03a9f4' title="Não vou poder" onPress={ this.remove.bind(this) }>
+		          	<ActionButton.Item buttonColor='#d6013b' title="Não vou poder" onPress={ this.remove.bind(this) }>
 		            	<Icon name="thumbsdown" style={styles.actionButtonIcon} />
 		          	</ActionButton.Item>
-		          	<ActionButton.Item buttonColor='#03a9f4' title="Adicionar comentário" onPress={ this.goComments.bind(this) }>
+		          	<ActionButton.Item buttonColor='#d6013b' title="Adicionar comentário" onPress={ this.goComments.bind(this) }>
 		            	<Icon name="chatbox" style={styles.actionButtonIcon} />
 		          	</ActionButton.Item>
 		        </ActionButton>
@@ -337,7 +337,7 @@ var styles = StyleSheet.create({
 	    color: 'white',
 	},
 	name: {
-		color: '#03a9f4',
+		color: '#d6013b',
 		fontSize: 16
 	}
 });

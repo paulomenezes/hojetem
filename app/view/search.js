@@ -164,7 +164,7 @@ class Search extends React.Component {
 				    value={this.state.text} />
 
 				<View style={ styles.buttonArea }>
-					<Icon.Button name="ios-search" backgroundColor="#03a9f4" onPress={this.search.bind(this)}>
+					<Icon.Button name="ios-search" backgroundColor="#d6013b" onPress={this.search.bind(this)}>
 						<Text style={ styles.sendButton }>Procurar</Text>
 					</Icon.Button>
 				</View>
@@ -172,7 +172,7 @@ class Search extends React.Component {
 				<View>
 					<View style={ styles.segmented }>
 						<SegmentedControls
-							tint="#03a9f4"
+							tint="#d6013b"
 							options={[ 'Estabelecimentos', 'Usuários' ]}
 							onSelection={ this.setSegment.bind(this) }
 							selectedOption={ this.state.option } />

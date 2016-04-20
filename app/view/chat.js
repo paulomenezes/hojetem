@@ -174,7 +174,7 @@ class Chat extends React.Component {
 						onSubmitEditing={ this.sendMessage.bind(this) }
 						value={ this.state.text } />
 					<TouchableOpacity style={ styles.send } onPress={ this.sendMessage.bind(this) }>
-						<Icon name="android-send" size={20} color="#03a9f4" style={ styles.icon } />
+						<Icon name="android-send" size={20} color="#d6013b" style={ styles.icon } />
 					</TouchableOpacity>
 				</View>
 			</View>
@@ -184,7 +184,7 @@ class Chat extends React.Component {
 
 var styles = StyleSheet.create({
 	type: {
-		backgroundColor: '#03a9f4',
+		backgroundColor: '#d6013b',
 		padding: 5,
 		flexDirection: 'row',
 		position: 'absolute',
@@ -220,7 +220,7 @@ var styles = StyleSheet.create({
 	},
 	chatbox2: {
 		padding: 10,
-		backgroundColor: '#03a9f4',
+		backgroundColor: '#d6013b',
 		borderRadius: 5,
 		margin: 10,
 		marginBottom: 0,

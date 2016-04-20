@@ -87,7 +87,7 @@ var styles = StyleSheet.create({
 	},
 	name: {
 		fontWeight: 'bold',
-		color: '#03a9f4',
+		color: '#d6013b',
 		fontSize: 16
 	},
 	picArea: {

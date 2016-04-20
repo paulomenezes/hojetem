@@ -38,7 +38,7 @@ class Stores extends React.Component {
 
 		user = require('../util/load.user').user[0];
 
-		fetch(Constants.URL + 'stores/' + props.data.Store_Type_id + '/' + Constants.CITY + '/' + props.data.id)
+		fetch(Constants.URL + 'stores/filtro/' + props.options)
 			.then((response) => response.json())
 			.then((stores) => {
 				this.setState({

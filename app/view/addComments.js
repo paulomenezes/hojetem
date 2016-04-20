@@ -102,7 +102,7 @@ class AddComment extends React.Component {
 				    value={this.state.text} />
 
 				<View style={ styles.buttonArea }>
-					<Icon.Button name="ios-paperplane" backgroundColor="#03a9f4" onPress={this.sendComment.bind(this)}>
+					<Icon.Button name="ios-paperplane" backgroundColor="#d6013b" onPress={this.sendComment.bind(this)}>
 						<Text style={ styles.sendButton }>Enviar comentário</Text>
 					</Icon.Button>
 				</View>
