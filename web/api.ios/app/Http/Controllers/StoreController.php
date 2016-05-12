@@ -21,9 +21,26 @@
          */
         public function index($tipo)
         {
-            $users = \App\Models\Store::get();
+            if ($tipo == 'today') {
+                $users = \App\Models\Store::whereDay('event_date', '=', date('d'))
+                                            ->whereMonth('event_date', '=', date('m'))
+                                            ->whereYear('event_date', '=', date('Y'))->get();
 
-            return response()->json($users->toArray());
+                return response()->json($users->toArray());
+            } else if ($tipo == 'week') {
+                $daysAgo = date('Y-m-d', strtotime('-3 days', strtotime(date('Y-m-d'))));
+                $days2 = date('Y-m-d', strtotime('+3 days', strtotime(date('Y-m-d'))));
+
+                $users = \App\Models\Store::whereBetween(DB::raw('date(event_date)'), [$daysAgo, $days2])->get();
+                return response()->json($users->toArray());
+            } else if ($tipo == 'month') {
+                $users = \App\Models\Store::whereMonth('event_date', '=', date('m'))
+                                            ->whereYear('event_date', '=', date('Y'))->get();
+                return response()->json($users->toArray());
+            } else {
+                $users = \App\Models\Store::whereMonth('event_date', '>', date('m'))->get();
+                return response()->json($users->toArray());
+            }
         }
 
         public function get($id)

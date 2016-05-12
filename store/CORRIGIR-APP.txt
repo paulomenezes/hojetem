@@ -1,0 +1,30 @@
+NO APP:
+
+FALTANDO:
+1 - ao clicar no evento: espaço para descrição do evento, abaixo do nome do evento, e acima do endereço (disponibilizar um espaço ilimitado para descrição do evento)
+2 - na lista de eventos: faltando um espaço pra mostrar a data do evento, de preferencia coloca a data / horário
+
+CORRIGIR:
+1 - nos numeros para contato, só ta mostrando o primeiro, mesmo adicionando mais de um numero lá no site
+3 - check-in não funciona, corrigir função para aparecer o check-in no face
+4 - função compartilhar com os amigos não funciona
+5 - deixar os nomes na lista "ocultos" só mostrar quando voce clicar lá na opção "nome na lista"
+
+BUGS ENCONTRADOS:
+1 - ao adicionar nome na lista, o app fecha algumas vezes
+2 - fica aparecendo a mensagem "houve um error ao se conectar ao servidor"
+3 - todos os eventos já estão mostrando como se houvesse duas pessoas confirmadas
+4 - ao tentar fazer check-in no evento, o app fecha algumas vezes
+
+---------------------------------------------------------------------------------
+NO SITE:
+
+FALTANDO:
+1 - descrição do evento (campo ilimitado)
+2 - ativar opção resumo (mostrar nomes na lista, quantidade de tenho interesse, quantidade de irei, e checkins)
+3 - corrigir a opção pra cadastro do endereço (alinhar o endereço com o mapa da google)
+4 - na hora de cadastrar o evento, a data e a hora do evento ta com o campo "livre" formatar os campos (data: dia/mes/ano e horário 00:00)
+5 - na hora de cadastrar o evento, adicionar dois campos: bairro e cidade (vai servir pros filtros depois)
+6 - criar mais dois emails pra acessar o painel adm: davydson@apphojetem.com e joaovictor@apphojetem.com (mesma senha)
+7 - disponibilizar a opção de escolher a capa das abas (hoje, essa semana, esse mes)
+8 - disponibilizar a opção de escolher qual evento vai ficar no topo de cada aba

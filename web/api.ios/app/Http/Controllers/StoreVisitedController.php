@@ -95,12 +95,8 @@ class StoreVisitedController extends Controller
 
                 return response()->json(['id' => $user->id]);
             } else {
-                if ($idVisitedType == 5) {
-                    $visited[0]->delete();
-                    return response()->json(['removed' => 'removed']);
-                } else {
-                    return response()->json(['failed' => 'failed']);
-                }
+                $visited[0]->delete();
+                return response()->json(['removed' => 'removed']);
             }
         } else if (array_key_exists('idShows', Input::json()->all())) {
             $idShows = Input::json()->all()['idShows'];
