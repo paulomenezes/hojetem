@@ -12,15 +12,15 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="oIf-N2-qXT">
-                    <rect key="frame" x="120" y="87" width="240" height="128"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="oIf-N2-qXT">
+                    <rect key="frame" x="120" y="87" width="240" height="240"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="oIf-N2-qXT" secondAttribute="height" multiplier="15:8" id="2p0-WM-Z8s"/>
                         <constraint firstAttribute="width" secondItem="oIf-N2-qXT" secondAttribute="height" multiplier="15:8" id="uAg-eT-wod"/>
                     </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" red="0.011764705882352941" green="0.66274509803921566" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="oIf-N2-qXT" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="GTD-9R-0Yi"/>
                 <constraint firstItem="oIf-N2-qXT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="120" id="Jiv-71-dRt"/>
@@ -33,6 +33,6 @@
         </view>
     </objects>
     <resources>
-        <image name="logo.png" width="1002" height="457"/>
+        <image name="logo.png" width="700" height="700"/>
     </resources>
 </document>

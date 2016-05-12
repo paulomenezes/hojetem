@@ -47,12 +47,17 @@ class More extends React.Component {
 	}
 
 	logout() {
-		var nav = this.props.nav;
+		var nav = this.props.data.nav;
+		console.log('nav', nav);
 		LoadUser(function (user, userModel) {
+			console.log('user', user);
 			userModel.destroy().then(function () {
+				console.log('destroy');
     			var Login = require('./login');
+    			console.log('destroy 2');
 
     			require('../util/load.user').logout();
+    			console.log('destroy 3');
 
 				nav.resetToRoute({
 					name: 'Achow',
@@ -63,7 +68,7 @@ class More extends React.Component {
 	}
 
 	goFavorite() {
-		this.props.nav.toRoute({
+		this.props.data.nav.toRoute({
 			component: Favorite,
 			name: 'Favoritos',
 			data: this.state.user
@@ -71,7 +76,7 @@ class More extends React.Component {
 	}
 
 	goOrder() {
-		this.props.nav.toRoute({
+		this.props.data.nav.toRoute({
 			component: Order,
 			name: 'Meus Pedidos',
 			data: this.state.user
@@ -79,21 +84,21 @@ class More extends React.Component {
 	}
 
 	goInstitutional() {
-		this.props.nav.toRoute({
+		this.props.data.nav.toRoute({
 			component: Institutional,
 			name: 'Institucional'
 		})
 	}
 
 	goContact() {
-		this.props.nav.toRoute({
+		this.props.data.nav.toRoute({
 			component: Contact,
 			name: 'Fale Conosco'
 		})
 	}
 
 	goSettings() {
-		this.props.nav.toRoute({
+		this.props.data.nav.toRoute({
 			component: Settings,
 			name: 'Configurações',
 			data: this.state.user
@@ -101,7 +106,7 @@ class More extends React.Component {
 	}
 
 	goAbout() {
-		this.props.nav.toRoute({
+		this.props.data.nav.toRoute({
 			component: About,
 			name: 'Sobre'
 		})
@@ -124,46 +129,22 @@ class More extends React.Component {
 
 				<Text style={ styles.name }>{ this.state.user.name + ' ' + this.state.user.lastname }</Text>
 				<View style={ styles.about }>
-					<TouchableOpacity onPress={() => this.goFavorite() }>
-						<View style={ styles.item }>
-							<Icon style={ styles.icon } name="ios-star" color="#4F8EF7" size={ 20 } />
-							<View style={ styles.text }><Text>Favoritos</Text></View>
-						</View>
-					</TouchableOpacity>
-					<TouchableOpacity onPress={() => this.goOrder() }>
-						<View style={ styles.item }>
-							<Icon style={ styles.icon } name="ios-cart" color="#4F8EF7" size={ 20 } />
-							<View style={ styles.text }><Text>Meus Pedidos</Text></View>
-						</View>
-					</TouchableOpacity>
 					<TouchableOpacity onPress={() => this.goSettings() }>
 						<View style={ styles.item }>
-							<Icon style={ styles.icon } name="ios-gear" color="#4F8EF7" size={ 20 } />
-							<View style={ styles.text }><Text>Editar Perfil</Text></View>
-						</View>
-					</TouchableOpacity>
-					<TouchableOpacity onPress={() => this.goInstitutional() }>
-						<View style={ styles.item }>
-							<Icon style={ styles.icon } name="ios-information" color="#4F8EF7" size={ 20 } />
-							<View style={ styles.text }><Text>Institucional</Text></View>
-						</View>
-					</TouchableOpacity>
-					<TouchableOpacity onPress={() => this.goContact() }>
-						<View style={ styles.item }>
-							<Icon style={ styles.icon } name="ios-help" color="#4F8EF7" size={ 20 } />
-							<View style={ styles.text }><Text>Fale Conosco</Text></View>
+							<Icon style={ styles.icon } name="ios-gear" color="#d6013b" size={ 20 } />
+							<View style={ styles.text }><Text style={ styles.tColor }>Editar Perfil</Text></View>
 						</View>
 					</TouchableOpacity>
 					<TouchableOpacity onPress={() => this.goAbout() }>
 						<View style={ styles.item }>
-							<Icon style={ styles.icon } name="code" color="#4F8EF7" size={ 20 } />
-							<View style={ styles.text }><Text>Sobre o aplicativo</Text></View>
+							<Icon style={ styles.icon } name="code" color="#d6013b" size={ 20 } />
+							<View style={ styles.text }><Text style={ styles.tColor }>Sobre o aplicativo</Text></View>
 						</View>
 					</TouchableOpacity>
 					<TouchableOpacity onPress={() => this.logout() }>
 						<View style={ styles.item }>
-							<Icon style={ styles.icon } name="log-out" color="#4F8EF7" size={ 20 } />
-							<View style={ styles.textLast }><Text>Sair</Text></View>
+							<Icon style={ styles.icon } name="log-out" color="#d6013b" size={ 20 } />
+							<View style={ styles.textLast }><Text style={ styles.tColor }>Sair</Text></View>
 						</View>
 					</TouchableOpacity>
 				</View>
@@ -176,6 +157,7 @@ var styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		flexDirection: 'column',
+		backgroundColor: '#383838'
 	},
 	cover: {
 		height: 150,
@@ -207,9 +189,9 @@ var styles = StyleSheet.create({
 		color: '#d6013b'
 	},
 	about: {
-		borderTopColor: '#DDD',
+		borderTopColor: '#424242',
 		borderTopWidth: 1,
-		borderBottomColor: '#DDD',
+		borderBottomColor: '#424242',
 		borderBottomWidth: 1
 	},
 	item: {
@@ -223,7 +205,7 @@ var styles = StyleSheet.create({
 		flex: 1,
 		padding: 10,
 		paddingTop: 12,
-		borderBottomColor: '#DDD',
+		borderBottomColor: '#424242',
 		borderBottomWidth: 1
 	},
 	textLast: {
@@ -231,6 +213,9 @@ var styles = StyleSheet.create({
 		padding: 10,
 		paddingTop: 12,
 	},
+	tColor: {
+		color: '#FFF'
+	}
 });
 
 module.exports = More;

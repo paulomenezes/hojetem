@@ -37,7 +37,7 @@ var viewWidth = Dimensions.get('window').width;
 
 var Alert = require('../components/alert');
 
-var GcmAndroid = require('react-native-gcm-android');
+//var GcmAndroid = require('react-native-gcm-android');
 
 var Token;
 
@@ -79,11 +79,11 @@ class Login extends React.Component {
 	componentDidMount() {
 		var self = this;
 
-		GcmAndroid.addEventListener('register', function(token){
+		/*GcmAndroid.addEventListener('register', function(token){
 			Token = token;
 		});
 
-		GcmAndroid.requestPermissions();
+		GcmAndroid.requestPermissions();*/
 	}
 
 	_getFBCredentials() {
@@ -204,7 +204,7 @@ class Login extends React.Component {
 					</Icon.Button>
 				</View>
 				<View style={ styles.view }>
-					<Icon.Button name="compose" backgroundColor="#d6013b" onPress={this.register.bind(this)}>
+					<Icon.Button name="compose" backgroundColor="#383838" onPress={this.register.bind(this)}>
 						Criar conta
 					</Icon.Button>
 				</View>
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		alignItems: 'center',
-		backgroundColor: '#d6013b',
+		backgroundColor: '#383838',
 	},
 	image: {
 		marginTop: 50,

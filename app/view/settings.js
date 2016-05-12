@@ -187,7 +187,7 @@ class Settings extends React.Component {
 		var image = this.state.change ? this.state.newImage : (this.state.image ? this.state.image.indexOf('http') >= 0 ? this.state.image : Constants.IMAGE + this.state.image : false);
 
 		return (
-			<View style={{ flex: 1 }}>
+			<View style={{ flex: 1, backgroundColor: '#383838' }}>
 				<SmartScrollView>
 					{ image ? 
 					<View style={ styles.profileArea }>
@@ -322,7 +322,7 @@ class Settings extends React.Component {
 var styles = StyleSheet.create({
 	group: {
 		borderBottomWidth: 1,
-		borderBottomColor: '#ddd',
+		borderBottomColor: '#424242',
 		padding: 10
 	},
 	header: {
@@ -345,14 +345,16 @@ var styles = StyleSheet.create({
 		borderWidth: 1,
 		borderRadius: 5,
 		padding: 5,
-		fontSize: 12
+		fontSize: 12,
+		color: '#FFF'
 	},
 	textArea: {
 		height: 100, 
 		borderColor: 'gray', 
 		borderWidth: 1,
 		borderRadius: 5,
-		padding: 5
+		padding: 5,
+		color: '#FFF'
 	},
 	item: {
 		flex: 1,
@@ -367,7 +369,7 @@ var styles = StyleSheet.create({
 	text: {
 		flex: 1,
 		padding: 5,
-		borderBottomColor: '#DDD',
+		borderBottomColor: '#424242',
 		borderBottomWidth: 1
 	},
 	name: {

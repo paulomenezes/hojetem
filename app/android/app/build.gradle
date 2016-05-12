@@ -48,7 +48,7 @@ apply plugin: "com.android.application"
  */
 
 apply from: "react.gradle"
-apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 23
@@ -58,8 +58,8 @@ android {
         applicationId "com.app.hojetem"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 1
-        versionName "1"
+        versionCode 5
+        versionName "2"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -92,7 +92,7 @@ dependencies {
     compile project(':react-native-image-picker')
     compile project(':reactdate')
     compile project(':RNSimpleAlertDialogModule')
-    compile 'com.google.android.gms:play-services-gcm:8.1.0'
-    compile project(':RNGcmAndroid')
+    //compile 'com.google.android.gms:play-services-gcm:8.1.0'
+    //compile project(':RNGcmAndroid')
     compile project(':react-native-system-notification')
 }

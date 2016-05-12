@@ -2,16 +2,16 @@
   "project_info": {
     "project_id": "achow-7dc9b",
     "project_number": "658429428430",
-    "name": "Achow"
+    "name": "Hoje Tem"
   },
   "client": [
     {
       "client_info": {
         "mobilesdk_app_id": "1:658429428430:android:7d15dea97d85cf30",
-        "client_id": "android:com.paulo.achow",
+        "client_id": "android:com.app.hojetem",
         "client_type": 1,
         "android_client_info": {
-          "package_name": "com.paulo.achow"
+          "package_name": "com.app.hojetem"
         }
       },
       "oauth_client": [],

@@ -38,7 +38,15 @@ class Stores extends React.Component {
 
 		user = require('../util/load.user').user[0];
 
-		fetch(Constants.URL + 'stores/filtro/' + props.options)
+		this.load(props.options);
+	}
+
+	componentWillReceiveProps(props) {
+		this.load(props.options);
+	}
+
+	load(type) {
+		fetch(Constants.URL + 'stores/filtro/' + type)
 			.then((response) => response.json())
 			.then((stores) => {
 				this.setState({
@@ -51,15 +59,10 @@ class Stores extends React.Component {
 	}
 
 	onClick(row) {
-		this.props.toRoute({
+		this.props.nav.toRoute({
 			name: decodeURIComponent(escape(row.name)),
 			component: Store,
-			data: row,
-			rightCorner: Like,
-			rightCornerProps: {
-				user: user,
-				store: row
-			}
+			data: row
 		});
 	}
 
@@ -67,20 +70,24 @@ class Stores extends React.Component {
 		var image = row.icon ? { uri: Constants.IMAGE + 'images/store/' + row.icon } : require('../images/logoSquare.png');
 		return (<TouchableOpacity style={ styles.row } onPress={() => this.onClick(row) }>
 					<View style={ styles.container }>
-						<Image style={ styles.image } source={image} />
 						<View style={ styles.texts }>
 							<Text style={ styles.title }>{ decodeURIComponent(escape(row.name)) }</Text>
 							<View style={ styles.about }>
 								<View style={ styles.item }>
-									<Icon style={ styles.icon } name="map" color="#4F8EF7" size={ 20 } />
-									<View style={ styles.text }><Text style={ styles.size }>{ decodeURIComponent(escape(row.address)) }</Text></View>
+									<Icon style={ styles.icon } name="map" color="#d6013b" size={ 20 } />
+									<View style={ styles.text }><Text style={ styles.size }>{ row.address }</Text></View>
 								</View>
 								<View style={ styles.item }>
-									<Icon style={ styles.icon } name="ios-telephone" color="#4F8EF7" size={ 20 } />
-									<View style={ styles.text }><Text style={ styles.size }>{ decodeURIComponent(escape(row.phone1)) }</Text></View>
+									<Icon style={ styles.icon } name="android-calendar" color="#d6013b" size={ 20 } />
+									<View style={ styles.text }><Text style={ styles.size }>{ row.event_date.substr(8, 2) + '/' + row.event_date.substr(5, 2) + '/' + row.event_date.substr(0, 4) }</Text></View>
+								</View>
+								<View style={ styles.item }>
+									<Icon style={ styles.icon } name="ios-clock-outline" color="#d6013b" size={ 20 } />
+									<View style={ styles.text }><Text style={ styles.size }>{ row.event_time.substr(0, 5) }</Text></View>
 								</View>
 							</View>
 						</View>
+						<Image style={ styles.image } source={image} />
 					</View>
 				</TouchableOpacity>);
 	}
@@ -97,9 +104,9 @@ class Stores extends React.Component {
 var styles = StyleSheet.create({
 	row: {
 		marginTop: 10,
-		borderTopColor: '#ddd',
+		borderTopColor: '#424242',
 		borderTopWidth: 1,
-		borderBottomColor: '#ddd',
+		borderBottomColor: '#424242',
 		borderBottomWidth: 1,
 	},
 	container: {
@@ -116,7 +123,9 @@ var styles = StyleSheet.create({
 	},
 	title: {
 		fontSize: 18,
-		marginBottom: 5
+		fontWeight: 'bold',
+		marginBottom: 5,
+		color: '#d6013b'
 	},
 	item: {
 		flex: 1,
@@ -133,7 +142,8 @@ var styles = StyleSheet.create({
 	},
 	size: {
 		marginTop: 3,
-		fontSize: 12
+		fontSize: 12,
+		color: '#FFF'
 	}
 });
 

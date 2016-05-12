@@ -61,24 +61,18 @@ class Store extends React.Component {
 
 		this.state = {
 			store: props.data,
-			likes: 0,
-			checkins: 0,
-			dataSource: new ListView.DataSource({
-				rowHasChanged: (row1, row2) => row1 !== row2
-			}),
+			irei: 0,
+			interesse: 0,
 			dataSourceImages: new ViewPager.DataSource({
 				rowHasChanged: (row1, row2) => row1 !== row2
 			}).cloneWithPages(items)
 		};
 
 		this.loadUser();
-		this.loadCheckins();
-		this.loadComments();
 	}
 
 	componentWillReceiveProps() {
-		this.loadComments();
-		this.loadCheckins();
+		this.loadUser();
 	}
 
 	loadUser() {
@@ -88,10 +82,23 @@ class Store extends React.Component {
 				.then((response) => response.json())
 				.then((likes) => {
 					this.setState({
-						likes: likes.visited
+						irei: likes.visited
 					})
 				})
 				.catch((error) => {
+					console.log(error);
+					Alert('Error', 'Houve um error ao se conectar ao servidor');
+				});
+
+		fetch(Constants.URL + "store_visited/" + user['id'] + "/2/" + this.props.data.id)
+				.then((response) => response.json())
+				.then((likes) => {
+					this.setState({
+						interesse: likes.visited
+					})
+				})
+				.catch((error) => {
+					console.log(error);
 					Alert('Error', 'Houve um error ao se conectar ao servidor');
 				});
 	}
@@ -109,27 +116,6 @@ class Store extends React.Component {
 				});
 	}
 
-	loadCheckins() {
-		fetch(Constants.URL + "stores/" + this.props.data.id + "/checkins")
-				.then((response) => response.json())
-				.then((likes) => {
-					var _checkins = [];
-
-					for (var i = 0; i < likes.length; i++) {
-						if (likes[i].CheckinImage.length > 0) {
-							_checkins.push(likes[i]);
-						}
-					};
-
-					this.setState({
-						checkins: _checkins
-					})
-				})
-				.catch((error) => {
-					Alert('Error', 'Houve um error ao se conectar ao servidor');
-				});
-	}
-
 	renderComments(comment) {
 		var image = comment.image.indexOf('http') >= 0 ? comment.image : Constants.IMAGE + comment.image;
 		
@@ -138,7 +124,7 @@ class Store extends React.Component {
 				<Image style={ styles.image } source={{ uri: image }} />
 				<View style={ styles.text }>
 					<Text style={ styles.name }>{ comment.name + ' ' + comment.lastname }</Text>
-					<Text>{ comment.message }</Text>
+					<Text style={{ color: '#FFF' }}>{ comment.message }</Text>
 				</View>
 			</TouchableOpacity>
 		)
@@ -174,7 +160,7 @@ class Store extends React.Component {
 		var commentsSize = viewHeight - 450;
 
 		return (
-			<View style={{ flex: 1 }}>
+			<View style={ styles.container }>
 				<ScrollView>
 					<View style={{ height:160 }}>
 						<ViewPager
@@ -184,54 +170,62 @@ class Store extends React.Component {
 							autoPlay={true}/>
 					</View>
 					<View>
-						<Text style={ styles.title }>{ decodeURIComponent(escape(this.props.data.name)) }</Text>
+						<Text style={ styles.title }>{ this.props.data.name }</Text>
 						<View style={ styles.about }>
+							<View style={ styles.item }>
+								<Icon style={ styles.icon } name="document-text" color="#d6013b" size={ 20 } />
+								<View style={ styles.text }><Text style={ styles.textColor }>{ this.props.data.description }</Text></View>
+							</View>
+							<View style={ styles.item }>
+								<Icon style={ styles.icon } name="android-calendar" color="#d6013b" size={ 20 } />
+								<View style={ styles.text }><Text style={ styles.textColor }>{ this.props.data.event_date.substr(8, 2) + '/' + this.props.data.event_date.substr(5, 2) + '/' + this.props.data.event_date.substr(0, 4) }</Text></View>
+							</View>
+							<View style={ styles.item }>
+								<Icon style={ styles.icon } name="ios-clock-outline" color="#d6013b" size={ 20 } />
+								<View style={ styles.text }><Text style={ styles.textColor }>{ this.props.data.event_time.substr(0, 5) }</Text></View>
+							</View>
 							<TouchableOpacity style={ styles.item } onPress={ this.goMaps.bind(this) }>
-								<Icon style={ styles.icon } name="map" color="#4F8EF7" size={ 20 } />
-								<View style={ styles.text }><Text>{ decodeURIComponent(escape(this.props.data.address)) }</Text></View>
-							</TouchableOpacity>
-							<TouchableOpacity style={ styles.item } onPress={ this.goPhone.bind(this) }>
-								<Icon style={ styles.icon } name="ios-telephone" color="#4F8EF7" size={ 20 } />
-								<View style={ styles.text }><Text>{ decodeURIComponent(escape(this.props.data.phone1)) }</Text></View>
-							</TouchableOpacity>
-							<TouchableOpacity style={ styles.item } onPress={ this.goPhotos.bind(this) }>
-								<Icon style={ styles.icon } name="ios-camera" color="#4F8EF7" size={ 20 } />
-								<View style={ styles.text }><Text>{ this.state.checkins.length } fotos</Text></View>
+								<Icon style={ styles.icon } name="map" color="#d6013b" size={ 20 } />
+								<View style={ styles.text }><Text style={ styles.textColor }>{ this.props.data.address }</Text></View>
 							</TouchableOpacity>
 							<View style={ styles.item }>
-								<Icon style={ styles.icon } name="thumbsup" color="#4F8EF7" size={ 20 } />
-								<View style={ styles.textLast }><Text>{ this.state.likes } avaliações</Text></View>
+								<Icon style={ styles.icon } name="ios-telephone" color="#d6013b" size={ 20 } />
+								<View style={ styles.text }>
+									<Text style={ styles.textColor }>
+										{ this.props.data.phone1 + ' ' + 
+										  (this.props.data.phone2 ? '/ ' + this.props.data.phone2 : '') + ' ' +
+										  (this.props.data.phone3 ? '/ ' + this.props.data.phone3 : '') }
+									</Text>
+								</View>
 							</View>
-						</View>
-
-						<View style={ styles.about2 }>
 							<View style={ styles.item }>
-								<Icon style={ styles.icon } name="chatbox" color="#4F8EF7" size={ 20 } />
-								<View style={ styles.text }><Text>Comentários</Text></View>
+								<Icon style={ styles.icon } name="thumbsup" color="#d6013b" size={ 20 } />
+								<View style={ styles.text }><Text style={ styles.textColor }>{ this.state.irei } confirmados</Text></View>
 							</View>
-							<ListView 
-								style={{ height: 200 }}
-								dataSource={ this.state.dataSource }
-								renderRow={ this.renderComments.bind(this) } />
+							<View style={ styles.item }>
+								<Icon style={ styles.icon } name="star" color="#d6013b" size={ 20 } />
+								<View style={ styles.text }><Text style={ styles.textColor }>{ this.state.interesse } tem interesse</Text></View>
+							</View>
+							<TouchableOpacity style={ styles.item } onPress={ this.goComments.bind(this) }>
+								<Icon style={ styles.icon } name="chatbox" color="#d6013b" size={ 20 } />
+								<View style={ styles.textLast }><Text style={ styles.textColor }>Nomes na lista</Text></View>
+							</TouchableOpacity>
 						</View>
 					</View>
 				</ScrollView>
 
 				<ActionButton buttonColor="rgba(231,76,60,1)" onPress={() => {}}>
-					<ActionButton.Item buttonColor='#d6013b' title="Visualizar Cardápio" onPress={ this.goMenu.bind(this) }>
-		            	<Icon name="android-restaurant" style={styles.actionButtonIcon} />
-		          	</ActionButton.Item>
 		          	<ActionButton.Item buttonColor='#d6013b' title="Estou Aqui" onPress={ this.goCheckin.bind(this) }>
 		            	<Icon name="ios-location" style={styles.actionButtonIcon} />
 		          	</ActionButton.Item>
-		          	<ActionButton.Item buttonColor='#d6013b' title="Adicionar aos Favoritos" onPress={ this.addFav.bind(this) }>
+		          	<ActionButton.Item buttonColor='#d6013b' title="Irei" onPress={ this.irei.bind(this) }>
+		            	<Icon name="thumbsup" style={styles.actionButtonIcon} />
+		          	</ActionButton.Item>
+		          	<ActionButton.Item buttonColor='#d6013b' title="Tenho interesse" onPress={ this.tenhoInteresse.bind(this) }>
 		            	<Icon name="star" style={styles.actionButtonIcon} />
 		          	</ActionButton.Item>
-		          	<ActionButton.Item buttonColor='#d6013b' title="Adicionar comentário" onPress={ this.goComments.bind(this) }>
+		          	<ActionButton.Item buttonColor='#d6013b' title="Adicionar nome na lista" onPress={ this.goComments.bind(this) }>
 		            	<Icon name="chatbox" style={styles.actionButtonIcon} />
-		          	</ActionButton.Item>
-		          	<ActionButton.Item buttonColor='#d6013b' title="Marcar Encontro" onPress={ this.goMeeting.bind(this) }>
-		            	<Icon name="ios-people" style={styles.actionButtonIcon} />
 		          	</ActionButton.Item>
 		        </ActionButton>
 			</View>
@@ -240,7 +234,7 @@ class Store extends React.Component {
 
 	goComments() {
 		this.props.toRoute({ 
-			name: 'Enviar comentário', 
+			name: 'Adicionar nome na lista', 
 			component: AddComments, 
 			rightCorner: NoneButton,
 			data: {
@@ -294,23 +288,50 @@ class Store extends React.Component {
 		})
 	}
 
-	addFav() {
+	tenhoInteresse() {
 		fetch(Constants.URL + 'store_visited', {
 			method: "POST",
     		body: JSON.stringify({
     			idAccount: user.id,
     			idStore: this.props.data.id,
-    			idVisitedType: 5
+    			idVisitedType: 2
     		}),
     		headers: Constants.HEADERS
 		})
 		.then((response) => response.json())
 		.then((fav) => {
 			if (fav.removed) {
-				Alert('Favoritos', 'Esse estabelecimento foi removido dos favoritos!');
+				Alert('Interesse', 'Você cancelou o interesse nesse evento.');	
 			} else {
-				Alert('Favoritos', 'Adicionado aos favoritos!');	
+				Alert('Interesse', 'Você tem interesse nesse evento.');
 			}
+
+			this.loadUser();
+		})
+		.catch((error) => {
+			Alert('Error', 'Houve um error ao se conectar ao servidor');
+    	});
+	}
+
+	irei() {
+		fetch(Constants.URL + 'store_visited', {
+			method: "POST",
+    		body: JSON.stringify({
+    			idAccount: user.id,
+    			idStore: this.props.data.id,
+    			idVisitedType: 1
+    		}),
+    		headers: Constants.HEADERS
+		})
+		.then((response) => response.json())
+		.then((fav) => {
+			if (fav.removed) {
+				Alert('Interesse', 'Você cancelou a presença nesse evento.');
+			} else {
+				Alert('Interesse', 'Você confirmou presença nesse evento.');	
+			}
+
+			this.loadUser();
 		})
 		.catch((error) => {
 			Alert('Error', 'Houve um error ao se conectar ao servidor');
@@ -319,6 +340,10 @@ class Store extends React.Component {
 }
 
 var styles = StyleSheet.create({
+	container: { 
+		flex: 1,
+		backgroundColor: '#383838'
+	},
 	slide: {
 		flex: 1,
 		backgroundColor: 'transparent',
@@ -327,19 +352,20 @@ var styles = StyleSheet.create({
 		fontSize: 20,
 		fontWeight: 'bold',
 		textAlign: 'center',
-		margin: 10
+		margin: 10,
+		color: '#FFF'
 	},
 	about: {
-		borderTopColor: '#DDD',
+		borderTopColor: '#424242',
 		borderTopWidth: 1,
-		borderBottomColor: '#DDD',
+		borderBottomColor: '#424242',
 		borderBottomWidth: 1
 	},
 	about2: {
 		marginTop: 10,
-		borderTopColor: '#DDD',
+		borderTopColor: '#424242',
 		borderTopWidth: 1,
-		borderBottomColor: '#DDD',
+		borderBottomColor: '#424242',
 		borderBottomWidth: 1
 	},
 	item: {
@@ -359,13 +385,16 @@ var styles = StyleSheet.create({
 		flex: 1,
 		padding: 10,
 		paddingTop: 12,
-		borderBottomColor: '#DDD',
+		borderBottomColor: '#424242',
 		borderBottomWidth: 1
 	},
 	textLast: {
 		flex: 1,
 		padding: 10,
 		paddingTop: 12,
+	},
+	textColor: {
+		color: '#FFF'
 	},
 	actionButtonIcon: {
 	    fontSize: 20,

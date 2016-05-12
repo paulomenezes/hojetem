@@ -1,6 +1,6 @@
 module.exports = {
 	URL: "http://apphojetem.com/api.ios/public/index.php/",
-	IMAGE: "http://apphojetem.com.br/",
+	IMAGE: "http://apphojetem.com/",
 	CITY: "Recife",
 	HEADERS: {
 		'Accept': 'application/json',

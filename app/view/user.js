@@ -142,7 +142,7 @@ class User extends Component {
 						<Text style={ styles.storeTitle }>{ decodeURIComponent(escape(row.name)) }</Text>
 						<View>
 							<View style={ styles.storeItem }>
-								<Icon style={ styles.storeIcon } name="compose" color="#4F8EF7" size={ 20 } />
+								<Icon style={ styles.storeIcon } name="compose" color="#d6013b" size={ 20 } />
 								<View style={ styles.storeText }><Text style={ styles.size }>{ row.message }</Text></View>
 							</View>
 						</View>
@@ -238,7 +238,7 @@ class User extends Component {
 					<View style={ styles.segmented }>
 						<SegmentedControls
 							tint="#d6013b"
-							options={[ 'Check-ins', 'Amigos', 'Fotos' ]}
+							options={[ 'Check-ins', 'Amigos' ]}
 							onSelection={ this.setSegment.bind(this) }
 							selectedOption={ this.state.option } />
 					</View>
@@ -255,13 +255,6 @@ class User extends Component {
 						style={{ height: listSize }}
 						dataSource={ this.state.dataSourceFriend }
 						renderRow={ this.renderFriends.bind(this) } />
-					: <View /> }
-
-					{ this.state.option == 'Fotos' ? 
-					<ListView 
-						style={{ height: listSize }}
-						dataSource={ this.state.dataSourceCheckins }
-						renderRow={ this.renderPhotos.bind(this) } />
 					: <View /> }
 				</View>
 
@@ -349,6 +342,7 @@ var styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		flexDirection: 'column',
+		backgroundColor: '#383838'
 	},
 	cover: {
 		height: 150,
@@ -412,12 +406,11 @@ var styles = StyleSheet.create({
 	nameFriend: {
 		fontSize: 16
 	},
-
 	storeRow: {
 		marginTop: 10,
-		borderTopColor: '#ddd',
+		borderTopColor: '#424242',
 		borderTopWidth: 1,
-		borderBottomColor: '#ddd',
+		borderBottomColor: '#424242',
 		borderBottomWidth: 1,
 	},
 	storeContainer: {
@@ -434,7 +427,8 @@ var styles = StyleSheet.create({
 	},
 	storeTitle: {
 		fontSize: 18,
-		marginBottom: 5
+		marginBottom: 5,
+		color: '#d6013b'
 	},
 	storeItem: {
 		flex: 1,
@@ -451,7 +445,8 @@ var styles = StyleSheet.create({
 	},
 	storeSize: {
 		marginTop: 3,
-		fontSize: 12
+		fontSize: 12,
+		color: '#FFF'
 	},
 	actionButtonIcon: {
 	    fontSize: 20,
@@ -465,6 +460,9 @@ var styles = StyleSheet.create({
 	pic: {
 		flex: 1,
 		height: 300
+	},
+	size: {
+		color: '#FFF'
 	}
 });
 

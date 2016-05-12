@@ -133,7 +133,7 @@ class Checkin extends React.Component {
 		var image = this.state.change ? this.state.newImage : false;
 
 		return (
-			<View style={{ flex: 1 }}>
+			<View style={{ flex: 1, backgroundColor: '#383838' }}>
 				<Text style={ styles.title }>O que você está fazendo?</Text>
 
 				<TextInput
@@ -143,23 +143,11 @@ class Checkin extends React.Component {
 				    onChangeText={(text) => this.setState({text})}
 				    value={this.state.text} />
 
-				<View style={{ margin: 10, marginTop: 0 }}>
-					<Icon.Button name="ios-camera" backgroundColor="#d6013b" onPress={this.changeImage.bind(this)}>
-						<Text style={{ color: '#fff' }}>Selecionar imagem</Text>
-					</Icon.Button>
-				</View>
-
 				<View style={ styles.buttonArea }>
 					<Icon.Button name="android-share-alt" backgroundColor="#d6013b" onPress={this.sendMeeting.bind(this)}>
 						<Text style={ styles.sendButton }>Compartilhar com seus amigos</Text>
 					</Icon.Button>
 				</View>
-
-				{ image ? 
-				<View style={ styles.profileArea }>
-					<Image style={ styles.image } source={{ uri: image }} />
-				</View>
-				: <View /> }
 			</View>
 		);
 	}
@@ -168,7 +156,8 @@ class Checkin extends React.Component {
 var styles = StyleSheet.create({
 	title: {
 		fontSize: 18,
-		margin: 10
+		margin: 10,
+		color: '#FFF'
 	},
 	textArea: {
 		height: 100, 
@@ -177,7 +166,8 @@ var styles = StyleSheet.create({
 		borderRadius: 2,
 		margin: 10,
 		marginTop: 0,
-		padding: 5
+		padding: 5,
+		color: '#FFF'
 	},
 	buttonArea: {
 		margin: 10,

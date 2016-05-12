@@ -13,6 +13,7 @@ const {
 var Icon = require('react-native-vector-icons/Ionicons');
 
 var SearchPage = require('../view/search');
+var More = require('../view/more');
 var NoneButton = require('./noneButton');
 
 var styles = StyleSheet.create({
@@ -26,17 +27,32 @@ var styles = StyleSheet.create({
 
 var Search = React.createClass({
 	openSearch() {
-		this.props.toRoute({
+		/*this.props.toRoute({
 			name: 'Busca',
 			component: SearchPage,
 			rightCorner: NoneButton
+		});*/
+	},
+	openUser() {
+		this.props.toRoute({
+			name: 'Seu perfil',
+			component: More,
+			rightCorner: NoneButton,
+			data: { 
+				nav: this.props 
+			}
 		});
 	},
 	render() {
 		return (
-			<TouchableOpacity onPress={this.openSearch}>
-				<Icon name="ios-search" color="#fff" size={25} style={styles.backButton} />
-			</TouchableOpacity>
+			<View style={{ flexDirection: 'row', marginTop: 4 }}>
+				<TouchableOpacity onPress={this.openSearch}>
+					<Icon name="ios-settings" color="#fff" size={25} style={styles.backButton} />
+				</TouchableOpacity>
+				<TouchableOpacity onPress={this.openUser}>
+					<Icon name="person" color="#fff" size={25} style={styles.backButton} />
+				</TouchableOpacity>
+			</View>
 		)
 	}
 });

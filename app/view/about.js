@@ -28,9 +28,6 @@ class About extends React.Component {
 			<View style={styles.container}>
 				<Image style={ styles.image } source={ require('../images/logo.png') } />
 
-				<Text style={ styles.text }>Criado por Saulo Henrique Candido</Text>
-				<Text style={ styles.text2 }>Contato: contato@achow.com.br</Text>
-
 				<Text style={ styles.text }>Desenvolvido por Paulo Menezes</Text>
 				<Text style={ styles.text }>Contato: paulo.hgmenezes@gmail.com</Text>
 			</View>
@@ -42,13 +39,13 @@ var styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		alignItems: 'center',
-		backgroundColor: '#d6013b',
+		backgroundColor: '#383838',
 	},
 	image: {
 		marginTop: 50,
 		marginBottom: 80,
-		width: 300,
-		height: 137,
+		width: 150,
+		height: 150,
 		resizeMode: "stretch"
 	},
 	text: {

@@ -23,7 +23,7 @@ import me.nucleartux.date.ReactDatePackage;
 
 import com.burnweb.rnsimplealertdialog.RNSimpleAlertDialogPackage;
 
-import com.oney.gcm.GcmPackage;
+//import com.oney.gcm.GcmPackage;
 import io.neson.react.notification.NotificationPackage;
 
 public class MainActivity extends Activity implements DefaultHardwareBackBtnHandler {
@@ -55,7 +55,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
                 .addPackage(new VectorIconsPackage())
                 .addPackage(new ReactDatePackage(this))
                 .addPackage(new RNSimpleAlertDialogPackage(this))
-                .addPackage(new GcmPackage(this))
+                //.addPackage(new GcmPackage(this))
                 .addPackage(new NotificationPackage(this))
                 .addPackage(mSocialAuthPackage)
                 .addPackage(mImagePicker)

@@ -34,7 +34,7 @@ class HojeTem extends React.Component {
 
 var styles = StyleSheet.create({
 	header: {
-		backgroundColor: '#d6013b'
+		backgroundColor: '#424242'
 	}
 });
 

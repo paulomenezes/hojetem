@@ -14,6 +14,7 @@ var {
 	ListView
 } = React;
 
+/*
 var GcmAndroid = require('react-native-gcm-android');
 import Notification from 'react-native-system-notification';
 
@@ -31,7 +32,7 @@ if (GcmAndroid.launchNotification) {
 	});
 
 	GcmAndroid.stopService();
-} else {
+} else {*/
 
 	var Drawer = require('react-native-drawer');
 
@@ -41,8 +42,8 @@ if (GcmAndroid.launchNotification) {
 
 	var Home = require('./home');
 	var Stores = require('./stores');
-	var More = require('./more');
-	var Login = require('./login');
+	//var More = require('./more');
+	//var Login = require('./login');
 
 	var Constants = require('../constants');
 
@@ -85,7 +86,7 @@ if (GcmAndroid.launchNotification) {
 		componentDidMount() {
 			var self = this;
 
-			GcmAndroid.addEventListener('notification', function(notification){
+			/*GcmAndroid.addEventListener('notification', function(notification){
 				if (!GcmAndroid.isInForeground) {
 					Notification.create({
 						subject: notification.data.title,
@@ -116,10 +117,10 @@ if (GcmAndroid.launchNotification) {
 					self.setState({
 						selectedTab: 'notifications'
 					})
-				}*/
+				}
 			});
 
-			GcmAndroid.requestPermissions();
+			GcmAndroid.requestPermissions();*/
 		}
 
 		tabClick(option) {
@@ -144,6 +145,8 @@ if (GcmAndroid.launchNotification) {
 		render() {
 			var iconSize = viewWidth / 5;
 
+			console.log(this.state.selectedTab);
+
 			var page = <View />;
 			if (this.state.selectedTab == 'home') 
 				page = <ListView dataSource={ this.state.dataSource } renderRow={ this.renderCategory.bind(this) } />;
@@ -152,9 +155,11 @@ if (GcmAndroid.launchNotification) {
 			else if (this.state.selectedTab == 'week')
 				page = <Stores nav={ this.props } options='week' />; 
 			else if (this.state.selectedTab == 'month')
-				page = <Stores nav={ this.props } options='month' />; 
-			else if (this.state.selectedTab == 'user')
-				page = <More nav={ this.props } user={ this.state.user } />; 
+				page = <Stores nav={ this.props } options='month' />;
+			else if (this.state.selectedTab == 'more')
+				page = <Stores nav={ this.props } options='more' />; 
+			//else if (this.state.selectedTab == 'user')
+			//	page = <More nav={ this.props } user={ this.state.user } />; 
 
 			return (
 				<View style={ styles.container }>
@@ -165,43 +170,53 @@ if (GcmAndroid.launchNotification) {
 					<View style={ styles.tabBar }>
 						<TouchableOpacity onPress={() => this.tabClick('home') } style={[ styles.tabBarItem, { width: iconSize } ]}>
 							{ this.state.selectedTab == 'home' ? 
-							  <Icon name='home' size={30} color="#000" />
-							: <Icon name='home' size={30} color="#929292" /> }
+							  <Icon name='home' size={30} color="#FFF" />
+							: <Icon name='home' size={30} color="#CCC" /> }
 							<Text style={[ styles.text, this.state.selectedTab != 'home' && styles.inactive ]}>Inicio</Text>
 						</TouchableOpacity>
 						<TouchableOpacity onPress={() => this.tabClick('today') } style={[ styles.tabBarItem, { width: iconSize } ]}>
 							{ this.state.selectedTab == 'today' ? 
-							  <Icon name='view-day' size={30} color="#000" />
-							: <Icon name='view-day' size={30} color="#929292" /> }
+							  <Icon name='view-day' size={30} color="#FFF" />
+							: <Icon name='view-day' size={30} color="#CCC" /> }
 							<Text style={[ styles.text, this.state.selectedTab != 'today' && styles.inactive ]}>Hoje</Text>
 						</TouchableOpacity>
 						<TouchableOpacity onPress={() => this.tabClick('week') } style={[ styles.tabBarItem, { width: iconSize } ]}>
 							{ this.state.selectedTab == 'week' ? 
-							  <Icon name='view-week' size={30} color="#000" />
-							: <Icon name='view-week' size={30} color="#929292" /> }
+							  <Icon name='view-week' size={30} color="#FFF" />
+							: <Icon name='view-week' size={30} color="#CCC" /> }
 							<Text style={[ styles.text, this.state.selectedTab != 'week' && styles.inactive ]}>Essa Semana</Text>
 						</TouchableOpacity>
 						<TouchableOpacity onPress={() => this.tabClick('month') } style={[ styles.tabBarItem, { width: iconSize } ]}>
 							{ this.state.selectedTab == 'month' ? 
-							  <Icon name='view-module' size={30} color="#000" />
-							: <Icon name='view-module' size={30} color="#929292" /> }
+							  <Icon name='view-module' size={30} color="#FFF" />
+							: <Icon name='view-module' size={30} color="#CCC" /> }
 							<Text style={[ styles.text, this.state.selectedTab != 'month' && styles.inactive ]}>Esse Mês</Text>
 						</TouchableOpacity>
-						<TouchableOpacity onPress={() => this.tabClick('user') } style={[ styles.tabBarItem, { width: iconSize } ]}>
-							{ this.state.selectedTab == 'user' ? 
-							  <Icon name='person' size={30} color="#000" />
-							: <Icon name='person' size={30} color="#929292" /> }
-							<Text style={[ styles.text, this.state.selectedTab != 'user' && styles.inactive ]}>Meu Perfil</Text>
+						<TouchableOpacity onPress={() => this.tabClick('more') } style={[ styles.tabBarItem, { width: iconSize } ]}>
+							{ this.state.selectedTab == 'more' ? 
+							  <Icon name='date-range' size={30} color="#FFF" />
+							: <Icon name='date-range' size={30} color="#CCC" /> }
+							<Text style={[ styles.text, this.state.selectedTab != 'more' && styles.inactive ]}>Mais</Text>
 						</TouchableOpacity>
 					</View>
 				</View>
 			);
+
+			/*
+			<TouchableOpacity onPress={() => this.tabClick('user') } style={[ styles.tabBarItem, { width: iconSize } ]}>
+				{ this.state.selectedTab == 'user' ? 
+				  <Icon name='person' size={30} color="#FFF" />
+				: <Icon name='person' size={30} color="#CCC" /> }
+				<Text style={[ styles.text, this.state.selectedTab != 'user' && styles.inactive ]}>Meu Perfil</Text>
+			</TouchableOpacity>
+			*/
 		}
 	}
 
 	var styles = StyleSheet.create({
 		container: {
-			flex: 1
+			flex: 1,
+			backgroundColor: '#383838'
 		},
 		content: {
 			flex: 1,
@@ -210,7 +225,7 @@ if (GcmAndroid.launchNotification) {
 	  	tabBar: {
 	  		flex: 1,
 	  		flexDirection: 'row',
-	  		backgroundColor: '#F6F6F8',
+	  		backgroundColor: '#424242',
 	  		position: 'absolute',
 	  		bottom: 0
 	  	},
@@ -221,10 +236,11 @@ if (GcmAndroid.launchNotification) {
 	  	},
 	  	text: {
 	  		fontSize: 11,
-	  		marginTop: 4
+	  		marginTop: 4,
+	  		color: '#FFF'
 	  	},
 	  	inactive: {
-	  		color: '#929292'
+	  		color: '#CCC'
 	  	},
 	  	press: {
 			marginBottom: 2
@@ -248,4 +264,4 @@ if (GcmAndroid.launchNotification) {
 	});
 
 	module.exports = Main;
-}
+//}
