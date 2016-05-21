@@ -108,7 +108,7 @@ class LoginEmail extends React.Component {
 								type:       'text'
 							}}
 							keyboardType='email-address'
-							placeholder="E-mail"
+							placeholder="E-mail ou Usuário"
 							autoFocus={ true }
 						    style={ styles.textArea }
 						    onChangeText={(text) => this.setState({email: text})}

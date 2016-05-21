@@ -58,8 +58,8 @@ class Register extends React.Component {
 		super(props);
 		
 		this.state = {
-			gender: 'Masculino',
-			options: 'Masculino',
+			gender: '',
+			options: '',
 			_return: "0",
 			name: "",
 			lastname: "",
@@ -139,7 +139,7 @@ class Register extends React.Component {
 
 					<View style={ styles.group }>
 						<TextInput
-							placeholder="E-mail"
+							placeholder="Usuário"
 							smartScrollOptions={{
 								moveToNext: true,
 								type:       'text'
@@ -207,17 +207,13 @@ class Register extends React.Component {
 	}
 
 	register() {
-		if (this.state.name.length == 0) {
-			Alert('Error', 'O campo nome é obrigatório.');
-		} else if (this.state.lastname.length == 0) {
-			Alert('Error', 'O campo sobrenome é obrigatório.');
-		} else if (this.state.email.length == 0) {
-			Alert('Error', 'O campo e-mail é obrigatório.');
+		if (this.state.email.length == 0) {
+			Alert('Error', 'O campo usuário é obrigatório.');
 		} else if (this.state.password.length == 0) {
 			Alert('Error', 'O campo senha é obrigatório.');
 		} else {
 			var user = {
-    			name: this.state.name,
+    			name: this.state.name.length > 0 ? this.state.name : this.state.email,
     			lastname: this.state.lastname,
     			gender: this.state.gender,
     			facebook: 0,
