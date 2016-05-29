@@ -47,18 +47,14 @@ class More extends React.Component {
 	}
 
 	logout() {
-		var nav = this.props.data.nav;
-		console.log('nav', nav);
+		var nav = this.props.data;
+		console.log(nav);
+
 		LoadUser(function (user, userModel) {
-			console.log('user', user);
 			userModel.destroy().then(function () {
-				console.log('destroy');
-    			var Login = require('./login');
-    			console.log('destroy 2');
-
     			require('../util/load.user').logout();
-    			console.log('destroy 3');
 
+    			var Login = require('./login');
 				nav.resetToRoute({
 					name: 'Achow',
 					component: Login

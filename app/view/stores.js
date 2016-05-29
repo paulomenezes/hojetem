@@ -60,7 +60,7 @@ class Stores extends React.Component {
 
 	onClick(row) {
 		this.props.nav.toRoute({
-			name: decodeURIComponent(escape(row.name)),
+			name: row.name,
 			component: Store,
 			data: row
 		});
@@ -71,7 +71,7 @@ class Stores extends React.Component {
 		return (<TouchableOpacity style={ styles.row } onPress={() => this.onClick(row) }>
 					<View style={ styles.container }>
 						<View style={ styles.texts }>
-							<Text style={ styles.title }>{ decodeURIComponent(escape(row.name)) }</Text>
+							<Text style={ styles.title }>{ row.name }</Text>
 							<View style={ styles.about }>
 								<View style={ styles.item }>
 									<Icon style={ styles.icon } name="map" color="#d6013b" size={ 20 } />

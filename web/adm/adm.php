@@ -71,6 +71,7 @@
 						<h1 class="pull-left">Resumo</h1>
 	                    <div class="btn-group margin-right pull-right" style="margin-top:20px;">
 	                    	<a href="add.php" class="btn btn-info">Adicionar Novo Estabelecimento</a>
+	                    	<a href="images.php" class="btn btn-warning">Imagens inicio</a>
 							<a disabled href="ads.php" class="btn btn-warning">Anúncios</a>
 	                    </div>
 	                    <div class="clear"></div>

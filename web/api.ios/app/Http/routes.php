@@ -61,6 +61,7 @@ Route::group(['prefix' => 'sub_types'], function () {
 
 Route::group(['prefix' => 'ads'], function () {
 	Route::get('/banners', 'AdsController@banners');
+	Route::get('/images', 'AdsController@images');
 	Route::get('/{type}', 'AdsController@index');
 	Route::get('/{type}/{id}', 'AdsController@get');
 });
