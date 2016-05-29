@@ -34,4 +34,10 @@ class AdsController extends Controller
         $notification = \App\Models\Ads::where('position', '=', 'carrousel')->get();
         return response()->json($notification->toArray(), 200);
     }
+
+    public function images()
+    {
+        $notification = \App\Models\Images::get();
+        return response()->json($notification->toArray(), 200);
+    }
 }

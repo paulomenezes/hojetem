@@ -1,18 +1,18 @@
 NO APP:
 
 FALTANDO:
-1 - ao clicar no evento: espaço para descrição do evento, abaixo do nome do evento, e acima do endereço (disponibilizar um espaço ilimitado para descrição do evento)
-2 - na lista de eventos: faltando um espaço pra mostrar a data do evento, de preferencia coloca a data / horário
+1 OK - ao clicar no evento: espaço para descrição do evento, abaixo do nome do evento, e acima do endereço (disponibilizar um espaço ilimitado para descrição do evento)
+2 OK - na lista de eventos: faltando um espaço pra mostrar a data do evento, de preferencia coloca a data / horário
 
 CORRIGIR:
-1 - nos numeros para contato, só ta mostrando o primeiro, mesmo adicionando mais de um numero lá no site
+1 OK - nos numeros para contato, só ta mostrando o primeiro, mesmo adicionando mais de um numero lá no site
 3 - check-in não funciona, corrigir função para aparecer o check-in no face
 4 - função compartilhar com os amigos não funciona
-5 - deixar os nomes na lista "ocultos" só mostrar quando voce clicar lá na opção "nome na lista"
+5 OK - deixar os nomes na lista "ocultos" só mostrar quando voce clicar lá na opção "nome na lista"
 
 BUGS ENCONTRADOS:
-1 - ao adicionar nome na lista, o app fecha algumas vezes
-2 - fica aparecendo a mensagem "houve um error ao se conectar ao servidor"
+1 OK - ao adicionar nome na lista, o app fecha algumas vezes
+2 OK - fica aparecendo a mensagem "houve um error ao se conectar ao servidor"
 3 - todos os eventos já estão mostrando como se houvesse duas pessoas confirmadas
 4 - ao tentar fazer check-in no evento, o app fecha algumas vezes
 

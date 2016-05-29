@@ -38,17 +38,17 @@ var Search = React.createClass({
 			name: 'Seu perfil',
 			component: More,
 			rightCorner: NoneButton,
-			data: { 
-				nav: this.props 
-			}
+			data: this.props
 		});
+
+		/*<TouchableOpacity onPress={this.openSearch}>
+					<Icon name="ios-settings" color="#fff" size={25} style={styles.backButton} />
+				</TouchableOpacity>*/
 	},
 	render() {
 		return (
 			<View style={{ flexDirection: 'row', marginTop: 4 }}>
-				<TouchableOpacity onPress={this.openSearch}>
-					<Icon name="ios-settings" color="#fff" size={25} style={styles.backButton} />
-				</TouchableOpacity>
+				
 				<TouchableOpacity onPress={this.openUser}>
 					<Icon name="person" color="#fff" size={25} style={styles.backButton} />
 				</TouchableOpacity>

@@ -22,25 +22,35 @@ var Stores = require('./stores');
 
 var Constants = require('../constants');
 
+
+	var Dimensions = require('Dimensions');
+	var viewWidth = Dimensions.get('window').width;
+
 var Alert = require('../components/alert');
 
-var categories = [{
-		id: 1,
-		title: 'Hoje',
-		image: require('../images/ondecomer.jpg'),
-		option: 'today'
-	}, {
-		id: 2,
-		title: 'Essa Semana',
-		image: require('../images/ondecomprar.jpg'),
-		option: 'week'
-	}, {
-		id: 3,
-		title: 'Esse Mês',
-		image: require('../images/ondecurtir.jpg'),
-		option: 'month'
-	}
-];
+
+	var categories = [{
+			id: 1,
+			title: 'Hoje',
+			image: 'images/img/show_1.jpg',
+			option: 'today'
+		}, {
+			id: 2,
+			title: 'Essa Semana',
+			image: 'images/img/show_2.jpg',
+			option: 'week'
+		}, {
+			id: 3,
+			title: 'Esse Mês',
+			image: 'images/img/show_3.jpg',
+			option: 'month'
+		}, {
+			id: 4,
+			title: 'Mais',
+			image: 'images/img/show_4.jpg',
+			option: 'more'
+		}
+	];
 
 class Main extends Component {
 	constructor(props) {
@@ -62,11 +72,13 @@ class Main extends Component {
 	}
 
 	renderCategory(row) {
+		var image = { uri: Constants.IMAGE + row.image + '?random_number=' + (new Date().getTime()) };
+		console.log(image);
 		return (
 			<View>
 				<TouchableOpacity style={ styles.press } onPress={() => this.tabClick(row.option)}>
 					<View style={ styles.categories }>
-						<Image style={ styles.image } source={row.image} />
+						<Image style={{ width: viewWidth, height: 200}} source={image} />
 						<Text style={ styles.title }>{ row.title }</Text>
 					</View>
 				</TouchableOpacity>

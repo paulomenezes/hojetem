@@ -33,7 +33,8 @@
 			$sql_insert = "UPDATE store SET
 							           name = ?, responsible = ?,
 							           phone1 = ?, phone2 = ?, phone3 = ?, address = ?, event_date = ?, event_time = ?,
-							           lat = ?, longitude = ?, email = ?, password = ?, lista = ?, idStoreType = ?
+							           lat = ?, longitude = ?, email = ?, password = ?, lista = ?, idStoreType = ?,
+							           description = ? 
 							           WHERE id = ?";
 
 		    $stmt = $conn->prepare($sql_insert);
@@ -51,7 +52,8 @@
 		    $stmt->bindValue(12, md5($_POST['password']));
 		    $stmt->bindValue(13, $_POST['lista']);
 		    $stmt->bindValue(14, $_POST['estabelecimento']);
-		    $stmt->bindValue(15, $store['id']);
+		    $stmt->bindValue(15, $_POST['description']);
+		    $stmt->bindValue(16, $store['id']);
 		    $stmt->execute();
 
         	header("Location:info.php?msg=sucesso");
@@ -266,6 +268,18 @@
 										<div class="col-sm-6">
 											<label>Hora</label>
 											<input type="time" class="form-control" name="time" value="<?php echo $estabelecimento['event_time']; ?>" >
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div id="lanchonete">
+								<hr />
+								<div class="form-group">
+									<div class="row">
+										<div class="col-sm-12">
+											<label>Descrição</label>
+											<textarea class="form-control" name="description"><?php echo $estabelecimento['description']; ?></textarea>
 										</div>
 									</div>
 								</div>

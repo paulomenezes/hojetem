@@ -55,18 +55,23 @@ if (GcmAndroid.launchNotification) {
 	var categories = [{
 			id: 1,
 			title: 'Hoje',
-			image: require('../images/ondecomer.jpg'),
+			image: 'images/img/show_1.jpg',
 			option: 'today'
 		}, {
 			id: 2,
 			title: 'Essa Semana',
-			image: require('../images/ondecomprar.jpg'),
+			image: 'images/img/show_2.jpg',
 			option: 'week'
 		}, {
 			id: 3,
 			title: 'Esse Mês',
-			image: require('../images/ondecurtir.jpg'),
+			image: 'images/img/show_3.jpg',
 			option: 'month'
+		}, {
+			id: 4,
+			title: 'Mais',
+			image: 'images/img/show_4.jpg',
+			option: 'more'
 		}
 	];
 
@@ -130,11 +135,13 @@ if (GcmAndroid.launchNotification) {
 		}
 
 		renderCategory(row) {
+			var image = { uri: Constants.IMAGE + row.image + '?random_number=' + (new Date().getTime()) };
+
 			return (
-				<View>
-					<TouchableOpacity style={ styles.press } onPress={() => this.tabClick(row.option)}>
+				<View key={row.id}>
+					<TouchableOpacity style={ styles.press } onPress={() => this.tabClick(row.option) }>
 						<View style={ styles.categories }>
-							<Image style={ styles.image } source={row.image} />
+							<Image style={{ width: viewWidth, height: 200}} source={image} />
 							<Text style={ styles.title }>{ row.title }</Text>
 						</View>
 					</TouchableOpacity>
@@ -145,26 +152,18 @@ if (GcmAndroid.launchNotification) {
 		render() {
 			var iconSize = viewWidth / 5;
 
-			console.log(this.state.selectedTab);
-
-			var page = <View />;
-			if (this.state.selectedTab == 'home') 
-				page = <ListView dataSource={ this.state.dataSource } renderRow={ this.renderCategory.bind(this) } />;
-			else if (this.state.selectedTab == 'today')
-				page = <Stores nav={ this.props } options='today' />; 
-			else if (this.state.selectedTab == 'week')
-				page = <Stores nav={ this.props } options='week' />; 
-			else if (this.state.selectedTab == 'month')
-				page = <Stores nav={ this.props } options='month' />;
-			else if (this.state.selectedTab == 'more')
-				page = <Stores nav={ this.props } options='more' />; 
-			//else if (this.state.selectedTab == 'user')
-			//	page = <More nav={ this.props } user={ this.state.user } />; 
-
 			return (
 				<View style={ styles.container }>
 					<View style={ styles.content }>
-						{ page }
+						{ this.state.selectedTab == 'home' ? 
+							<ListView dataSource={ this.state.dataSource } renderRow={ this.renderCategory.bind(this) } />
+						: this.state.selectedTab == 'today' ?
+							<Stores nav={ this.props } options='today' /> 
+						: this.state.selectedTab == 'week' ?
+							<Stores nav={ this.props } options='week' /> 
+						: this.state.selectedTab == 'month' ?
+							<Stores nav={ this.props } options='month' />
+						: <Stores nav={ this.props } options='more' /> }
 					</View>
 
 					<View style={ styles.tabBar }>
