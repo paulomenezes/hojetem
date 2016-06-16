@@ -27,7 +27,9 @@ const {
 	TextInput,
 	AlertIOS,
 	ScrollView,
-	IntentAndroid
+	IntentAndroid,
+	WebView,
+	Platform
 } = React;
 
 var Dimensions = require('Dimensions');
@@ -135,9 +137,11 @@ class Store extends React.Component {
 	}
 
 	goMaps() {
-		if (this.props.data.lat && this.props.data.longitude) {
-			var url = 'http://maps.google.com/maps?q=' + this.props.data.lat + ',' + this.props.data.longitude;
-			IntentAndroid.openURL(url);
+		if (Platform.OS !== 'ios') {
+			if (this.props.data.lat && this.props.data.longitude) {
+				var url = 'http://maps.google.com/maps?q=' + this.props.data.lat + ',' + this.props.data.longitude;
+				IntentAndroid.openURL(url);
+			}
 		}
 	}
 
@@ -156,8 +160,13 @@ class Store extends React.Component {
 		})
 	}
 
+	redirect(path) {
+
+	}
+
 	render() {
 		var commentsSize = viewHeight - 450;
+		var html = '<!DOCTYPE html><html><body style="background-color: #383838;margin:0;padding:0;color:#FFF"><a href="http://www.google.com" target="_blank">' + this.props.data.description  + '</a></body></html>';
 
 		return (
 			<View style={ styles.container }>
@@ -204,12 +213,14 @@ class Store extends React.Component {
 							</View>
 							<View style={ styles.item }>
 								<Icon style={ styles.icon } name="star" color="#d6013b" size={ 20 } />
-								<View style={ styles.text }><Text style={ styles.textColor }>{ this.state.interesse } tem interesse</Text></View>
+								<View style={ styles.textLast }><Text style={ styles.textColor }>{ this.state.interesse } tem interesse</Text></View>
 							</View>
+							{ this.props.data.lista == 'sim' ?
 							<TouchableOpacity style={ styles.item } onPress={ this.goComments.bind(this) }>
 								<Icon style={ styles.icon } name="chatbox" color="#d6013b" size={ 20 } />
 								<View style={ styles.textLast }><Text style={ styles.textColor }>Nomes na lista</Text></View>
 							</TouchableOpacity>
+							: <View /> }
 						</View>
 					</View>
 				</ScrollView>
@@ -223,9 +234,6 @@ class Store extends React.Component {
 		          	</ActionButton.Item>
 		          	<ActionButton.Item buttonColor='#d6013b' title="Tenho interesse" onPress={ this.tenhoInteresse.bind(this) }>
 		            	<Icon name="star" style={styles.actionButtonIcon} />
-		          	</ActionButton.Item>
-		          	<ActionButton.Item buttonColor='#d6013b' title="Adicionar nome na lista" onPress={ this.goComments.bind(this) }>
-		            	<Icon name="chatbox" style={styles.actionButtonIcon} />
 		          	</ActionButton.Item>
 		        </ActionButton>
 			</View>

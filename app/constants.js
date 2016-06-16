@@ -5,5 +5,6 @@ module.exports = {
 	HEADERS: {
 		'Accept': 'application/json',
 		'Content-Type': 'application/x-www-form-urlencoded',
-	}
+	},
+	CREDENTIALS: null
 }

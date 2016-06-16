@@ -248,7 +248,7 @@ class Register extends React.Component {
 	        			LoadUser.login(user);
 	        			UserActiveModel.add(user).then(function (data) {
 	        				nav.resetToRoute({
-				          		name: 'Hoje Tem',
+				          		name: 'HOJE TEM',
 				          		component: Main,
 				          		data: user,
 				          		rightCorner: Search

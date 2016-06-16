@@ -35,6 +35,8 @@ class More extends React.Component {
 	constructor(props) {
 		super(props);
 
+		console.log(this.props);
+
 		this.state = {
 			user: require('../util/load.user').user[0]
 		};
@@ -47,7 +49,7 @@ class More extends React.Component {
 	}
 
 	logout() {
-		var nav = this.props.data;
+		var nav = this.props;
 		console.log(nav);
 
 		LoadUser(function (user, userModel) {
@@ -56,7 +58,7 @@ class More extends React.Component {
 
     			var Login = require('./login');
 				nav.resetToRoute({
-					name: 'Achow',
+					name: 'HOJE TEM',
 					component: Login
 				});
     		})
@@ -64,7 +66,7 @@ class More extends React.Component {
 	}
 
 	goFavorite() {
-		this.props.data.nav.toRoute({
+		this.props.toRoute({
 			component: Favorite,
 			name: 'Favoritos',
 			data: this.state.user
@@ -72,7 +74,7 @@ class More extends React.Component {
 	}
 
 	goOrder() {
-		this.props.data.nav.toRoute({
+		this.props.toRoute({
 			component: Order,
 			name: 'Meus Pedidos',
 			data: this.state.user
@@ -80,21 +82,21 @@ class More extends React.Component {
 	}
 
 	goInstitutional() {
-		this.props.data.nav.toRoute({
+		this.props.toRoute({
 			component: Institutional,
 			name: 'Institucional'
 		})
 	}
 
 	goContact() {
-		this.props.data.nav.toRoute({
+		this.props.toRoute({
 			component: Contact,
 			name: 'Fale Conosco'
 		})
 	}
 
 	goSettings() {
-		this.props.data.nav.toRoute({
+		this.props.toRoute({
 			component: Settings,
 			name: 'Configurações',
 			data: this.state.user
@@ -102,7 +104,7 @@ class More extends React.Component {
 	}
 
 	goAbout() {
-		this.props.data.nav.toRoute({
+		this.props.toRoute({
 			component: About,
 			name: 'Sobre'
 		})

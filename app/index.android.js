@@ -25,7 +25,7 @@ class HojeTem extends React.Component {
             	rightCorner={NoneButton}
             	handleBackAndroid={true}
             	firstRoute={ {
-	            	name: 'Hoje Tem',
+	            	name: 'HOJE TEM',
 	            	component: Login,
 	            } } />
         );

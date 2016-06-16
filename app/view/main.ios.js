@@ -177,13 +177,15 @@ var styles = StyleSheet.create({
 	},
 	title: {
 		position: 'absolute',
-		top: 110,
+		top: 155,
 		left: 0,
 		right: 0,
 		textAlign: 'center',
 		fontSize: 30,
 		color: 'FFFFFF',
-		backgroundColor: 'rgba(0,0,0,0)'
+		backgroundColor: 'rgba(0,0,0,0.6)',
+		paddingTop: 5,
+		paddingBottom: 5
 	}
 });
 

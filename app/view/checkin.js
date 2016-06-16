@@ -6,6 +6,7 @@ var ActionButton = require('react-native-action-button');
 var Swiper = require('react-native-swiper');
 
 var UIImagePickerManager = require('NativeModules').UIImagePickerManager;
+import { SegmentedControls } from 'react-native-radio-buttons';
 
 var utf8 = require('utf8');
 
@@ -39,13 +40,14 @@ class Checkin extends React.Component {
 			store: props.data.store,
 			image: null,
 			change: false,
-			newImage: null
+			newImage: null,
+			share: 'Não Compartilhar no Facebook'
 		};
 	}
 
 	sendMeeting() {
 		if (this.state.text.length > 0) {
-			var checkin = {
+			var checkinSend = {
 				idAccount: this.state.user.id,
 				idStore: this.state.store.id,
 				message: this.state.text,
@@ -53,23 +55,49 @@ class Checkin extends React.Component {
 				change: this.state.change
 			};
 
-			console.log(checkin);
-
 			var props = this.props;
+			var stats = this.state;
 
 			fetch(Constants.URL + 'stores/checkin', {
 				method: "POST",
-	    		body: JSON.stringify(checkin),
+	    		body: JSON.stringify(checkinSend),
 	    		headers: Constants.HEADERS
 			})
 			.then((response) => response.json())
 			.then((checkin) => {
-				console.log(checkin);
+				if (stats.share == 'Compartilhar no Facebook') {
+	 				fetch('https://graph.facebook.com/oauth/access_token?grant_type=client_credentials&client_id=737958636263870&client_secret=8f007d3772ce0479479f70722c04bef7')
+					.then((response) => response.text())
+					.then((accessToken) => {
+						console.log('TOKEN SUCCESS', accessToken);
+						if (accessToken.indexOf('access_token') >= 0) {
+							var token = accessToken.substr(13);
+
+							fetch('https://graph.facebook.com/' + this.state.user.facebookID + '/feed?message=' + checkinSend.message + '&access_token=' + token, {
+								method: 'POST',
+								body: null
+							})
+							.then((response) => response.json())
+							.then((checkin) => {
+								console.log('POST SUCCESS', checkin);
+							})
+							.catch((error) => {
+								console.log('POST ERROR::');
+								console.log(error);
+					    	});
+						}
+					})
+					.catch((error) => {
+						console.log('TOKEN ERROR', error);
+			    	});
+				}
+
+				console.log('CHECKIN SUCCESS', checkin);
 				Alert('Check-in', 'Check-in compartilhado.');
 				props.toBack();
 			})
 			.catch((error) => {
-				console.log(error);
+				console.log('CHECKIN', error);
 	    		Alert('Error', 'Houve um error ao se conectar ao servidor');
 	    	});
 		} else {
@@ -77,60 +105,22 @@ class Checkin extends React.Component {
 		}
 	}
 
-	changeImage() {
-		var options = {
-			title: 'Selecionar imagem', // specify null or empty string to remove the title
-			cancelButtonTitle: 'Cancelar',
-			takePhotoButtonTitle: 'Tirar foto...', // specify null or empty string to remove this button
-			chooseFromLibraryButtonTitle: 'Escolher da Biblioteca...', // specify null or empty string to remove this button
-			customButtons: { },
-			cameraType: 'back', // 'front' or 'back'
-			mediaType: 'photo', // 'photo' or 'video'
-			videoQuality: 'high', // 'low', 'medium', or 'high'
-			maxWidth: 300,
-			maxHeight: 300,
-			aspectX: 1, // aspectX:aspectY, the cropping image's ratio of width to height
-			aspectY: 1, // aspectX:aspectY, the cropping image's ratio of width to height
-			quality: 1, // photos only
-			angle: 0, // photos only
-			allowsEditing: true, // Built in functionality to resize/reposition the image
-			noData: false, // photos only - disables the base64 `data` field from being generated (greatly improves performance on large photos)
-			storageOptions: { // if this key is provided, the image will get saved in the documents/pictures directory (rather than a temporary directory)
-				skipBackup: true, // image will NOT be backed up to icloud
-				path: 'images' // will save image at /Documents/images rather than the root
-			}
-		};
-
-		UIImagePickerManager.showImagePicker(options, (response) => {
-			if (response.didCancel) {
-				console.log('User cancelled image picker');
-			} else if (response.error) {
-				console.log('UIImagePickerManager Error: ', response.error);
-			} else if (response.customButton) {
-				console.log('User tapped custom button: ', response.customButton);
-			} else {
-				// You can display the image using either data:
-				var source = {uri: 'data:image/jpeg;base64,' + response.data, isStatic: true};
-
-				var newImage = '';
-
-				if (Platform.OS == 'ios') {
-					newImage = response.uri.replace('file://', '');
-				} else {
-					newImage = response.uri;
-				}
-
-				this.setState({
-					image: source.uri,
-					change: true,
-					newImage: newImage
-				});
-			}
+	setSegment(value) {
+		this.setState({ 
+			share: value 
 		});
 	}
 
 	render() {
 		var image = this.state.change ? this.state.newImage : false;
+
+		/*<View style={{ margin: 10 }}>
+					<SegmentedControls
+						tint="#d6013b"
+						options={[ 'Compartilhar no Facebook', 'Não compartilhar' ]}
+						onSelection={ this.setSegment.bind(this) }
+						selectedOption={ this.state.share } />
+				</View>*/
 
 		return (
 			<View style={{ flex: 1, backgroundColor: '#383838' }}>
@@ -142,6 +132,8 @@ class Checkin extends React.Component {
 				    style={ styles.textArea }
 				    onChangeText={(text) => this.setState({text})}
 				    value={this.state.text} />
+
+				
 
 				<View style={ styles.buttonArea }>
 					<Icon.Button name="android-share-alt" backgroundColor="#d6013b" onPress={this.sendMeeting.bind(this)}>

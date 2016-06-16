@@ -63,7 +63,7 @@ class Login extends React.Component {
 		loadUser(function (user) {
 			if (user) {
     			nav.replaceRoute({
-	          		name: 'Hoje Tem',
+	          		name: 'HOJE TEM',
 	          		component: Main,
 	          		data: user[0],
 	          		rightCorner: Search
@@ -87,11 +87,15 @@ class Login extends React.Component {
 	}
 
 	_getFBCredentials() {
+		// 'email', 'public_profile', 'user_photos', 
 		SocialAuth.getFacebookCredentials(['email', 'public_profile', 'user_photos'], SocialAuth.facebookPermissionsType.read, (error, credentials) => {
 			this.setState({
 				error,
 				credentials,
 			});
+
+			Constants.CREDENTIALS = credentials;
+			console.log(credentials);
 
 			if (credentials) {
 				var url = 'https://graph.facebook.com/v2.3/' + credentials.userId +'?access_token=' + credentials.accessToken + '&fields=first_name,last_name,gender,email,cover,picture.type(large)&format=json';
@@ -115,7 +119,7 @@ class Login extends React.Component {
 		        			LoadUser.login(hojeTemUser[0]);
 			        		UserActiveModel.add(hojeTemUser[0]).then(function (data) {
 			        			nav.replaceRoute({
-					          		name: 'Hoje Tem',
+					          		name: 'HOJE TEM',
 					          		component: Main,
 					          		data: hojeTemUser[0],
 					          		rightCorner: Search
@@ -152,7 +156,7 @@ class Login extends React.Component {
 					        			LoadUser.login(user);
 					        			UserActiveModel.add(user).then(function (data) {
 					        				nav.replaceRoute({
-								          		name: 'Hoje Tem',
+								          		name: 'HOJE TEM',
 								          		component: Main,
 								          		data: user,
 								          		rightCorner: Search
@@ -177,14 +181,14 @@ class Login extends React.Component {
 
 	login() {
 		this.props.toRoute({
-			name: 'Hoje Tem',
+			name: 'HOJE TEM',
 			component: LoginEmail
 		})	
 	}
 
 	register() {
 		this.props.toRoute({
-			name: 'Hoje Tem',
+			name: 'HOJE TEM',
 			component: Register
 		})	
 	}
