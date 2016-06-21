@@ -28,14 +28,15 @@
 
                 return response()->json($users->toArray());
             } else if ($tipo == 'week') {
-                $daysAgo = date('Y-m-d', strtotime('-3 days', strtotime(date('Y-m-d'))));
+                $daysAgo = date('Y-m-d', strtotime('-0 days', strtotime(date('Y-m-d'))));
                 $days2 = date('Y-m-d', strtotime('+3 days', strtotime(date('Y-m-d'))));
 
                 $users = \App\Models\Store::whereBetween(DB::raw('date(event_date)'), [$daysAgo, $days2])->get();
                 return response()->json($users->toArray());
             } else if ($tipo == 'month') {
                 $users = \App\Models\Store::whereMonth('event_date', '=', date('m'))
-                                            ->whereYear('event_date', '=', date('Y'))->get();
+                                            ->whereYear('event_date', '=', date('Y'))
+                                            ->whereDay('event_date', '>=', date('d'))->get();
                 return response()->json($users->toArray());
             } else {
                 $users = \App\Models\Store::whereMonth('event_date', '>', date('m'))->get();
