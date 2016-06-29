@@ -102,14 +102,24 @@ class Login extends React.Component {
 		        
 		        var nav = this.props;
 
+		        var face = false;
+		        var cover = false;
+
+		        if (facebookUser && facebookUser.picture && facebookUser.picture.data && facebookUser.picture.data.url) {
+		        	face = facebookUser.picture.data.url;
+		        }		        
+		        if (facebookUser && facebookUser.cover && facebookUser.cover.source) {
+		        	cover = facebookUser.cover.source;
+		        }
+
 		        fetch(url).then((response) => response.json()).then((facebookUser) => {
 		        	fetch(Constants.URL + "users/login/facebook", {
 		        		method: "POST",
 		        		body: JSON.stringify({
 		        			facebookID: credentials.userId,
 		        			gcmid: Token,
-		        			image: facebookUser.picture.data.url ? facebookUser.picture.data.url : false,
-			        		cover: facebookUser.cover.source ? facebookUser.cover.source : false,
+		        			image: face,
+			        		cover: cover,
 		        		}),
 		        		headers: Constants.HEADERS
 		        	})
@@ -132,8 +142,8 @@ class Login extends React.Component {
 			        			gender: facebookUser.gender ? (facebookUser.gender == 'male' ? 'Masculino' : 'Feminino') : '',
 			        			facebook: 1,
 			        			facebookID: facebookUser.id,
-			        			image: facebookUser.picture.data.url ? facebookUser.picture.data.url : '',
-			        			cover: facebookUser.cover.source ? facebookUser.cover.source : '',
+			        			image: face,
+			        			cover: cover,
 			        			email: '',
 			        			birth: '',
 			        			user: '',
