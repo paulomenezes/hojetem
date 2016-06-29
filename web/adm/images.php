@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_SESSION['store'] == '')
+if($_SESSION['adm'] == '')
 {
 	header("Location:index.php");
 }
