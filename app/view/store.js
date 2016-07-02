@@ -317,6 +317,7 @@ class Store extends React.Component {
 			this.loadUser();
 		})
 		.catch((error) => {
+			console.log(error);	
 			Alert('Error', 'Houve um error ao se conectar ao servidor');
     	});
 	}

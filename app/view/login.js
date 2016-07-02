@@ -105,14 +105,15 @@ class Login extends React.Component {
 		        var face = false;
 		        var cover = false;
 
-		        if (facebookUser && facebookUser.picture && facebookUser.picture.data && facebookUser.picture.data.url) {
-		        	face = facebookUser.picture.data.url;
-		        }		        
-		        if (facebookUser && facebookUser.cover && facebookUser.cover.source) {
-		        	cover = facebookUser.cover.source;
-		        }
-
 		        fetch(url).then((response) => response.json()).then((facebookUser) => {
+
+			        if (facebookUser && facebookUser.picture && facebookUser.picture.data && facebookUser.picture.data.url) {
+			        	face = facebookUser.picture.data.url;
+			        }		        
+			        if (facebookUser && facebookUser.cover && facebookUser.cover.source) {
+			        	cover = facebookUser.cover.source;
+			        }
+			        
 		        	fetch(Constants.URL + "users/login/facebook", {
 		        		method: "POST",
 		        		body: JSON.stringify({
