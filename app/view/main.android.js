@@ -54,22 +54,22 @@ if (GcmAndroid.launchNotification) {
 
 	var categories = [{
 			id: 1,
-			title: 'Hoje',
+			title: 'HOJE',
 			image: 'images/img/show_1.jpg',
 			option: 'today'
 		}, {
 			id: 2,
-			title: 'Essa Semana',
+			title: 'ESSA SEMANA',
 			image: 'images/img/show_2.jpg',
 			option: 'week'
 		}, {
 			id: 3,
-			title: 'Esse Mês',
+			title: 'ESSE MÊS',
 			image: 'images/img/show_3.jpg',
 			option: 'month'
 		}, {
 			id: 4,
-			title: 'Mais',
+			title: 'MAIS',
 			image: 'images/img/show_4.jpg',
 			option: 'more'
 		}

@@ -94,10 +94,51 @@
             return response()->json($users->toArray());
         }
 
-        public function find($search)
+        public function find()
         {
-            $user = \App\Models\Store::where('name', 'LIKE', '%' . $search . '%')
-                                     ->get();
+            $type = Input::json()->all()['type'];
+            $search = Input::json()->all()['search'];
+            $selected = explode(",", Input::json()->all()['selected']);
+
+            $user = '';
+            if ($type == 'Por data') {
+                $user = \App\Models\Store::where('name', 'LIKE', '%' . $search . '%')
+                                         ->whereMonth('event_date', '>=', date('m'))
+                                         ->whereYear('event_date', '>=', date('Y'))
+                                         ->whereDay('event_date', '>=', date('d'))
+                                         ->orderBy('event_date', 'asc')->get();
+            } else if ($type == 'Por confirmação') {
+                $user = \App\Models\Store::select(DB::raw('count(store_visited.idStore) as visited, store.*'))
+                                          ->leftJoin('store_visited', function ($join)
+                                          {
+                                                $join->on('store_visited.idStore', '=', 'store.id')
+                                                    ->where('store_visited.idVisitedType', '=', '1');
+                                          })
+                                          ->where('name', 'LIKE', '%' . $search . '%')
+                                          ->whereMonth('event_date', '>=', date('m'))
+                                          ->whereYear('event_date', '>=', date('Y'))
+                                          ->whereDay('event_date', '>=', date('d'))
+                                          ->orderBy('visited', 'desc')
+                                          ->groupBy('store.id')
+                                          ->get();
+            } else if ($type == 'Por tipo') {
+                $user = array();
+                for ($i=0; $i < sizeof($selected); $i++) { 
+                    $store_types = \App\Models\StoreType::where('name', '=', str_replace('"', '', $selected[$i]))->get();
+
+                    if (sizeof($store_types->toArray()) > 0) {
+                        $finds = \App\Models\Store::where('name', 'LIKE', '%' . $search . '%')
+                                                 ->where('subtype', 'LIKE', '%,' . $store_types->toArray()[0]['id'] . ',%')
+                                                 ->whereMonth('event_date', '>=', date('m'))
+                                                 ->whereYear('event_date', '>=', date('Y'))
+                                                 ->whereDay('event_date', '>=', date('d'))
+                                                 ->get();
+
+                        //var_dump($finds->toArray());
+                        $user = array_merge($user, $finds->toArray());
+                    }                    
+                }
+            }
                                     
             return response()->json($user, 200);
         }

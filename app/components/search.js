@@ -27,11 +27,11 @@ var styles = StyleSheet.create({
 
 var Search = React.createClass({
 	openSearch() {
-		/*this.props.toRoute({
-			name: 'Busca',
+		this.props.toRoute({
+			name: 'Filtrar',
 			component: SearchPage,
 			rightCorner: NoneButton
-		});*/
+		});
 	},
 	openUser() {
 		this.props.toRoute({
@@ -40,15 +40,13 @@ var Search = React.createClass({
 			rightCorner: NoneButton,
 			data: this.props
 		});
-
-		/*<TouchableOpacity onPress={this.openSearch}>
-					<Icon name="ios-settings" color="#fff" size={25} style={styles.backButton} />
-				</TouchableOpacity>*/
 	},
 	render() {
 		return (
 			<View style={{ flexDirection: 'row', marginTop: 4 }}>
-				
+				<TouchableOpacity onPress={this.openSearch}>
+					<Icon name="ios-settings" color="#fff" size={25} style={styles.backButton} />
+				</TouchableOpacity>
 				<TouchableOpacity onPress={this.openUser}>
 					<Icon name="person" color="#fff" size={25} style={styles.backButton} />
 				</TouchableOpacity>

@@ -80,7 +80,7 @@ Route::group(['prefix' => 'stores'], function () {
 	Route::get('/{store}/schedule', 'StoreController@schedule');
 	Route::get('/{store}/menu', 'StoreController@menu');
 	Route::get('/{store}/checkins', 'StoreController@checkins');
-	Route::get('/find/{search}', 'StoreController@find');
+	Route::post('/find', 'StoreController@find');
 	Route::post('/checkin', 'StoreController@checkinStore');
 	Route::get('/checkin/users/get/{id}', 'StoreController@checkinsUser');
 	Route::get('/checkin/comment/get/{id}', 'StoreController@checkinsComment');

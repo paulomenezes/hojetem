@@ -11,6 +11,7 @@ var Constants = require('../constants');
 
 var Store = require('./store');
 var User = require('./user');
+var SearchResult = require('./searchResult');
 var Like = require('../components/like');
 
 var user;
@@ -21,6 +22,7 @@ var viewHeight = Dimensions.get('window').height;
 import { SegmentedControls } from 'react-native-radio-buttons';
 
 var Alert = require('../components/alert');
+var MultipleChoice = require('react-native-multiple-choice');
 
 const {
 	AppRegistry,
@@ -55,30 +57,48 @@ class Search extends React.Component {
 			}),
 			searched: false,
 			sizeUsers: 0,
-			sizeStores: 0
+			sizeStores: 0,
+			type: 'Por confirmação',
+			selectedTypes: []
 		};
+	}
+
+	componentWillReceiveProps(props) {
+		this.state.selectedTypes = [];
 	}
 
 	search() {
 		var props = this.props;
 
-		if (this.state.text.length > 0) {
-			fetch(Constants.URL + 'users/find/' + this.state.text + '/' + user.id)
+		if (this.state.type == 'Por tipo' && this.state.selectedTypes.length == 0) {
+			Alert('Error', 'Selecione os tipos de evento que você deseja pesquisar.');
+		} else {
+			fetch(Constants.URL + 'stores/find', {
+				method: 'POST',
+				body: JSON.stringify({
+					type: this.state.type,
+					search: this.state.text,
+					selected: JSON.stringify(this.state.selectedTypes).replace('[', '').replace(']', '')
+				}),
+				headers: Constants.HEADERS
+			})
 				.then((response) => response.json())
-				.then((search) => {
-					this.setState({
-						dataSourceUsers: this.state.dataSourceUsers.cloneWithRows(search.users),
-						dataSourceStores: this.state.dataSourceStores.cloneWithRows(search.stores),
-						searched: true,
-						sizeUsers: search.users.length,
-						sizeStores: search.stores.length
-					});
+				.then((results) => {
+					console.log(results);
+					if (results.length > 0) {
+						props.toRoute({
+							name: 'Resultados',
+							component: SearchResult,
+							data: results
+						})
+					} else {
+						Alert('Error', 'Nenhum resultado encontrado.');
+					}
 				})
 				.catch((error) => {
+					console.log(error);
 		    		Alert('Error', 'Houve um error ao se conectar ao servidor');
 		    	});
-		} else {
-			Alert('Error', 'Digite sua pesquisa');
 		}
 	}
 
@@ -151,6 +171,25 @@ class Search extends React.Component {
 		});
 	}
 
+	setSegmentType(value) {
+		this.setState({ 
+			type: value 
+		});
+	}
+
+	selectType(option) {
+		var add = true;
+		for (var i = 0; i < this.state.selectedTypes.length; i++) {
+			if (this.state.selectedTypes[i] == option) {
+				this.state.selectedTypes.splice(i, 1);
+				add = false;
+			}
+		}
+
+		if (add)
+			this.state.selectedTypes.push(option)
+	}
+
 	render() {
 		var listSize = viewHeight - 200;
 
@@ -162,41 +201,51 @@ class Search extends React.Component {
 				    style={ styles.textInput }
 				    onChangeText={(text) => this.setState({text})}
 				    value={this.state.text} />
+				
+				<View style={ styles.segmented }>
+					<SegmentedControls
+						tint="#d6013b"
+						options={[ 'Por confirmação', 'Por data', 'Por tipo' ]}
+						onSelection={ this.setSegmentType.bind(this) }
+						selectedOption={ this.state.type } />
+				</View>
+
+				{ this.state.type == 'Por tipo' ? 
+					<View>
+						<MultipleChoice
+							style={{ height: listSize - 40, margin: 10 }}
+							options={[
+								'Sertanejo universitário',
+								'Brega moderno',
+								'Brega antigo',
+								'Forró universitário',
+								'Forró antigo',
+								'Funk',
+								'Black',
+								'Calourada',
+								'Samba',
+								'Pagode',
+								'Evento cultural',
+								'Música eletrônica',
+								'Rap e Hip Hop',
+								'Gospel',
+								'Blues e Jazz',
+								'Rock',
+								'MPB',
+								'Reggae',
+								'Axé e Swingueira',
+								'Alternativo',
+								'Teatro'
+							]} 
+							selectedOptions={[]}
+							onSelection={ this.selectType.bind(this) } />
+					</View>
+				: <View /> }
 
 				<View style={ styles.buttonArea }>
 					<Icon.Button name="ios-search" backgroundColor="#d6013b" onPress={this.search.bind(this)}>
 						<Text style={ styles.sendButton }>Procurar</Text>
 					</Icon.Button>
-				</View>
-
-				<View>
-					<View style={ styles.segmented }>
-						<SegmentedControls
-							tint="#d6013b"
-							options={[ 'Estabelecimentos', 'Usuários' ]}
-							onSelection={ this.setSegment.bind(this) }
-							selectedOption={ this.state.option } />
-					</View>
-
-					{ this.state.option == 'Usuários' ? 
-						<View>
-						{ this.state.searched && this.state.sizeUsers == 0 ? <Text style={{ textAlign: 'center' }}>Nenhum usuário encontrado</Text> : <View /> }
-						<ListView 
-							style={{ height: listSize }}
-							dataSource={ this.state.dataSourceUsers }
-							renderRow={ this.renderUsers.bind(this) } />
-						</View>
-					: <View /> }
-
-					{ this.state.option == 'Estabelecimentos' ? 
-						<View>
-						{ this.state.searched && this.state.sizeStores == 0 ? <Text style={{ textAlign: 'center' }}>Nenhum estabelecimento encontrado</Text> : <View /> }
-						<ListView 
-							style={{ height: listSize }}
-							dataSource={ this.state.dataSourceStores }
-							renderRow={ this.renderStores.bind(this) } />
-						</View>
-					: <View /> }
 				</View>
 			</View>
 		);

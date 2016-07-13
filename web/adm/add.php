@@ -21,12 +21,17 @@
 	    {
 	      	if($_POST['senha'] == $_POST['resenha'])
 	      	{
+	      		$sub = ',';
+	      		for ($i=0; $i < sizeof($_POST['estabelecimento']); $i++) { 
+	      			$sub = $sub . $_POST['estabelecimento'][$i] . ',';
+	      		}
+
 				$sql_insert = "INSERT INTO store
 								           (name, responsible ,
 								           	email, phone1,
 								           	phone2, phone3,
 								           	address, event_date, event_time,
-								           	password, lista, idStoreType) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+								           	password, lista, idStoreType, subtype) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			    $stmt = $conn->prepare($sql_insert);
 			    $stmt->bindValue(1, $_POST['nome']);
@@ -40,7 +45,8 @@
 			    $stmt->bindValue(9, $_POST['time']);
 			    $stmt->bindValue(10, md5($_POST['password']));
 			    $stmt->bindValue(11, $_POST['lista']);
-			    $stmt->bindValue(12, $_POST['estabelecimento']);
+			    $stmt->bindValue(12, $_POST['estabelecimento'][0]);
+			    $stmt->bindValue(13, $sub);
 			    $stmt->execute();
 
 	        	$sqlStore = "SELECT * FROM store WHERE id = '".$conn->lastInsertId()."'";
@@ -136,7 +142,7 @@
 						                        </div>
 											</div>
 											<div class="col-sm-6">
-												<select class="form-control select2" name="estabelecimento" required>
+												<select class="form-control select2" name="estabelecimento[]" required multiple="">
 													<?php for($i = 0; $i < sizeof($rowMenu); $i++) { ?>
 													<option value="<?php echo $rowMenu[$i]['id']; ?>"><?php echo ($rowMenu[$i]['name']); ?></option>
 													<?php } ?>

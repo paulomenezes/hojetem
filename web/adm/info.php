@@ -30,11 +30,16 @@
 
 		if($_POST)
 		{
+      		$sub = ',';
+      		for ($i=0; $i < sizeof($_POST['estabelecimento']); $i++) { 
+      			$sub = $sub . $_POST['estabelecimento'][$i] . ',';
+      		}
+
 			$sql_insert = "UPDATE store SET
 							           name = ?, responsible = ?,
 							           phone1 = ?, phone2 = ?, phone3 = ?, address = ?, event_date = ?, event_time = ?,
 							           lat = ?, longitude = ?, email = ?, password = ?, lista = ?, idStoreType = ?,
-							           description = ? 
+							           description = ?, subtype = ?  
 							           WHERE id = ?";
 
 		    $stmt = $conn->prepare($sql_insert);
@@ -51,9 +56,10 @@
 		    $stmt->bindValue(11, $_POST['email']);
 		    $stmt->bindValue(12, md5($_POST['password']));
 		    $stmt->bindValue(13, $_POST['lista']);
-		    $stmt->bindValue(14, $_POST['estabelecimento']);
+		    $stmt->bindValue(14, $_POST['estabelecimento'][0]);
 		    $stmt->bindValue(15, $_POST['description']);
-		    $stmt->bindValue(16, $store['id']);
+		    $stmt->bindValue(16, $sub);
+		    $stmt->bindValue(17, $store['id']);
 		    $stmt->execute();
 
         	header("Location:info.php?msg=sucesso");
@@ -180,9 +186,9 @@
 									</div>
 									<div class="col-sm-5">
 										<label>Categoria</label>
-										<select class="form-control select2" name="estabelecimento" required>
+										<select class="form-control select2" name="estabelecimento[]" required multiple="">
 											<?php for($i = 0; $i < sizeof($rowMenu); $i++) { ?>
-											<option value="<?php echo $rowMenu[$i]['id']; ?>" <?php echo $estabelecimento['idStoreType'] == $rowMenu[$i]['id'] ? 'selected' : ''; ?>><?php echo ($rowMenu[$i]['name']); ?></option>
+											<option value="<?php echo $rowMenu[$i]['id']; ?>" <?php echo strpos($estabelecimento['subtype'], ','.$rowMenu[$i]['id'].',') !== false ? 'selected' : ''; ?>><?php echo ($rowMenu[$i]['name']); ?></option>
 											<?php } ?>
 										</select>
 									</div>
