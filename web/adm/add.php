@@ -31,7 +31,7 @@
 								           	email, phone1,
 								           	phone2, phone3,
 								           	address, event_date, event_time,
-								           	password, lista, idStoreType, subtype) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+								           	password, lista, idStoreType, subtype, man, woman) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			    $stmt = $conn->prepare($sql_insert);
 			    $stmt->bindValue(1, $_POST['nome']);
@@ -47,6 +47,8 @@
 			    $stmt->bindValue(11, $_POST['lista']);
 			    $stmt->bindValue(12, $_POST['estabelecimento'][0]);
 			    $stmt->bindValue(13, $sub);
+			    $stmt->bindValue(14, $_POST['man']);
+			    $stmt->bindValue(15, $_POST['woman']);
 			    $stmt->execute();
 
 	        	$sqlStore = "SELECT * FROM store WHERE id = '".$conn->lastInsertId()."'";
@@ -203,6 +205,19 @@
 												</div>
 												<div class="col-sm-6">
 													<input type="time" class="form-control" name="time" placeholder="Horário do evento">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div id="lanchonete">
+										<hr />
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-6">
+													<input type="text" class="form-control" name="man" placeholder="Masculino R$">
+												</div>
+												<div class="col-sm-6">
+													<input type="text" class="form-control" name="woman" placeholder="Feminino R$">
 												</div>
 											</div>
 										</div>

@@ -185,6 +185,18 @@ class Store extends React.Component {
 								<Icon style={ styles.icon } name="document-text" color="#d6013b" size={ 20 } />
 								<View style={ styles.text }><Text style={ styles.textColor }>{ this.props.data.description }</Text></View>
 							</View>
+							{ this.props.data.man && this.props.data.man.length > 0 ?
+							<View style={ styles.item }>
+								<Icon style={ styles.icon } name="social-usd" color="#d6013b" size={ 20 } />
+								<View style={ styles.text }><Text style={ styles.textColor }>Masculino R$: { this.props.data.man }</Text></View>
+							</View>
+							: <View /> }
+							{ this.props.data.woman && this.props.data.woman.length > 0 ?
+							<View style={ styles.item }>
+								<Icon style={ styles.icon } name="social-usd" color="#d6013b" size={ 20 } />
+								<View style={ styles.text }><Text style={ styles.textColor }>Feminino R$: { this.props.data.woman }</Text></View>
+							</View>
+							: <View /> }
 							<View style={ styles.item }>
 								<Icon style={ styles.icon } name="android-calendar" color="#d6013b" size={ 20 } />
 								<View style={ styles.text }><Text style={ styles.textColor }>{ this.props.data.event_date.substr(8, 2) + '/' + this.props.data.event_date.substr(5, 2) + '/' + this.props.data.event_date.substr(0, 4) }</Text></View>

@@ -91,7 +91,7 @@ class More extends React.Component {
 	goContact() {
 		this.props.toRoute({
 			component: Contact,
-			name: 'Fale Conosco'
+			name: 'Contato'
 		})
 	}
 
@@ -131,6 +131,12 @@ class More extends React.Component {
 						<View style={ styles.item }>
 							<Icon style={ styles.icon } name="ios-gear" color="#d6013b" size={ 20 } />
 							<View style={ styles.text }><Text style={ styles.tColor }>Editar Perfil</Text></View>
+						</View>
+					</TouchableOpacity>
+					<TouchableOpacity onPress={() => this.goContact() }>
+						<View style={ styles.item }>
+							<Icon style={ styles.icon } name="email" color="#d6013b" size={ 20 } />
+							<View style={ styles.text }><Text style={ styles.tColor }>Contato</Text></View>
 						</View>
 					</TouchableOpacity>
 					<TouchableOpacity onPress={() => this.goAbout() }>

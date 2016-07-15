@@ -39,7 +39,7 @@
 							           name = ?, responsible = ?,
 							           phone1 = ?, phone2 = ?, phone3 = ?, address = ?, event_date = ?, event_time = ?,
 							           lat = ?, longitude = ?, email = ?, password = ?, lista = ?, idStoreType = ?,
-							           description = ?, subtype = ?  
+							           description = ?, subtype = ?, man = ?, woman = ?  
 							           WHERE id = ?";
 
 		    $stmt = $conn->prepare($sql_insert);
@@ -59,7 +59,9 @@
 		    $stmt->bindValue(14, $_POST['estabelecimento'][0]);
 		    $stmt->bindValue(15, $_POST['description']);
 		    $stmt->bindValue(16, $sub);
-		    $stmt->bindValue(17, $store['id']);
+		    $stmt->bindValue(17, $_POST['man']);
+		    $stmt->bindValue(18, $_POST['woman']);
+		    $stmt->bindValue(19, $store['id']);
 		    $stmt->execute();
 
         	header("Location:info.php?msg=sucesso");
@@ -274,6 +276,22 @@
 										<div class="col-sm-6">
 											<label>Hora</label>
 											<input type="time" class="form-control" name="time" value="<?php echo $estabelecimento['event_time']; ?>" >
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div id="lanchonete">
+								<hr />
+								<div class="form-group">
+									<div class="row">
+										<div class="col-sm-6">
+											<label>Masculino R$</label>
+											<input type="text" class="form-control" name="man" value="<?php echo $estabelecimento['man']; ?>" >
+										</div>
+										<div class="col-sm-6">
+											<label>Feminino R$</label>
+											<input type="text" class="form-control" name="woman" value="<?php echo $estabelecimento['woman']; ?>" >
 										</div>
 									</div>
 								</div>
