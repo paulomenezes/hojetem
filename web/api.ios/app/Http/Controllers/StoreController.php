@@ -103,9 +103,7 @@
             $user = '';
             if ($type == 'Por data') {
                 $user = \App\Models\Store::where('name', 'LIKE', '%' . $search . '%')
-                                         ->whereMonth('event_date', '>=', date('m'))
-                                         ->whereYear('event_date', '>=', date('Y'))
-                                         ->whereDay('event_date', '>=', date('d'))
+                                         ->where('event_date', '>=', date('Y-m-d'))
                                          ->orderBy('event_date', 'asc')->get();
             } else if ($type == 'Por confirmação') {
                 $user = \App\Models\Store::select(DB::raw('count(store_visited.idStore) as visited, store.*'))
@@ -115,9 +113,7 @@
                                                     ->where('store_visited.idVisitedType', '=', '1');
                                           })
                                           ->where('name', 'LIKE', '%' . $search . '%')
-                                          ->whereMonth('event_date', '>=', date('m'))
-                                          ->whereYear('event_date', '>=', date('Y'))
-                                          ->whereDay('event_date', '>=', date('d'))
+                                          ->where('event_date', '>=', date('Y-m-d'))
                                           ->orderBy('visited', 'desc')
                                           ->groupBy('store.id')
                                           ->get();
@@ -129,9 +125,7 @@
                     if (sizeof($store_types->toArray()) > 0) {
                         $finds = \App\Models\Store::where('name', 'LIKE', '%' . $search . '%')
                                                  ->where('subtype', 'LIKE', '%,' . $store_types->toArray()[0]['id'] . ',%')
-                                                 ->whereMonth('event_date', '>=', date('m'))
-                                                 ->whereYear('event_date', '>=', date('Y'))
-                                                 ->whereDay('event_date', '>=', date('d'))
+                                                 ->where('event_date', '>=', date('Y-m-d'))
                                                  ->get();
 
                         //var_dump($finds->toArray());
