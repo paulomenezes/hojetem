@@ -38,7 +38,7 @@
 			$sql_insert = "UPDATE store SET
 							           name = ?, responsible = ?,
 							           phone1 = ?, phone2 = ?, phone3 = ?, address = ?, event_date = ?, event_time = ?,
-							           lat = ?, longitude = ?, email = ?, password = ?, lista = ?, idStoreType = ?,
+							           bairro = ?, cidade = ?, email = ?, password = ?, lista = ?, idStoreType = ?,
 							           description = ?, subtype = ?, man = ?, woman = ?  
 							           WHERE id = ?";
 
@@ -51,8 +51,8 @@
 		    $stmt->bindValue(6, $_POST['endereco']);
 		    $stmt->bindValue(7, $_POST['date']);
 		    $stmt->bindValue(8, $_POST['time']);
-		    $stmt->bindValue(9, $_POST['lat']);
-		    $stmt->bindValue(10, $_POST['longitude']);
+		    $stmt->bindValue(9, $_POST['bairro']);
+		    $stmt->bindValue(10, $_POST['cidade']);
 		    $stmt->bindValue(11, $_POST['email']);
 		    $stmt->bindValue(12, md5($_POST['password']));
 		    $stmt->bindValue(13, $_POST['lista']);
@@ -242,8 +242,8 @@
 									</div>
 								</div>
 							</div>
-							<hr />
-							<div id="us5" style="width: 485x; height: 400px;"></div>
+							<!--<hr />
+							<div id="us5" style="width: 485x; height: 400px;"></div>-->
 							<hr />
 							<div class="form-group row">
 								<div class="col-sm-12">
@@ -253,12 +253,12 @@
 							</div>
 							<div class="form-group row">
 								<div class="col-sm-6">
-									<label>Latitude</label>
-									<input type="text" class="form-control" id="latView" value="<?php echo $estabelecimento['lat']; ?>" disabled>
+									<label>Bairro</label>
+									<input type="text" class="form-control" name="bairro" value="<?php echo $estabelecimento['bairro']; ?>">
 								</div>
 								<div class="col-sm-6">
-									<label>Longitude</label>
-									<input type="text" class="form-control" id="longitudeView" value="<?php echo $estabelecimento['longitude']; ?>" disabled>
+									<label>Cidade</label>
+									<input type="text" class="form-control" name="cidade" value="<?php echo $estabelecimento['cidade']; ?>">
 								</div>
 							</div>
 
@@ -323,7 +323,7 @@
 		</div>
 
 		<script>
-            function updateControls(addressComponents, lat, longitude) {
+            /*function updateControls(addressComponents, lat, longitude) {
                 // $('#endereco').val(addressComponents.addressLine1);
                 // $('#cidade').val(addressComponents.city);
                 // $('#estado').val(addressComponents.stateOrProvince);
@@ -349,7 +349,7 @@
                     var addressComponents = $(component).locationpicker('map').location.addressComponents;
                     updateControls(addressComponents, <?php echo $estabelecimento['lat'] == "" ? "-8.063124160508963" : $estabelecimento['lat']; ?>, <?php echo $estabelecimento['longitude'] == "" ? "-34.871167497375495" : $estabelecimento['longitude']; ?>);
                 }
-            });
+            });*/
         </script>
 
 	</body>

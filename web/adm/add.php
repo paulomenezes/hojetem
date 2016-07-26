@@ -27,11 +27,9 @@
 	      		}
 
 				$sql_insert = "INSERT INTO store
-								           (name, responsible ,
-								           	email, phone1,
-								           	phone2, phone3,
-								           	address, event_date, event_time,
-								           	password, lista, idStoreType, subtype, man, woman) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+								           (name, responsible , email, phone1, phone2, phone3,
+								           	address, event_date, event_time, password, lista, 
+								           	idStoreType, subtype, man, woman, description, bairro, cidade) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			    $stmt = $conn->prepare($sql_insert);
 			    $stmt->bindValue(1, $_POST['nome']);
@@ -49,6 +47,9 @@
 			    $stmt->bindValue(13, $sub);
 			    $stmt->bindValue(14, $_POST['man']);
 			    $stmt->bindValue(15, $_POST['woman']);
+			    $stmt->bindValue(16, $_POST['description']);
+			    $stmt->bindValue(17, $_POST['bairro']);
+			    $stmt->bindValue(18, $_POST['cidade']);
 			    $stmt->execute();
 
 	        	$sqlStore = "SELECT * FROM store WHERE id = '".$conn->lastInsertId()."'";
@@ -196,8 +197,18 @@
 											</div>
 										</div>
 									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6">
+												<input type="text" class="form-control" name="bairro" placeholder="Bairro">
+											</div>
+											<div class="col-sm-6">
+												<input type="text" class="form-control" name="cidade" placeholder="Cidade">
+											</div>
+										</div>
+									</div>
+									<hr />
 									<div id="lanchonete">
-										<hr />
 										<div class="form-group">
 											<div class="row">
 												<div class="col-sm-6">
@@ -218,6 +229,18 @@
 												</div>
 												<div class="col-sm-6">
 													<input type="text" class="form-control" name="woman" placeholder="Feminino R$">
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div id="lanchonete">
+										<hr />
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-12">
+													<label>Descrição</label>
+													<textarea class="form-control" name="description"></textarea>
 												</div>
 											</div>
 										</div>
