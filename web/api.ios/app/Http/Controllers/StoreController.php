@@ -46,6 +46,7 @@
 
         public function get($id)
         {
+            // select(DB::raw('CONCAT(address, bairro, cidade) as address'))->
             $users = \App\Models\Store::find($id);
 
             return response()->json($users->toArray());
@@ -102,9 +103,11 @@
 
             $user = '';
             if ($type == 'Por data') {
-                $user = \App\Models\Store::where('name', 'LIKE', '%' . $search . '%')
-                                         ->orWhere('bairro', 'LIKE', '%' . $search . '%')
-                                         ->orWhere('cidade', 'LIKE', '%' . $search . '%')
+                $user = \App\Models\Store::where(function ($query) use ($search)
+                                         {
+                                             $query->where('name', 'LIKE', '%' . $search . '%')
+                                                   ->orWhere('cidade', 'LIKE', '%' . $search . '%');
+                                         })
                                          ->where('event_date', '>=', date('Y-m-d'))
                                          ->orderBy('event_date', 'asc')->get();
             } else if ($type == 'Por confirmação') {
@@ -114,9 +117,11 @@
                                                 $join->on('store_visited.idStore', '=', 'store.id')
                                                     ->where('store_visited.idVisitedType', '=', '1');
                                           })
-                                          ->where('name', 'LIKE', '%' . $search . '%')
-                                          ->orWhere('bairro', 'LIKE', '%' . $search . '%')
-                                          ->orWhere('cidade', 'LIKE', '%' . $search . '%')
+                                          ->where(function ($query) use ($search)
+                                             {
+                                                 $query->where('name', 'LIKE', '%' . $search . '%')
+                                                       ->orWhere('cidade', 'LIKE', '%' . $search . '%');
+                                             })
                                           ->where('event_date', '>=', date('Y-m-d'))
                                           ->orderBy('visited', 'desc')
                                           ->groupBy('store.id')
@@ -127,11 +132,14 @@
                     $store_types = \App\Models\StoreType::where('name', '=', str_replace('"', '', $selected[$i]))->get();
 
                     if (sizeof($store_types->toArray()) > 0) {
-                        $finds = \App\Models\Store::where('name', 'LIKE', '%' . $search . '%')
-                                                  ->orWhere('bairro', 'LIKE', '%' . $search . '%')
-                                                  ->orWhere('cidade', 'LIKE', '%' . $search . '%')
+                        $finds = \App\Models\Store::where(function ($query) use ($search)
+                                                     {
+                                                         $query->where('name', 'LIKE', '%' . $search . '%')
+                                                               ->orWhere('cidade', 'LIKE', '%' . $search . '%');
+                                                     })
                                                  ->where('subtype', 'LIKE', '%,' . $store_types->toArray()[0]['id'] . ',%')
                                                  ->where('event_date', '>=', date('Y-m-d'))
+                                                 ->orderBy('event_date', 'asc')
                                                  ->get();
 
                         //var_dump($finds->toArray());

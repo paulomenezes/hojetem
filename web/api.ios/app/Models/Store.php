@@ -28,4 +28,15 @@ class Store extends Model
      * @var array
      */
     protected $fillable = ['id', 'idStoreType', 'date', 'showOnApp', 'hasMenu', 'name', 'responsible', 'user', 'email', 'password', 'phone1', 'phone2', 'phone3', 'address', 'bairro', 'cidade', 'estado', 'cep', 'cnpj', 'site', 'twitter', 'facebook', 'instagram', 'hour', 'image', 'icon', 'image1', 'image2', 'image3', 'vip', 'lat', 'description', 'longitude', 'city', 'subtype'];
+
+    public function getAddressAttribute($add)
+    {
+        if ($this->bairro && $this->cidade) {
+            return $add . ' - ' . $this->bairro . ' - ' . $this->cidade;
+        } else if ($this->bairro) {
+            return $add . ' - ' . $this->bairro;
+        } else {
+            return $add;
+        }
+    }
 }
