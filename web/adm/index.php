@@ -14,7 +14,17 @@
 
 		if($_POST['email'] == "harrison@gmail.com" && $_POST['senha'] == "hojetem2016")
 		{
-			$_SESSION['adm'] = "saulo";
+			$_SESSION['adm'] = "harrison";
+			header("Location:adm.php");
+		}
+		else if($_POST['email'] == "davydson@apphojetem.com" && $_POST['senha'] == "hojetem2016")
+		{
+			$_SESSION['adm'] = "davydson";
+			header("Location:adm.php");
+		}
+		else if($_POST['email'] == "joaovictor@apphojetem.com" && $_POST['senha'] == "hojetem2016")
+		{
+			$_SESSION['adm'] = "joaovictor";
 			header("Location:adm.php");
 		}
 		else if($_POST['email'] == "paulo.hgmenezes@gmail.com" && $_POST['senha'] == "95758213")

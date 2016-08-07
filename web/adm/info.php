@@ -39,7 +39,7 @@
 							           name = ?, responsible = ?,
 							           phone1 = ?, phone2 = ?, phone3 = ?, address = ?, event_date = ?, event_time = ?,
 							           bairro = ?, cidade = ?, email = ?, password = ?, lista = ?, idStoreType = ?,
-							           description = ?, subtype = ?, man = ?, woman = ?  
+							           description = ?, subtype = ?, man = ?, woman = ?, top = ?   
 							           WHERE id = ?";
 
 		    $stmt = $conn->prepare($sql_insert);
@@ -61,7 +61,8 @@
 		    $stmt->bindValue(16, $sub);
 		    $stmt->bindValue(17, $_POST['man']);
 		    $stmt->bindValue(18, $_POST['woman']);
-		    $stmt->bindValue(19, $store['id']);
+		    $stmt->bindValue(19, $_POST['top']);
+		    $stmt->bindValue(20, $store['id']);
 		    $stmt->execute();
 
         	header("Location:info.php?msg=sucesso");
@@ -182,11 +183,11 @@
 						<div class="col-sm-12">
 							<div class="form-group">
 								<div class="row">
-									<div class="col-sm-5">
+									<div class="col-sm-6">
 										<label>Nome da empresa</label>
 										<input type="text" class="form-control" name="nome" required value="<?php echo $estabelecimento['name']; ?>" >
 									</div>
-									<div class="col-sm-5">
+									<div class="col-sm-6">
 										<label>Categoria</label>
 										<select class="form-control select2" name="estabelecimento[]" required multiple="">
 											<?php for($i = 0; $i < sizeof($rowMenu); $i++) { ?>
@@ -194,11 +195,22 @@
 											<?php } ?>
 										</select>
 									</div>
-									<div class="col-sm-2">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-sm-6">
 										<label>Nome na lista</label>
 										<br>
 				                        <div class="make-switch" data-on="sim" data-off="nao">
 				                        	<input type="checkbox" value="sim" name="lista" <?php echo $estabelecimento['lista'] == 'sim' ? 'checked' : ''; ?>>
+				                        </div>
+									</div>
+									<div class="col-sm-6">
+										<label>Topo</label>
+										<br>
+				                        <div class="make-switch" data-on="1" data-off="0">
+				                        	<input type="checkbox" value="1" name="top" <?php echo $estabelecimento['top'] == '1' ? 'checked' : ''; ?>>
 				                        </div>
 									</div>
 								</div>

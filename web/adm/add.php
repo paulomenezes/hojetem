@@ -29,7 +29,7 @@
 				$sql_insert = "INSERT INTO store
 								           (name, responsible , email, phone1, phone2, phone3,
 								           	address, event_date, event_time, password, lista, 
-								           	idStoreType, subtype, man, woman, description, bairro, cidade) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+								           	idStoreType, subtype, man, woman, description, bairro, cidade, top) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			    $stmt = $conn->prepare($sql_insert);
 			    $stmt->bindValue(1, $_POST['nome']);
@@ -50,6 +50,7 @@
 			    $stmt->bindValue(16, $_POST['description']);
 			    $stmt->bindValue(17, $_POST['bairro']);
 			    $stmt->bindValue(18, $_POST['cidade']);
+			    $stmt->bindValue(19, $_POST['top']);
 			    $stmt->execute();
 
 	        	$sqlStore = "SELECT * FROM store WHERE id = '".$conn->lastInsertId()."'";
@@ -137,15 +138,22 @@
 								<form method="post" enctype="multipart/form-data">
 									<div class="form-group">
 										<div class="row">
-											<div class="col-sm-6">
+											<div class="col-sm-3">
 												<label>Nome na lista</label>
 												<br>
 						                        <div class="make-switch" data-on="sim" data-off="nao">
 						                        	<input type="checkbox" value="sim" name="lista" >
 						                        </div>
 											</div>
+											<div class="col-sm-3">
+												<label>Topo</label>
+												<br>
+						                        <div class="make-switch" data-on="1" data-off="0">
+						                        	<input type="checkbox" value="1" name="top" >
+						                        </div>
+											</div>
 											<div class="col-sm-6">
-												<select class="form-control select2" name="estabelecimento[]" required multiple="">
+												<select class="form-control select2" name="estabelecimento[]" required multiple="" placeholder="Categorias">
 													<?php for($i = 0; $i < sizeof($rowMenu); $i++) { ?>
 													<option value="<?php echo $rowMenu[$i]['id']; ?>"><?php echo ($rowMenu[$i]['name']); ?></option>
 													<?php } ?>

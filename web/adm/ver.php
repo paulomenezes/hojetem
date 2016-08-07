@@ -34,17 +34,15 @@
 		$_SESSION['store'] = $mStore[0];
 		$_SESSION['show'] = 0;
 
-		$sqlVisited = "SELECT idVisitedType, count(*) as Contador FROM store_visited WHERE idStore = '".$store."' group by idVisitedType";
+		$sqlVisited = "SELECT count(*) as Total FROM store_visited WHERE idStore = '".$store."' and idVisitedType = 2";
 		$stmt = $conn->query($sqlVisited);
-		$registrants = $stmt->fetchAll(); 
+		$tenhoInteresse = $stmt->fetchAll(); 
 
-		$resultados = array();
-		for ($i=0; $i < sizeof($registrants); $i++) { 
-			$resultados[$registrants[$i][0]] = $registrants[$i][1];
-		}
+		$sqlIrei = "SELECT count(*) as Total FROM store_visited WHERE idStore = '".$store."' and idVisitedType = 1";
+		$stmt = $conn->query($sqlIrei);
+		$irei = $stmt->fetchAll(); 
 
-		$sqlComments = "SELECT c.id, c.idStore, c.message, c.date, ac.name, ac.lastname, ac.image FROM store_comment AS c 
-						INNER JOIN account AS ac ON c.idAccount = ac.id WHERE idStore = '".$store."'";
+		$sqlComments = "SELECT * FROM store_comment WHERE idStore = '".$store."'";
 		$stmt = $conn->query($sqlComments);
 		$comentarios = $stmt->fetchAll(); 
 
@@ -239,6 +237,30 @@
 	                </div>
 
 					<?php include('menuadm.php'); ?>
+
+					<br />
+					<br />
+
+					<div class="row">
+						<div class="col-sm-6">
+							<div>Nomes na lista</div>
+							<hr />
+							<ul>
+							<?php for ($i=0; $i < sizeof($comentarios); $i++) { 
+								echo '<li>' . $comentarios[$i]['message'] . '</li>';
+							} ?>
+							</ul>
+						</div>
+						<div class="col-sm-6">
+							<div>Estatísticas</div>
+							<hr />
+							<ul>
+								<li>Tenho interesse: <b><?php echo $tenhoInteresse[0]['Total']; ?></b></li>
+								<li>Irei: <b><?php echo $irei[0]['Total']; ?></b></li>
+								<li>Checkins: <b><?php echo $checkin[0]['Total']; ?></b></li>
+							</ul>
+						</div>
+					</div>
 
 					<!--<div class="col-sm-12 main">
 						<h1 class="page-header">Notificações</h1>
