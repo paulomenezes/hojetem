@@ -50,7 +50,7 @@
 			    $stmt->bindValue(16, $_POST['description']);
 			    $stmt->bindValue(17, $_POST['bairro']);
 			    $stmt->bindValue(18, $_POST['cidade']);
-			    $stmt->bindValue(19, $_POST['top']);
+			    $stmt->bindValue(19, $_POST['top'] === null ? 0 : $_POST['top']);
 			    $stmt->execute();
 
 	        	$sqlStore = "SELECT * FROM store WHERE id = '".$conn->lastInsertId()."'";
