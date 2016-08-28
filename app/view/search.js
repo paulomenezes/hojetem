@@ -58,7 +58,7 @@ class Search extends React.Component {
 			searched: false,
 			sizeUsers: 0,
 			sizeStores: 0,
-			type: 'Por confirmação',
+			type: 'Por tipo',
 			selectedTypes: []
 		};
 	}
@@ -205,7 +205,7 @@ class Search extends React.Component {
 				<View style={ styles.segmented }>
 					<SegmentedControls
 						tint="#d6013b"
-						options={[ 'Por confirmação', 'Por data', 'Por tipo' ]}
+						options={[ 'Por tipo', 'Por data', 'Por confirmação' ]}
 						onSelection={ this.setSegmentType.bind(this) }
 						selectedOption={ this.state.type } />
 				</View>

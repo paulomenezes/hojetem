@@ -29,7 +29,8 @@ const {
 	ScrollView,
 	IntentAndroid,
 	WebView,
-	Platform
+	Platform,
+	LinkingIOS
 } = React;
 
 var Dimensions = require('Dimensions');
@@ -137,10 +138,13 @@ class Store extends React.Component {
 	}
 
 	goMaps() {
-		if (Platform.OS !== 'ios') {
-			if (this.props.data.lat && this.props.data.longitude) {
-				var url = 'http://maps.google.com/maps?q=' + this.props.data.lat + ',' + this.props.data.longitude;
+		if (this.props.data.address) {
+			var url = 'http://maps.google.com/?q=' + this.props.data.address;
+			
+			if (Platform.OS !== 'ios') {
 				IntentAndroid.openURL(url);
+			} else {
+				LinkingIOS.openURL(url);
 			}
 		}
 	}
