@@ -8,6 +8,8 @@ var ViewPager = require('react-native-viewpager');
 
 var Communications = require('react-native-communications');
 
+import Hyperlink from 'react-native-hyperlink';
+
 var utf8 = require('utf8');
 
 var Constants = require('../constants');
@@ -165,12 +167,16 @@ class Store extends React.Component {
 	}
 
 	redirect(path) {
-
+		if (Platform.OS !== 'ios') {
+			IntentAndroid.openURL(path);
+		} else {
+			LinkingIOS.openURL(path);
+		}
 	}
 
 	render() {
 		var commentsSize = viewHeight - 450;
-		var html = '<!DOCTYPE html><html><body style="background-color: #383838;margin:0;padding:0;color:#FFF"><a href="http://www.google.com" target="_blank">' + this.props.data.description  + '</a></body></html>';
+		var description = this.props.data.description.replace(/www/g, 'http://www');
 
 		return (
 			<View style={ styles.container }>
@@ -187,7 +193,11 @@ class Store extends React.Component {
 						<View style={ styles.about }>
 							<View style={ styles.item }>
 								<Icon style={ styles.icon } name="document-text" color="#d6013b" size={ 20 } />
-								<View style={ styles.text }><Text style={ styles.textColor }>{ this.props.data.description }</Text></View>
+								<View style={ styles.text }>
+									<Hyperlink linkStyle={{color:'#d6013b'}} onPress={(url) => this.redirect(url)}>
+										<Text style={ styles.textColor }>{ description }</Text>
+									</Hyperlink>
+								</View>
 							</View>
 							{ this.props.data.man && this.props.data.man.length > 0 ?
 							<View style={ styles.item }>
