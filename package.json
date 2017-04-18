@@ -5,6 +5,20 @@
   "scripts": {
     "start": "react-native start"
   },
+  "main": "index.android.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulomenezes/hojetem.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paulomenezes/hojetem/issues"
+  },
+  "homepage": "https://github.com/paulomenezes/hojetem#readme",
+  "description": "",
   "dependencies": {
     "fbemitter": "^2.0.0",
     "md5": "^2.0.0",
